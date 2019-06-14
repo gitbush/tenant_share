@@ -1,0 +1,16 @@
+#sidebar {
+    position:absolute;
+    display: block;
+	width: 60px;
+    left: 0px;
+    top: 0;
+	height: 100vh;
+	background-color:#22313F;
+	color:#FAFAFA;
+	transition: all .5s;
+}
+
+#sidebar.show-sidebar {
+	left: 0px;
+	/* transition: all .3s; */
+}
