@@ -1,11 +1,12 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AIAA,AAAA,UAAU,CAAC,UAAU,CAAC;EACrB,QAAQ,EAAC,QAAQ;EACjB,IAAI,EAAE,IAAI;EACV,GAAG,EAAE,GAAG;EACR,SAAS,EAAE,qBAAqB;EAChC,MAAM,EAAE,GAAG;EACX,KAAK,EAAE,IAAI;EACX,gBAAgB,EAAE,OAAO;EACzB,UAAU,EAAE,OAAO;CACnB;;AACD,AAAA,UAAU,CAAC,UAAU,AAAA,OAAO,CAAC;EAC5B,QAAQ,EAAC,QAAQ;EACjB,OAAO,EAAE,EAAE;EACX,MAAM,EAAE,GAAG;EACX,KAAK,EAAE,IAAI;EACX,GAAG,EAAE,KAAK;EACV,gBAAgB,EAAE,OAAO;EACzB,UAAU,EAAE,OAAO;CACnB;;AACD,AAAA,UAAU,CAAC,UAAU,AAAA,MAAM,CAAC;EAC3B,QAAQ,EAAC,QAAQ;EACjB,OAAO,EAAE,EAAE;EACX,MAAM,EAAE,GAAG;EACX,KAAK,EAAE,IAAI;EACX,GAAG,EAAE,IAAI;EACT,gBAAgB,EAAE,OAAO;EACzB,UAAU,EAAE,OAAO;CACnB;;AAED,AAAA,UAAU,AAAA,MAAM,CAAC;EAChB,MAAM,EAAE,OAAO;CACf",
     "sources": [
         "../scss/main.scss",
         "../scss/0_helpers/_helpers_dir.scss",
         "../scss/1_base/_base_dir.scss",
         "../scss/2_components/_components_dir.scss",
+        "../scss/2_components/_navbar.scss",
         "../scss/3_pages/_pages_dir.scss"
     ],
     "names": [],
