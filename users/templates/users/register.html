@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'head_tags.html' %}
+
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ registerForm }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-info" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    {% include 'scripts.html' %}
+</body>
+</html>
