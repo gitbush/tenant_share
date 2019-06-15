@@ -5,6 +5,7 @@ def register(request):
     if request.method == 'POST':
         registerForm = UserRegisterForm(request.POST)
         if registerForm.is_valid():
+            registerForm.save()
             return redirect('maint-home')
     else:
         registerForm = UserRegisterForm()
