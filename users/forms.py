@@ -8,10 +8,10 @@ register_choices = ((None, 'Select'),('Landlord', 'Landlord'), ('Tenant', 'Tenan
 # register form
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
-    first = forms.CharField(label='First Name')
-    last = forms.CharField(label='Last Name')
+    first_name = forms.CharField(label='First Name')
+    last_name = forms.CharField(label='Last Name')
     register_as = forms.ChoiceField(label='Register as', choices= register_choices)
 
     class Meta:
         model = User
-        fields = ['first', 'last', 'username','register_as', 'email', 'password1', 'password2']
+        fields = ['first_name', 'last_name', 'username','register_as', 'email', 'password1', 'password2']
