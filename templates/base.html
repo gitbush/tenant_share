@@ -6,26 +6,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- main css -->
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <!-- Bootstrap 4  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <title>Document</title>
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">    <!-- main.css -->
+    <!-- main css -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
 </head>
 <body>
     <header>
-            <nav class="navbar navbar-expand navbar-light bg-light">
+            <nav class="navbar navbar-expand navbar-light">
                 <div id="menu-icon">
                     <div id="hamburger"></div>
                 </div>
                 <!-- <a class="navbar-brand" href="#">Navbar</a> -->
                 <div class="ml-auto" id="navbarText">
                     <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#"><img src="https://i.ibb.co/17QHq7M/imageedit-10-9608538404.png" alt="imageedit-10-9608538404" border="0" class="sidebar-icon"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><img src="https://i.ibb.co/qrB54FG/imageedit-1-8712178148.png" alt="imageedit-1-8712178148" border="0" class="sidebar-icon"></a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -35,6 +38,14 @@
         {% endblock %}
     </main>
     <div id="sidebar">
+        <div class="sidebar-image">
+            <img src="" alt="Prof">
+        </div>
+        <ul class="sidebar-menu">
+            <li class="sidebar-item"><img src="https://i.ibb.co/1vjMj7h/imageedit-23-4235679998.png" alt="imageedit-23-4235679998" border="0" class="sidebar-icon"></li>
+            <li class="sidebar-item"><a href="https://ibb.co/7Sv7DKJ"><img src="https://i.ibb.co/dfBnvD0/imageedit-11-5190788362.png" alt="imageedit-11-5190788362" border="0" class="sidebar-icon-sm"></a></li>
+            <li class="sidebar-item"><img src="https://i.ibb.co/X7QC7F3/imageedit-3-6563832234.png" alt="imageedit-3-6563832234" border="0" class="sidebar-icon"></li>
+        </ul>
     </div>
 
     <!-- Bootstrap JS -->

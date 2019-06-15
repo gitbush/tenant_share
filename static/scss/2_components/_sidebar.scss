@@ -5,7 +5,7 @@
     left: -60px;
     top: 0;
 	height: 100vh;
-	background-color:#22313F;
+	background-image: linear-gradient(0deg, #008161 0%, #2f5f5b 23%, #343347 100%);
 	color:#FAFAFA;
 	transition: all .5s;
 }
@@ -13,4 +13,27 @@
 #sidebar.show-sidebar {
 	left: 0px;
 	/* transition: all .3s; */
+}
+
+.sidebar-menu{
+    padding: 0;
+    text-align: center;
+}
+
+.sidebar-image{
+    height: 50px;
+    border-bottom: 1px solid white;
+}
+
+.sidebar-item{
+    list-style: none;
+    margin: 15px 0px;
+}
+
+.sidebar-icon{
+    height: 2.5rem;
+}
+
+.sidebar-icon-sm{
+    height: 3rem;
 }
