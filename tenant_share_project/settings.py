@@ -131,3 +131,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # redirect to home page on login
 LOGIN_REDIRECT_URL = 'maint-home'
+# redirect to login page on logout
+LOGOUT_REDIRECT_URL = 'login'
