@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Maint_request
+from .models import MaintRequest
 
 
 def home(request):
-    requests = Maint_request.objects.all()
+    requests = MaintRequest.objects.all()
     return render(request, 'maintenance/home.html', {'requests': requests})
 
 def maint_list(request):
