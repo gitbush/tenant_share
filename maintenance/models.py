@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+# rental model for instances of rental properties
 class Rental(models.Model):
     address = models.CharField(max_length=30)
     postcode = models.CharField(max_length=6)
@@ -11,6 +12,7 @@ class Rental(models.Model):
     def __str__(self):
         return self.address
 
+# maintenance request 
 class MaintRequest(models.Model):
     title = models.CharField(max_length=200)
     details = models.TextField()
