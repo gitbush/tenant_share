@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # image model for images of maintenance requests 
 class MaintRequestImage(models.Model):
-    image = models.ImageField(default=mantenance/no_image.jpg, upload_to='maintenance')
+    image = models.ImageField(default='mantenance/no_image.jpg', upload_to='maintenance')
 
     def __str__(self):
         return self.image
