@@ -10,6 +10,7 @@ class Profile(models.Model):
     register_as = models.CharField(max_length=10, null=True)
     rental = models.ForeignKey(Rental, null=True, on_delete=models.SET_NULL)
     requests = models.ForeignKey(MaintRequest, null=True, on_delete=models.SET_NULL)
+    profile_image = models.ImageField(default='users/default_profile.jpg', upload_to='users')
 
     def __str__(self):
         return f'{self.user.username} Profile'
