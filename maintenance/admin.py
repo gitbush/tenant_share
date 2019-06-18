@@ -1,3 +1,7 @@
 from django.contrib import admin
+from maintenance.models import Rental, MaintRequest, MaintRequestImage
 
-# Register your models here.
+admin.site.register(Rental)
+admin.site.register(MaintRequest)
+admin.site.register(MaintRequestImage)
+
