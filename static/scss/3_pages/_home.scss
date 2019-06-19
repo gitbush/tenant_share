@@ -35,8 +35,21 @@
     background-color: white;
     border-radius: 5px;
     box-shadow: 0px 5px 6px 0px #ccc;
+    @include mobile-tablet-device{
+        left: 0%;
+    }
+    @include mobile-device{
+        left: 0%;
+        top: 5px;
+        border-top: .05rem solid #bbb;
+    }
 }
 
+.ten-lan-sect{
+    @include mobile-device{
+        min-height: 14rem;
+    }
+}
 
 #tenant-info{
     display: grid;
