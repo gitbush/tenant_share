@@ -182,9 +182,50 @@
   line-height: 1rem;
 }
 
-.maint-request-item {
+.maint-list-item {
   list-style: none;
   height: 90px;
   border: 1px solid black;
+}
+
+.maint-img {
+  width: 4rem;
+}
+
+#home-maint-list-item {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 3fr 1fr;
+      grid-template-rows: 3fr 1fr;
+      grid-template-areas: "home-maint-img home-maint-info" "home-maint-status home-maint-status";
+}
+
+@media screen and (min-width: 768px) {
+  #home-maint-list-item {
+    -ms-grid-columns: 15% 45% 40%;
+        grid-template-columns: 15% 45% 40%;
+        grid-template-areas: "home-maint-img home-maint-info home-maint-status";
+  }
+}
+
+#home-maint-img {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: home-maint-img;
+}
+
+#home-maint-info {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: home-maint-info;
+}
+
+#home-maint-status {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: home-maint-status;
 }
 /*# sourceMappingURL=main.css.map */

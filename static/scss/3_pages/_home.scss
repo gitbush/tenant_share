@@ -65,8 +65,38 @@
     line-height: 1rem;
 }
 
-.maint-request-item{
+.maint-list-item{
     list-style: none;
     height: 90px;
     border: 1px solid black;
+}
+
+.maint-img{
+    width: 4rem;
+}
+
+#home-maint-list-item{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 3fr 1fr;
+    grid-template-areas: 
+    "home-maint-img home-maint-info"
+    "home-maint-status home-maint-status";
+    @include tablet-up{
+        grid-template-columns: 15% 45% 40%;
+        grid-template-areas: 
+        "home-maint-img home-maint-info home-maint-status"
+    }
+}
+
+#home-maint-img{
+    grid-area: home-maint-img;
+}
+
+#home-maint-info{
+    grid-area: home-maint-info;
+}
+
+#home-maint-status{
+    grid-area: home-maint-status;
 }
