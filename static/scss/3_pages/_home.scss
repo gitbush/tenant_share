@@ -67,17 +67,23 @@
 
 .maint-list-item{
     list-style: none;
-    height: 90px;
-    border: 1px solid black;
+    border: 1px solid #e7e7e7;
+    background-color: #e7e7e7;
+    border-radius: 5px;
 }
 
 .maint-img{
-    width: 4rem;
+    width: 5rem;
+    margin: 10px;
+    border: 1px solid #bbb;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
 }
 
 #home-maint-list-item{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto 2fr;
     grid-template-rows: 3fr 1fr;
     grid-template-areas: 
     "home-maint-img home-maint-info"
@@ -95,8 +101,10 @@
 
 #home-maint-info{
     grid-area: home-maint-info;
+    align-self: center;
 }
 
 #home-maint-status{
     grid-area: home-maint-status;
+    text-align: center;
 }

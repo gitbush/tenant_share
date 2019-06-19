@@ -1,5 +1,5 @@
 .sm-heading {
-  font-size: 1rem;
+  font-size: .8rem;
 }
 
 .md-text {
@@ -184,19 +184,25 @@
 
 .maint-list-item {
   list-style: none;
-  height: 90px;
-  border: 1px solid black;
+  border: 1px solid #e7e7e7;
+  background-color: #e7e7e7;
+  border-radius: 5px;
 }
 
 .maint-img {
-  width: 4rem;
+  width: 5rem;
+  margin: 10px;
+  border: 1px solid #bbb;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: white;
 }
 
 #home-maint-list-item {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: auto 2fr;
+      grid-template-columns: auto 2fr;
   -ms-grid-rows: 3fr 1fr;
       grid-template-rows: 3fr 1fr;
       grid-template-areas: "home-maint-img home-maint-info" "home-maint-status home-maint-status";
@@ -220,6 +226,9 @@
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: home-maint-info;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 #home-maint-status {
@@ -227,5 +236,6 @@
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: home-maint-status;
+  text-align: center;
 }
 /*# sourceMappingURL=main.css.map */
