@@ -7,5 +7,5 @@ def home(request):
     requests = MaintRequest.objects.all()
     return render(request, 'maintenance/home.html', {'requests': requests})
 
-def maint_list(request):
-    return HttpResponse('<h1>Maintenance List Page</h1>')
+def maint_requests(request):
+    return render(request, 'maintenance/maint_requests.html')
