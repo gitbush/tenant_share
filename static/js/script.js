@@ -27,3 +27,17 @@ window.addEventListener('resize', function(){
         content.style.marginLeft = '60px';
     }
 });
+
+// edit account button
+const editBtn = document.getElementById('edit-btn');
+
+    editBtn.addEventListener('click', function(){
+        if(editBtn.innerText == 'Edit'){
+            editBtn.innerText = 'Close';
+        }
+        else{
+            editBtn.innerText = 'Edit';
+        }
+    })
+
+
