@@ -10,3 +10,7 @@ def register(request):
     else:
         registerForm = UserRegisterForm()
     return render(request, 'users/register.html', {'registerForm': registerForm})
+
+def account(request):
+
+    return render(request, 'users/account.html')
