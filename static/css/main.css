@@ -17,7 +17,7 @@
 }
 
 .navbar {
-  height: 50px;
+  height: 60px;
   background-color: #343347;
 }
 
@@ -97,7 +97,7 @@
 }
 
 .sidebar-image {
-  height: 50px;
+  height: 60px;
   border-bottom: 1px solid white;
 }
 
@@ -114,12 +114,13 @@
   height: 3rem;
 }
 
-.user-form {
-  margin: 2rem 0px;
-}
-
 .profile-icon {
   width: 3rem;
+  margin: 5px 0;
+}
+
+.user-form {
+  margin: 2rem 0px;
 }
 
 .house-img {
