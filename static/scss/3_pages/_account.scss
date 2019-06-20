@@ -7,6 +7,10 @@
 .account-info-list{
     list-style: none;
     padding: 2rem 2rem 0 0;
+    color: white;
+    @include mobile-device{
+        color: black;
+    }
     @include large-mobile-device{
         margin-left: 1rem;
     }

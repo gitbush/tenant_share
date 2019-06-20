@@ -276,6 +276,13 @@
 .account-info-list {
   list-style: none;
   padding: 2rem 2rem 0 0;
+  color: white;
+}
+
+@media screen and (max-width: 575px) {
+  .account-info-list {
+    color: black;
+  }
 }
 
 @media screen and (min-width: 576px) and (max-width: 767px) {
