@@ -112,6 +112,10 @@
   margin: 2rem 0px;
 }
 
+.profile-icon {
+  width: 3rem;
+}
+
 .house-img {
   max-width: 8rem;
 }
