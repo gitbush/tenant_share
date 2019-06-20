@@ -1,5 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Maint list</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="card col-11 col-md-9 mt-3 text-center">
+                <h3 class="md-heading m-1">Search Maintenance Requests</h3>
+                <hr class="m-1">
+                <div class="col-12">
+                    FORM FIELDS AND SUBMIT
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="card col-10 col-md-9 mt-3 mb-3">
+            {% include 'maintenance/_home_maint_list.html' %}
+            </div>
+        </div>
+    </div>
+
+
+
 {% endblock %}
