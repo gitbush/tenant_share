@@ -1,0 +1,29 @@
+
+.account-top-color{
+    left:0;
+    height: 10rem;
+}
+
+.account-info-list{
+    list-style: none;
+    padding: 2rem 2rem 0 0;
+    @include large-mobile-device{
+        margin-left: 1rem;
+    }
+}
+
+.account-img{
+    padding: 1rem;
+    max-width: 13rem;
+}
+
+.account-edit-btn{
+    margin-top: 3rem;
+    @include mobile-device{
+        margin: .3rem 1.5rem; 
+    }
+    @include large-mobile-device{
+        margin-top: 3rem;
+        margin-bottom: .7rem;
+    }
+}

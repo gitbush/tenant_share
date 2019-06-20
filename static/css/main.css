@@ -261,4 +261,42 @@
       -ms-grid-row-align: center;
       align-self: center;
 }
+
+.account-top-color {
+  left: 0;
+  height: 10rem;
+}
+
+.account-info-list {
+  list-style: none;
+  padding: 2rem 2rem 0 0;
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .account-info-list {
+    margin-left: 1rem;
+  }
+}
+
+.account-img {
+  padding: 1rem;
+  max-width: 13rem;
+}
+
+.account-edit-btn {
+  margin-top: 3rem;
+}
+
+@media screen and (max-width: 575px) {
+  .account-edit-btn {
+    margin: .3rem 1.5rem;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .account-edit-btn {
+    margin-top: 3rem;
+    margin-bottom: .7rem;
+  }
+}
 /*# sourceMappingURL=main.css.map */
