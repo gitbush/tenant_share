@@ -108,6 +108,7 @@
 #home-maint-info{
     grid-area: home-maint-info;
     align-self: center;
+    text-align: center;
     @include all-desktop-devices{
         margin-left: 5px;
     }
@@ -117,4 +118,8 @@
     grid-area: home-maint-status;
     text-align: center;
     align-self: center;
+}
+
+.btn-sm{
+    padding: 0px 5px;
 }

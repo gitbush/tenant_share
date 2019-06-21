@@ -256,6 +256,7 @@
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  text-align: center;
 }
 
 @media screen and (min-width: 900px) {
@@ -273,6 +274,10 @@
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+}
+
+.btn-sm {
+  padding: 0px 5px;
 }
 
 .account-top-color {
