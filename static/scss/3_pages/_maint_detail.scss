@@ -10,6 +10,13 @@
     position: relative;
     z-index: 99;
     margin:0 2rem;
+    text-decoration: none;
+    color: black;
+}
+
+.request-toggle-item:hover{
+    text-decoration: none;
+    color: black;
 }
 
 .request-toggle-switch{
