@@ -88,7 +88,7 @@
     "home-maint-img home-maint-info"
     "home-maint-status home-maint-status";
     @include tablet-up{
-        grid-template-columns: 20% 40% 40%;
+        grid-template-columns: 20% 35% 45%;
         grid-template-rows: auto;
         grid-template-areas: 
         "home-maint-img home-maint-info home-maint-status"
@@ -108,12 +108,13 @@
 #home-maint-info{
     grid-area: home-maint-info;
     align-self: center;
+    @include all-desktop-devices{
+        margin-left: 5px;
+    }
 }
 
 #home-maint-status{
     grid-area: home-maint-status;
     text-align: center;
     align-self: center;
-    display: grid;
-    grid-template-rows: 2fr 1fr;
 }

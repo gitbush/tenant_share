@@ -225,8 +225,8 @@
 
 @media screen and (min-width: 768px) {
   #home-maint-list-item {
-    -ms-grid-columns: 20% 40% 40%;
-        grid-template-columns: 20% 40% 40%;
+    -ms-grid-columns: 20% 35% 45%;
+        grid-template-columns: 20% 35% 45%;
     -ms-grid-rows: auto;
         grid-template-rows: auto;
         grid-template-areas: "home-maint-img home-maint-info home-maint-status";
@@ -258,18 +258,21 @@
       align-self: center;
 }
 
+@media screen and (min-width: 900px) {
+  #home-maint-info {
+    margin-left: 5px;
+  }
+}
+
 #home-maint-status {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: home-maint-status;
   text-align: center;
-  -ms-grid-row-align: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
       align-self: center;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-rows: 2fr 1fr;
-      grid-template-rows: 2fr 1fr;
 }
 
 .account-top-color {
