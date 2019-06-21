@@ -11,4 +11,4 @@ def MaintRequestList(request):
     return render(request, 'maintenance/maint_requests.html')
 
 def MaintRequestDetail(request):
-    return render(request, 'maintenance/maint_requests.html')
+    return render(request, 'maintenance/maint_detail.html')
