@@ -328,4 +328,29 @@
 .edit-confirm-btn {
   margin: .4rem;
 }
+
+.request-toggle {
+  padding: .5rem;
+  background-color: #e8e8e8;
+  border-radius: 5px;
+  margin: 0.4rem;
+  max-width: 280px;
+}
+
+.request-toggle-item {
+  position: relative;
+  z-index: 99;
+  margin: 0 2rem;
+}
+
+.request-toggle-switch {
+  position: absolute;
+  top: 51px;
+  width: 125px;
+  border-radius: 5px;
+  height: 30px;
+  background-color: white;
+  -webkit-box-shadow: 2px 2px 3px 2px #ccc;
+          box-shadow: 2px 2px 3px 2px #ccc;
+}
 /*# sourceMappingURL=main.css.map */
