@@ -94,7 +94,7 @@
         "home-maint-img home-maint-info home-maint-status"
     }
     @include all-desktop-devices{
-        grid-template-columns: 15% 35% 40%;
+        grid-template-columns: 15% 35% 50%;
         grid-template-rows: auto;
         grid-template-areas: 
         "home-maint-img home-maint-info home-maint-status"
@@ -114,4 +114,6 @@
     grid-area: home-maint-status;
     text-align: center;
     align-self: center;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
 }
