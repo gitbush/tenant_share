@@ -1,5 +1,6 @@
 .request-toggle{
     padding: .5rem;
+    position: relative;
     background-color: #e8e8e8;
     border-radius: 5px;
     margin: 0.4rem;
@@ -17,14 +18,21 @@
 .request-toggle-item:hover{
     text-decoration: none;
     color: black;
+    cursor: pointer;
 }
 
-.request-toggle-switch{
+#request-toggle-switch{
     position: absolute;
-    top: 51px;
-    width: 125px;
+    top: 5px;
+    left: 8px;
+    width: 123px;
     border-radius: 5px;
     height: 30px;
     background-color: white;
     box-shadow: 2px 2px 3px 2px #ccc;
+    transition: all .5s;
+}
+
+#request-toggle-switch.toggle-switch{
+    left: 135px;
 }

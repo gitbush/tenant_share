@@ -41,5 +41,27 @@ const editBtn = document.getElementById('edit-btn');
         })
     }
     
+// maintenance request detail toggle switch
+
+const toggleSwitch = document.getElementById('request-toggle-switch');
+const detail = document.getElementById('detail');
+const messages = document.getElementById('messages');
+const toggleSelect = document.getElementsByClassName('request-toggle-item');
+
+
+
+for (let i = 0; i < toggleSelect.length; i++){
+        toggleSelect[i].addEventListener('click', function(event){
+            
+            if(event.target.id == 'messages'){
+                toggleSwitch.classList.add('toggle-switch')
+            }
+            else if(event.target.id == 'detail'){
+                toggleSwitch.classList.remove('toggle-switch')
+            }
+    })
+}
+
+
 
 
