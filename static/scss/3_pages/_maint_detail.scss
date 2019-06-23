@@ -36,3 +36,15 @@
 #request-toggle-switch.toggle-switch{
     left: 135px;
 }
+
+.view{
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    background-color: grey;
+}
+
+#mess{
+    display: none;
+    background-color: red;
+}

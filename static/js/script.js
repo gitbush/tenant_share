@@ -48,19 +48,27 @@ const detail = document.getElementById('detail');
 const messages = document.getElementById('messages');
 const toggleSelect = document.getElementsByClassName('request-toggle-item');
 
+const messageView = document.getElementById('mess');
+const detailView = document.getElementById('det');
 
 
 for (let i = 0; i < toggleSelect.length; i++){
         toggleSelect[i].addEventListener('click', function(event){
             
             if(event.target.id == 'messages'){
-                toggleSwitch.classList.add('toggle-switch')
+                toggleSwitch.classList.add('toggle-switch'); // moves toggle swith to message tab
+                messageView.style.display = 'block'; // displays maintenance request message view
+                detailView.style.display = 'none'; // hides maintenance request detail view
             }
             else if(event.target.id == 'detail'){
-                toggleSwitch.classList.remove('toggle-switch')
+                toggleSwitch.classList.remove('toggle-switch') // reverses toggle and displayed view
+                messageView.style.display = 'none';
+                detailView.style.display = 'block ';
             }
     })
 }
+
+
 
 
 
