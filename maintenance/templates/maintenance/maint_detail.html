@@ -2,11 +2,12 @@
 
 {% block content %}
 <div class="container">
-    <div class="row justify-content-center mt-3">
-        <div class="card col-11 col-md-9 p-0" style="height: 300px">
+    <div class="row justify-content-center mt-3 mb-3">
+        <div class="card col-11 col-md-9 p-0">
             <div class="card-header">
                 <h3 class="sm-heading">Maintenance Request #12333</h3>
             </div>
+            <!-- toggle row -->
             <div class="row m-0 justify-content-center">
                 <div class="text-center request-toggle">
                     <div id="request-toggle-switch"></div>    
@@ -18,15 +19,18 @@
                     </span>                    
                 </div>
             </div>
+            <!-- end toggle row -->
             <hr class="m-1">
-
+            <!-- maint request detail view -->
             <div id="detail-view" class="row justify-content-center m-0">
                 {% include 'maintenance/_request_detail.html' %}
             </div>
+            <!-- end maint request detail view -->
+            <!-- maint request message view -->
             <div id="message-view" class="view">
                 MESSAGES
             </div>
-
+            <!-- end maint request message view -->
         </div>
     </div>
 </div>
