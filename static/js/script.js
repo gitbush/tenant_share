@@ -44,23 +44,23 @@ const editBtn = document.getElementById('edit-btn');
 // maintenance request detail toggle switch
 
 const toggleSwitch = document.getElementById('request-toggle-switch');
-const detail = document.getElementById('detail');
-const messages = document.getElementById('messages');
+const detailTab = document.getElementById('detail-tab');
+const messagesTab = document.getElementById('messages-tab');
 const toggleSelect = document.getElementsByClassName('request-toggle-item');
 
-const messageView = document.getElementById('mess');
-const detailView = document.getElementById('det');
+const messageView = document.getElementById('message-view');
+const detailView = document.getElementById('detail-view');
 
 
 for (let i = 0; i < toggleSelect.length; i++){
         toggleSelect[i].addEventListener('click', function(event){
             
-            if(event.target.id == 'messages'){
+            if(event.target.id == 'messages-tab'){
                 toggleSwitch.classList.add('toggle-switch'); // moves toggle swith to message tab
                 messageView.style.display = 'block'; // displays maintenance request message view
                 detailView.style.display = 'none'; // hides maintenance request detail view
             }
-            else if(event.target.id == 'detail'){
+            else if(event.target.id == 'detail-tab'){
                 toggleSwitch.classList.remove('toggle-switch') // reverses toggle and displayed view
                 messageView.style.display = 'none';
                 detailView.style.display = 'block ';
