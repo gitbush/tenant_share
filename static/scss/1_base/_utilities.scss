@@ -1,0 +1,56 @@
+// fonts
+.html, body{
+    font-family: proxima-nova,  Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+}
+
+.sm-heading{
+    font-size: .8rem;
+}
+
+.md-heading{
+    font-size: 1.1rem
+}
+
+.md-text{
+    font-size: .7rem;
+}
+
+// colors
+
+.badge-success{
+    color: #0d5610;
+    background: rgba(76, 175, 80, 0.3);
+    border: 1px solid #0d5610;
+}
+
+.badge-danger{
+    color: #b10030;
+    background: rgba(224, 19, 19, 0.3);
+    border: 1px solid #dc0000;
+}
+
+.badge-info{
+    color: #0e0e0e;
+    border: 1px solid #0066754d;
+    background-color: rgba(17, 195, 185, 0.3);
+}
+
+.badge-light{
+    color: #212529;
+    background-color: #f8f9fa;
+    border: 1px solid black;
+}
+
+.badge-lg {
+    display: inline-block;
+    padding: .8em 1.5em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}
