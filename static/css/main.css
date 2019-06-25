@@ -18,6 +18,13 @@
   font-size: .8rem;
 }
 
+.badge-lg {
+  padding: .8em 1.5em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+}
+
 .badge-success {
   color: #0d5610;
   background: rgba(76, 175, 80, 0.3);
@@ -40,13 +47,6 @@
   color: #212529;
   background-color: #f8f9fa;
   border: 1px solid black;
-}
-
-.badge-lg {
-  padding: .8em 1.5em;
-  font-size: 75%;
-  font-weight: 700;
-  line-height: 1;
 }
 
 .navbar {
