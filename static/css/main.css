@@ -15,7 +15,7 @@
 }
 
 .md-text {
-  font-size: .7rem;
+  font-size: .8rem;
 }
 
 .badge-success {
@@ -407,15 +407,7 @@
   left: 135px;
 }
 
-.view {
-  height: 100px;
-  width: 100px;
-  border: 1px solid black;
-  background-color: grey;
-}
-
 #message-view {
   display: none;
-  background-color: red;
 }
 /*# sourceMappingURL=main.css.map */
