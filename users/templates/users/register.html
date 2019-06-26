@@ -9,7 +9,7 @@
 <body>
     <main class="container">
         <div class="row justify-content-center">
-            <div class="card col-5 user-form">
+            <div class="card col-8 user-form">
                 <form action="" method="POST">
                     {% csrf_token %}
                     <div class="form-group row justify-content-center">
@@ -17,7 +17,7 @@
                         <div class="col-6">{{ registerForm.first_name|as_crispy_field}}</div>
                         <div class="col-6">{{ registerForm.last_name|as_crispy_field }}</div>
                         <div class="col-6">{{ registerForm.username|as_crispy_field }}</div>
-                        <div class="col-6">{{ registerForm.register_as|as_crispy_field }}</div>
+                        <div class="col-6">{{ asForm|crispy }}</div>
                         <div class="col-12">{{ registerForm.email|as_crispy_field }}</div>
                         <div class="col-12">{{ registerForm.password1|as_crispy_field }}</div>
                         <div class="col-12">{{ registerForm.password2|as_crispy_field }}</div>
