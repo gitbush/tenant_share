@@ -1,13 +1,22 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import MaintRequest
+from .models import *
 
 
 def Home(request):
     currentUser = request.user
+    userRental = currentUser.profile.rental
+    userLandlord = userRental.landlord
+    userTenants = userRental.profile_set.filter(register_as='Tenant').all()
+    # print(userRental.profile_set.filter(register_as='Tenant').all())
+    # print(currentRental.profile_set.filter(register_as='Tenant').all())
+        
+
     context = {
-        'userLandlord': currentUser.profile.rental.landlord,
-        'userRental': currentUser.profile.rental 
+        'userProfile': currentUser.profile,
+        'userRental': userRental, 
+        'userLandlord': userLandlord,
+        'userTenants': userTenants
     }
     return render(request, 'maintenance/home.html', context)
 
