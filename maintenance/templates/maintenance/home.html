@@ -2,8 +2,12 @@
 
     {% block content %}
     <div class="container-fluid">
-        <!-- your house details -->
-        {% include 'maintenance/_your_house.html' %}
+        <!-- checks if current user is registered and has a rental assigned to it -->
+        {% if userLandlord %}
+            {% include 'maintenance/_your_house.html' %}
+        {% else %}
+            {% include 'maintenance/_no_rental.html' %}
+        {% endif %}
         <!-- oustanding maintenance list -->
         <div class="row justify-content-center">
             <div class="card col-11 mt-3 mb-3 max-card">
