@@ -4,8 +4,12 @@ from .models import MaintRequest
 
 
 def Home(request):
-    requests = MaintRequest.objects.all()
-    return render(request, 'maintenance/home.html', {'requests': requests})
+    currentUser = request.user
+    context = {
+        'userProfile': currentUser.profile,
+        'userRental': currentUser.profile.rental 
+    }
+    return render(request, 'maintenance/home.html', context)
 
 def MaintRequestList(request):
     return render(request, 'maintenance/maint_requests.html')
