@@ -6,7 +6,7 @@ from .models import MaintRequest
 def Home(request):
     currentUser = request.user
     context = {
-        'userProfile': currentUser.profile,
+        'userLandlord': currentUser.profile.rental.landlord,
         'userRental': currentUser.profile.rental 
     }
     return render(request, 'maintenance/home.html', context)
