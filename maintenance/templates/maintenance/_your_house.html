@@ -19,26 +19,39 @@
             <!-- details of landlord and tenants -->
             <div class="col-12 col-sm-7 col-md-8 ten-lan-sect">
                 <div class="float col-12 col-md-11">
-                    <div class="col-12 p-1">
-                        <h4 class="sm-heading">Landlord</h4>
-                        <hr class="m-2">
-                        <img src="{{ userLandlord.profile.profile_image.url}}" class="rounded-circle img-fluid landlord-img d-inline" alt="man">
-                        <p class="d-inline m-2 md-text">{{ userLandlord.first_name }}&nbsp;{{ userLandlord.last_name }}</p>
-                        <p class="d-inline m-2 md-text">{{ userLandlord.email }}</p>
+                    <div class="row justify-content-center">
+                        <div class="col-12 p-1">
+                            <h4 class="sm-heading">Landlord</h4>
+                            <hr class="m-2">
+                        </div>
+                        <div class="col-12 col-md-10 text-center text-md-left">
+                            <span>
+                                <img src="{{ userLandlord.profile.profile_image.url}}" class="rounded-circle img-fluid landlord-img d-inline" alt="man">
+                            </span>
+                            <span class="tenant-name d-inline-block align-middle ml-2">
+                                <p class="d-sm-block m-0 md-text">{{ userLandlord.first_name }}&nbsp;{{ userLandlord.last_name }}</p>
+                                <p class="d-cm-block m-0 md-text">{{ userLandlord.email }}</p>        
+                            </span>
+                        </div>
                     </div>
-                    <div class="col-12 p-0"><h4 class="sm-heading">Housemates</h4></div>
-                    <hr class="m-2">
-                    {% for tenant in userTenants %}
-                        <div id="tenant-info" class="col-6 p-1">
+                    <div class="row justify-content-center">
+                        <div class="col-12 p-1">
+                            <h4 class="sm-heading">Housemates</h4>
+                            <hr class="m-2">                    
+                        </div>
+                        {% for tenant in userTenants %}
+                        <div id="tenant-info" class="col-4 col-sm-4 p-1 m-1">
                             <div id="tenant-img">
                                 <img src="{{ tenant.profile_image.url }}" class="rounded-circle img-fluid landlord-img d-inline" alt="man">
                             </div>
                             <div class="tenant-name">
-                                <p class="d-inline m-2 md-text">{{ tenant.user.first_name }}&nbsp;{{ tenant.user.last_name }}</p>
-                                <p class="d-inline m-2 md-text">{{ tenant.user.email }}</p>
+                                <p class="m-0 md-text">{{ tenant.user.first_name }}</p>
+                                <p class="m-0 md-text">{{ tenant.user.last_name }}</p>
+                                <!-- <p class="d-inline m-2 md-text">{{ tenant.user.email }}</p> -->
                             </div>
                         </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
