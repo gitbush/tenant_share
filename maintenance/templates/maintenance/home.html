@@ -3,7 +3,7 @@
     {% block content %}
     <div class="container-fluid">
         <!-- checks if current user is registered and has a rental assigned to it -->
-        {% if userLandlord %}
+        {% if userRental %}
             {% include 'maintenance/_your_house.html' %}
         {% else %}
             {% include 'maintenance/_no_rental.html' %}

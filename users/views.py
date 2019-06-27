@@ -17,7 +17,7 @@ def register(request):
                 register_as = asForm.cleaned_data['register_as']
                 profile.register_as = register_as
                 profile.save()
-            return redirect('maint-home')
+            return redirect('login')
     else:
         registerForm = UserRegisterForm()
         asForm = RegisterAsForm()
