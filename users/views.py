@@ -23,6 +23,9 @@ def register(request):
         asForm = RegisterAsForm()
     return render(request, 'users/register.html', {'registerForm': registerForm, 'asForm': asForm})
 
-def account(request):
+def account(request, id):
+    """
+    User account page
+    """
 
     return render(request, 'users/account.html')
