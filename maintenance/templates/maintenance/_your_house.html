@@ -8,8 +8,8 @@
             <div class="col-12 col-sm-4 col-md-3 mt-3 text-center">
                 <img src="{{ userRental.image.url }}" class="rounded-circle img-fluid house-img" alt="Cinque Terre">
                 <hr class="m-2">
-                <p class="md-text">{{ userRental.address }}</p>
-                <p class="md-text">{{ userRental.postcode}}, {{ userRental.city }}</p>
+                <p class="md-text">{{ userRental.address.title }}</p>
+                <p class="md-text">{{ userRental.postcode|upper }}, {{ userRental.city.title }}</p>
                 <div class="col-12 m-2">
                     <p>Search email field</p>
                     <button class="btn btn-sm btn-success" href="">+ Add Tenant</button>

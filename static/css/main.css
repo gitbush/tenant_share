@@ -177,10 +177,14 @@
 
 .house-img {
   max-width: 8rem;
+  -webkit-box-shadow: 2px 2px 4px 1px #333;
+          box-shadow: 2px 2px 4px 1px #333;
 }
 
 .landlord-img {
   max-width: 3rem;
+  -webkit-box-shadow: 2px 2px 4px 1px #333;
+          box-shadow: 2px 2px 4px 1px #333;
 }
 
 .landlord-sect {
@@ -219,7 +223,7 @@
 
 @media screen and (max-width: 575px) {
   .ten-lan-sect {
-    min-height: 14rem;
+    min-height: 18rem;
   }
 }
 
