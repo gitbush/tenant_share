@@ -317,6 +317,11 @@
       align-self: center;
 }
 
+.jumbotron {
+  background-color: #343347;
+  color: white;
+}
+
 .account-top-color {
   left: 0;
   height: 10rem;
