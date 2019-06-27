@@ -1,18 +1,28 @@
 <div class="row your-house justify-content-center">
     <div class="card col-11 p-0 mt-3 max-card">
         <div class="card-header"></div>
-        {% if userProfile.register_as == 'Landlord' %}
-            <h1>Landlord! Add a rental!</h1>
-        {% else %}
-            <div class="row m-0 jumbotron">
+            <div class="row m-0 jumbotron text-center">
                 <div class="col-12">
                     <h1>Next Step!</h1>
+                    <!-- if user is a landlord with no rental  -->
+                    {% if userProfile.register_as == 'Landlord' %}
+                    <p class="d-block">
+                        Head over to your account page and add a property!
+                    </p> 
+                    <div class="col-12">
+                        <a href="{% url 'account' %}">
+                            <img src="https://i.ibb.co/17QHq7M/imageedit-10-9608538404.png" alt="imageedit-10-9608538404" class="sidebar-icon">
+                        </a>
+                        <p class="d-inline">Account</p>
+                    </div>  
+                    <!-- if user is a tenant with no rental  -->
+                    {% else %}
                     <p class="d-block">
                         Have your landlord/property manager add you onto the property account.
-                    </p>        
+                    </p> 
+                    {% endif %}
                 </div>
             </div>
-        {% endif %}
     </div>
 </div>
     
