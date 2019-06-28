@@ -3,41 +3,10 @@
 {% block content %}
 <div class="container">
     <div class="row justify-content-center">
-        <div class="card col-11 col-md-10 col-lg-8 mt-3 mb-3">
-            <div class="row">
-                <div class="col-12 card-header">
-                    <h1 class="md-heading">Profile Information</h1>
-                </div>
-                <div class="col-12 col-sm-5 text-center">
-                    <img src="{{ user.profile.profile_image.url }}" alt="Prof" class="account-img rounded-circle img-fluid">
-                </div>
-                <div class="col-12 col-sm-6 p-0">
-                    <hr class="m-1 d-sm-none">
-                    <div class="row justify-content-center justify-content-sm-start m-0">
-                        <ul class="account-info-list">
-                            <li>{{ user.first_name }}&nbsp;{{ user.last_name }}</li>
-                            <li class="md-text">{{ user.email }}</li>
-                            <hr>
-                            <li class="md-text">
-                                <p class="m-0 bold">Account Mode</p>
-                                <p class="m-0">{{ user.profile.register_as }}</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <hr class="m-1 d-sm-none">
-                </div>
-                <div class="col-12 text-right">
-                    <button id="edit-btn" class="account-edit-btn btn btn-sm btn-info" type="button" data-toggle="collapse" data-target="#edit-collapse" aria-expanded="false" aria-controls="edit-collapse">Edit</button>
-                </div>
-            </div>
-            <!-- edit account form -->
-            <div id="edit-collapse" class="row account-edit-section collapse">
-                <div class="col-12">
-                <hr class="m-1 d-none d-sm-block">
-                    {% include 'users/_account_update.html' %}
-                </div>
-            </div>
-        </div>
+        {% include 'users/_profile.html' %}
+    </div>
+    <div class="row justify-content-center">
+        {% include 'users/_property.html' %}
     </div>
 </div>
 
