@@ -27,8 +27,8 @@ def account(request, id):
     """
     User account page
     """
-    user_update_form = UserUpdateForm()
-    profile_img_form = ProfileUpdateForm()
+    user_update_form = UserUpdateForm(instance=request.user)
+    profile_img_form = ProfileUpdateForm(instance=request.user.profile)
 
     context = {
         'user_form': user_update_form,
