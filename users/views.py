@@ -27,12 +27,21 @@ def account(request, id):
     """
     User account page
     """
-    user_update_form = UserUpdateForm(instance=request.user)
-    profile_img_form = ProfileUpdateForm(instance=request.user.profile)
+    if request.method == 'POST':
+        user_update_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_img_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+
+        if user_update_form.is_valid() and profile_img_form.is_valid():
+            user_update_form.save()
+            profile_img_form.save()
+            return redirect('account', id=request.user.id)
+    else:
+        user_update_form = UserUpdateForm(instance=request.user)
+        profile_img_form = ProfileUpdateForm(instance=request.user.profile)
 
     context = {
-        'user_form': user_update_form,
-        'profile_form': profile_img_form,
+        'user_update_form': user_update_form,
+        'profile_img_form': profile_img_form,
     }
 
     return render(request, 'users/account.html', context)
