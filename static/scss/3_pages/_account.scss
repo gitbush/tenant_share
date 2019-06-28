@@ -6,8 +6,8 @@
 
 .account-info-list{
     list-style: none;
+    line-height: 1.5rem;
     padding: 2rem 2rem 0 0;
-    color: white;
     @include mobile-device{
         color: black;
     }

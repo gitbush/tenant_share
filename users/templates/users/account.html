@@ -4,17 +4,24 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="card col-11 col-md-10 col-lg-8 mt-3">
-            <div class="card-top-color account-top-color"></div>
             <div class="row">
+                <div class="col-12 card-header">
+                    <h1 class="md-heading">Profile Information</h1>
+                </div>
                 <div class="col-12 col-sm-5 text-center">
                     <img src="{{ user.profile.profile_image.url }}" alt="Prof" class="account-img rounded-circle img-fluid">
                 </div>
                 <div class="col-12 col-sm-6 p-0">
                     <hr class="m-1 d-sm-none">
-                    <div class="row justify-content-center m-0">
+                    <div class="row justify-content-center justify-content-sm-start m-0">
                         <ul class="account-info-list">
                             <li>{{ user.first_name }}&nbsp;{{ user.last_name }}</li>
-                            <li>{{ user.email }}</li>
+                            <li class="md-text">{{ user.email }}</li>
+                            <hr>
+                            <li class="md-text">
+                                <p class="m-0 bold">Account Mode</p>
+                                <p class="m-0">{{ user.profile.register_as }}</p>
+                            </li>
                         </ul>
                     </div>
                     <hr class="m-1 d-sm-none">

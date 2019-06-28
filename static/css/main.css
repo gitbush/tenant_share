@@ -17,6 +17,10 @@
   font-size: .8rem;
 }
 
+.bold {
+  font-weight: 600;
+}
+
 .badge-lg {
   padding: .8em 1.5em;
   font-size: 75%;
@@ -329,8 +333,8 @@
 
 .account-info-list {
   list-style: none;
+  line-height: 1.5rem;
   padding: 2rem 2rem 0 0;
-  color: white;
 }
 
 @media screen and (max-width: 575px) {
