@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UserRegisterForm, RegisterAsForm
+from .forms import UserRegisterForm, RegisterAsForm, UserUpdateForm, ProfileUpdateForm
 from .models import *
 
 def register(request):
@@ -27,5 +27,12 @@ def account(request, id):
     """
     User account page
     """
+    user_update_form = UserUpdateForm()
+    profile_img_form = ProfileUpdateForm()
 
-    return render(request, 'users/account.html')
+    context = {
+        'user_form': user_update_form,
+        'profile_form': profile_img_form,
+    }
+
+    return render(request, 'users/account.html', context)
