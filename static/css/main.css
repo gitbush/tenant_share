@@ -351,7 +351,7 @@
 }
 
 .account-edit-btn {
-  margin-top: 3rem;
+  margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 575px) {
@@ -362,7 +362,6 @@
 
 @media screen and (min-width: 576px) and (max-width: 767px) {
   .account-edit-btn {
-    margin-top: 3rem;
     margin-bottom: .7rem;
   }
 }
