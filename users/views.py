@@ -26,16 +26,24 @@ def register(request):
 
 def account(request, id):
     """
-    User account page
+    User account page with profile editor and rental property editor
     """
     if request.method == 'POST':
         user_update_form = UserUpdateForm(request.POST, instance=request.user)
         profile_img_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        rental_form = RentalCreationForm(request.POST, request.FILES, instance=request.user.profile.rental)
 
-        if user_update_form.is_valid() and profile_img_form.is_valid():
-            user_update_form.save()
-            profile_img_form.save()
-            return redirect('account', id=request.user.id)
+    # check which form is submitted 
+        if 'profile' in request.POST:
+            if user_update_form.is_valid() and profile_img_form.is_valid():
+                user_update_form.save()
+                profile_img_form.save()
+                return redirect('account', id=request.user.id)
+        elif 'rental' in request.POST:
+            if rental_form.is_valid():
+                rental_form.save()
+                return redirect('account', id=request.user.id)
+    # populate boths forms on GET
     else:
         user_update_form = UserUpdateForm(instance=request.user)
         profile_img_form = ProfileUpdateForm(instance=request.user.profile)
