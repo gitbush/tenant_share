@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import UserRegisterForm, RegisterAsForm, UserUpdateForm, ProfileUpdateForm
 from .models import *
+from maintenance.forms import RentalCreationForm
 
 def register(request):
     """
@@ -38,10 +39,12 @@ def account(request, id):
     else:
         user_update_form = UserUpdateForm(instance=request.user)
         profile_img_form = ProfileUpdateForm(instance=request.user.profile)
+        rental_form = RentalCreationForm(instance=request.user.profile.rental)
 
     context = {
         'user_update_form': user_update_form,
         'profile_img_form': profile_img_form,
+        'rental_form': rental_form,
     }
 
     return render(request, 'users/account.html', context)

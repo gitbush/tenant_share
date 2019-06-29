@@ -17,6 +17,7 @@
     
 
         {% else %}
+        <!-- user property info -->
         <div class="col-12 col-sm-6 text-center">
             <img src="{{ user.profile.rental.image.url }}" alt="Property" class="account-img rounded-circle img-fluid">
         </div>
@@ -25,7 +26,8 @@
             <div class="row justify-content-center justify-content-sm-start m-0">
                 <ul class="account-info-list">
                     <li>{{ user.profile.rental.address.title }}</li>
-                    <li>{{ user.profile.rental.postcode|upper }}, {{ user.profile.rental.city.title }}</li>
+                    <li>{{ user.profile.rental.postcode|upper }}</li>
+                    <li>{{ user.profile.rental.city.title }}</li>
                     <hr>
                 </ul>
             </div>
@@ -34,9 +36,9 @@
         <div class="col-12 text-right">
             <button id="edit-btn" class="account-edit-btn btn btn-sm btn-info" type="button" data-toggle="collapse" data-target="#edit-property-collapse" aria-expanded="false" aria-controls="edit-property-collapse">Edit</button>
         </div>
-        <!-- end user profile info -->
+        <!-- end user property info -->
         {% endif %}
-        <!-- edit profile form -->
+        <!-- add/edit property form -->
         <div id="edit-property-collapse" class="row account-edit-section collapse">
             <div class="col-12">
             <hr class="m-1 d-none d-sm-block">
@@ -46,6 +48,11 @@
                             {% csrf_token %}
                             <div class="form-group row justify-content-center m-0">
                                 <legend class="border-bottom mb-4">Property Update</legend>
+                                <div class="col-12">{{ rental_form.address|as_crispy_field }}</div>
+                                <div class="col-6">{{ rental_form.city|as_crispy_field }}</div>
+                                <div class="col-6">{{ rental_form.postcode|as_crispy_field }}</div>
+                                <div class="col-12">{{ rental_form.no_of_tenants|as_crispy_field }}</div>
+                                <div class="col-12">{{ rental_form.image|as_crispy_field }}</div>    
                             </div>
                             <div class="row justify-content-end m-2">
                                 <button class="edit-confirm-btn btn btn-sm btn-outline-info" type="submit">Submit</button>
@@ -54,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <!-- end profile form -->
+            <!-- end property form -->
         </div>
     </div>
 </div> 
