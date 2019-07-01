@@ -22,13 +22,25 @@ class Rental(models.Model):
 
 # maintenance request 
 class MaintRequest(models.Model):
+
+    STATUS_CHOICES = [(None, 'Status'),
+                      ('new', 'New'), 
+                      ('in-progress', 'In Progress'), 
+                      ('awaiting-payment', 'Awaiting Payment'), 
+                      ('resolved', 'Resolved')]
+
+    PRIORITY_CHOICES = [('low', 'Low'),
+                        ('med', 'Med'),
+                        ('high', 'High')]
+                        
+
     property_ref = models.ForeignKey(Rental, null=True, on_delete=models.SET_NULL ) 
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     image = models.ForeignKey(MaintRequestImage, null=True, on_delete=models.SET_NULL )
     title = models.CharField(max_length=200)
     details = models.TextField()
-    priority = models.CharField(max_length=20, default='low')
-    status = models.CharField(max_length=20, default='new')
+    priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES)
+    status = models.CharField(max_length=20, default='new', choices=STATUS_CHOICES)
     date_occurred = models.DateField()
     
 

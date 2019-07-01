@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
+from .forms import *
 
 
 def Home(request):
@@ -38,7 +39,14 @@ def MaintRequestCreate(request):
     Create maintenance issue relevant to user and user rental
     """
 
-    return render(request, 'maintenance/maint_create.html' )
+    request_create_form = MaintenanceCreationForm()
+    request_img_form = MaintenanceImgForm()
+
+    context = {
+        'request_create_form': request_create_form,
+        'request_img_form': request_img_form,
+    }
+    return render(request, 'maintenance/maint_create.html', context )
 
 def MaintRequestDetail(request):
     return render(request, 'maintenance/maint_detail.html')
