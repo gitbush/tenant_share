@@ -33,5 +33,12 @@ def MaintRequestList(request):
     }
     return render(request, 'maintenance/maint_requests.html', context)
 
+def MaintRequestCreate(request):
+    """
+    Create maintenance issue relevant to user and user rental
+    """
+
+    return render(request, 'maintenance/maint_create.html' )
+
 def MaintRequestDetail(request):
     return render(request, 'maintenance/maint_detail.html')
