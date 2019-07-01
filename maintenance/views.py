@@ -26,7 +26,12 @@ def Home(request):
     return render(request, 'maintenance/home.html', context)
 
 def MaintRequestList(request):
-    return render(request, 'maintenance/maint_requests.html')
+    user_rental = request.user.profile.rental
+    maintenance_requests = user_rental.maintrequest_set.all()
+    context = {
+        'maintenance_requests': maintenance_requests
+    }
+    return render(request, 'maintenance/maint_requests.html', context)
 
 def MaintRequestDetail(request):
     return render(request, 'maintenance/maint_detail.html')
