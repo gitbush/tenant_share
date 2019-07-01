@@ -24,12 +24,12 @@
 }
 
 .account-edit-btn{
-    margin-bottom: 1rem;
+    margin: .7rem;
     @include mobile-device{
-        margin: .3rem 1.5rem; 
+        margin: .7rem; 
     }
     @include large-mobile-device{
-        margin-bottom: .7rem;
+        margin: .7rem;
     }
 }
 

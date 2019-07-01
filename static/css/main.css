@@ -13,6 +13,10 @@
   font-size: 1.1rem;
 }
 
+.lg-heading {
+  font-size: 2rem;
+}
+
 .md-text {
   font-size: .8rem;
 }
@@ -358,18 +362,18 @@
 }
 
 .account-edit-btn {
-  margin-bottom: 1rem;
+  margin: .7rem;
 }
 
 @media screen and (max-width: 575px) {
   .account-edit-btn {
-    margin: .3rem 1.5rem;
+    margin: .7rem;
   }
 }
 
 @media screen and (min-width: 576px) and (max-width: 767px) {
   .account-edit-btn {
-    margin-bottom: .7rem;
+    margin: .7rem;
   }
 }
 
