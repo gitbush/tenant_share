@@ -6,7 +6,7 @@ class MaintRequestImage(models.Model):
     image = models.ImageField(default='mantenance/no_image.jpg', upload_to='maintenance')
 
     def __str__(self):
-        return self.image
+        return self.image.url
 
 # rental model for instances of rental properties
 class Rental(models.Model):
