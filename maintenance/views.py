@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
 from .forms import *
@@ -38,8 +38,16 @@ def MaintRequestCreate(request):
     """
     Create maintenance issue relevant to user and user rental
     """
-
     request_create_form = MaintenanceCreationForm()
+
+    if request.method == 'POST':
+        request_create_form = MaintenanceCreationForm(request.POST, request.FILES)
+        if request_create_form.is_valid():
+            new_request = request_create_form.save(commit=False)
+            new_request.property_ref = request.user.profile.rental
+            new_request.author = request.user
+            new_request.save()
+            return redirect('maint-detail')
 
     context = {
         'request_create_form': request_create_form,
