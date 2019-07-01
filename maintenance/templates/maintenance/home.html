@@ -15,7 +15,15 @@
                     <div class="col-12 card-header">
                         <h4 class="sm-heading">Oustanding maintenance Requests</h4>
                     </div>
-                    {% include 'maintenance/_maint_list_item.html' %}
+                    {% if userRental %}
+                        {% include 'maintenance/_maint_list_item.html' %}
+                    {% else %}
+                        <div class="col-12 jumbotron text-center m-0">
+                            <h1 class="lg-heading">You need a rental property to use this section</h1>
+                            <p class="d-block md-text">You don't have a rental property associated with your account.</p>
+                            <p class="d-block md-text">Either add a property or speak to your landlord.</p>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

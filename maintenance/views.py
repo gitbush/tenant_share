@@ -27,12 +27,19 @@ def Home(request):
     return render(request, 'maintenance/home.html', context)
 
 def MaintRequestList(request):
-    user_rental = request.user.profile.rental
-    maintenance_requests = user_rental.maintrequest_set.all()
-    context = {
-        'maintenance_requests': maintenance_requests
-    }
-    return render(request, 'maintenance/maint_requests.html', context)
+    """
+    Displays any/all maintenance requests associated with the current user rental.
+    If no rental attached to user then show jumbotron with next steps text.
+    """
+    if request.user.profile.rental:
+        user_rental = request.user.profile.rental
+        maintenance_requests = user_rental.maintrequest_set.all()
+        context = {
+            'maintenance_requests': maintenance_requests
+        }
+        return render(request, 'maintenance/maint_requests.html', context)
+    else:
+        return render(request, 'maintenance/maint_requests.html')
 
 def MaintRequestCreate(request):
     """
