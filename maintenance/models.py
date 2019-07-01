@@ -41,7 +41,7 @@ class MaintRequest(models.Model):
     details = models.TextField()
     priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES)
     status = models.CharField(max_length=20, default='new', choices=STATUS_CHOICES)
-    date_occurred = models.DateField()
+    date_raised = models.DateField()
     
 
     def __str__(self):

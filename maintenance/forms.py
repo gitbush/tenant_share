@@ -12,7 +12,7 @@ class RentalCreationForm(forms.ModelForm):
 class MaintenanceCreationForm(forms.ModelForm):
     class Meta:
         model = MaintRequest
-        fields = ['title', 'details', 'priority', 'status', 'date_occurred']
+        fields = ['title', 'details', 'priority', 'status', 'date_raised']
 
 class MaintenanceImgForm(forms.ModelForm):
     class Meta:
