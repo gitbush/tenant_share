@@ -40,11 +40,9 @@ def MaintRequestCreate(request):
     """
 
     request_create_form = MaintenanceCreationForm()
-    request_img_form = MaintenanceImgForm()
 
     context = {
         'request_create_form': request_create_form,
-        'request_img_form': request_img_form,
     }
     return render(request, 'maintenance/maint_create.html', context )
 
