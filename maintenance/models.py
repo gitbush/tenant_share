@@ -30,7 +30,7 @@ class MaintRequest(models.Model):
 
     property_ref = models.ForeignKey(Rental, null=True, on_delete=models.SET_NULL ) 
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=40)
     details = models.TextField()
     image = models.ImageField(default='mantenance/no_image.jpg', upload_to='maintenance')
     priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES)
