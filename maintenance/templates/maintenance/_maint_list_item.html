@@ -1,30 +1,28 @@
 <!-- oustanding maintenance list items -->
 {% for request in maintenance_requests %}
-<div class="card-body col-12 col-lg-11">
-    <ul class="p-2">
-        <li id="home-maint-list-item" class="maint-list-item">
-            <div id="home-maint-img">
-                <img src="{{ request.image.url }}" class="img-fluid img-rounded maint-img" alt="maintenance-photo">
-            </div>
-            <div id="home-maint-info">
-                <p class="md-text m-0"><b>#{{ request.id }}</b></p>
-                <p class="md-text m-0">{{ request.details }}</p>   
-                <a class="btn btn-sm btn-success" href="{% url 'maint-detail' %}">View</a>     
-            </div>
-            <div id="home-maint-status">
-                <hr class="m-0 d-md-none">
-                <div>
-                    <div class="d-inline mr-1">
-                        <p class="md-text d-inline">Priority</p>    
-                        <span class="badge badge-danger">{{ request.priority }}</span>
-                    </div>
-                    <div class="d-inline ml-1">
-                        <p class="md-text d-inline">Status</p>
-                        <span class="badge badge-info">{{ request.status }}</span>
-                    </div>
+<div class="col-12 p-2">
+    <div id="home-maint-list-item" class="maint-list-item">
+        <div id="home-maint-img">
+            <img src="{{ request.image.url }}" class="img-fluid img-rounded maint-img" alt="maintenance-photo">
+        </div>
+        <div id="home-maint-info">
+            <p class="md-text m-0"><b>#{{ request.id }}</b></p>
+            <p class="md-text m-0">{{ request.details }}</p>   
+            <a class="btn btn-sm btn-success mt-2" href="{% url 'maint-detail' %}">View</a>     
+        </div>
+        <div id="home-maint-status">
+            <hr class="m-0 d-md-none">
+            <div>
+                <div class="d-inline mr-1">
+                    <p class="md-text d-inline">Priority</p>    
+                    <span class="badge badge-danger">{{ request.priority }}</span>
+                </div>
+                <div class="d-inline ml-1">
+                    <p class="md-text d-inline">Status</p>
+                    <span class="badge badge-info">{{ request.status }}</span>
                 </div>
             </div>
-        </li>
-    </ul>
+        </div>
+    </div>
 </div>
 {% endfor %}

@@ -51,7 +51,6 @@
 }
 
 .maint-list-item{
-    list-style: none;
     border: 1px solid #c5bfbf;
     background-color: #f3f3f3;
     border-radius: 5px;
@@ -94,7 +93,7 @@
 #home-maint-info{
     grid-area: home-maint-info;
     align-self: center;
-    text-align: center;
+    text-align: left;
     @include all-desktop-devices{
         margin-left: 5px;
     }
