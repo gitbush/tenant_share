@@ -56,6 +56,12 @@
   border: 1px solid black;
 }
 
+.badge-amber {
+  color: #9c6f06;
+  background: rgba(224, 125, 19, 0.3);
+  border: 1px solid #dc9600;
+}
+
 .card-top-color {
   position: absolute;
   height: 6rem;
