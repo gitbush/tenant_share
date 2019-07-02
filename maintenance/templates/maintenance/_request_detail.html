@@ -3,19 +3,19 @@
     <div class="row m-0 justify-content-center">
         <div class="col-5 col-sm-3 col-lg-2 text-center p-0 mb-2">
             <p class="md-text m-1">Status</p>
-            <span class="badge badge-lg badge-success">New</span>
+            <span class="badge badge-lg badge-success">{{ maint_request.status }}</span>
         </div>
         <div class="col-5 col-sm-3 col-lg-2 text-center p-0 mb-2">
             <p class="md-text m-1">Priority</p>
-            <span class="badge badge-lg badge-danger">High</span>
+            <span class="badge badge-lg badge-danger">{{ maint_request.priority }}</span>
         </div>
         <div class="col-5 col-sm-3 col-lg-2 text-center p-0 mb-2">
             <p class="md-text m-1">Raised by</p>
-            <span class="badge badge-lg badge-info">Bob</span>
+            <span class="badge badge-lg badge-info">{{ maint_request.author }}</span>
         </div>
         <div class="col-5 col-sm-3 col-lg-2 text-center p-0 mb-2">
             <p class="md-text m-1">Date</p>
-            <span class="badge badge-lg badge-light">19/01/19</span>
+            <span class="badge badge-lg badge-light">{{ maint_request.date_raised.date }}</span>
         </div>
     </div>
     <!-- end status info row -->
@@ -24,22 +24,19 @@
     <div class="row justify-content-center">
         <div class="col-12">
             <h4 class="md-heading">Title</h4>
-            <p class="md-text">Kitchen hob not working</p>
+            <p class="md-text">{{ maint_request.title }}</p>
             <hr>
         </div>
         <div class="col-12">
             <h4 class="md-heading">Details</h4>
-            <p class="md-text">Kitchen hob stopped working last night. Error msg is flashing.</p>
+            <p class="md-text">{{ maint_request.details }}</p>
             <hr>
         </div>
         <div class="col-12">
             <h4 class="md-heading">Photos</h4>          
             <div class="row justify-content-center">
                 <div class="col-5">
-                    <img src="" alt="maint-photo-1">
-                </div>
-                <div class="col-5">
-                    <img src="" alt="maint-photo-2">
+                    <img src="{{ maint_request.image.url }}" class="img-fluid" alt="maint-photo-1">
                 </div>
             </div>
             <hr>
@@ -49,7 +46,7 @@
                 <div class="col-12">
                     <h4 class="md-heading">Cost</h4>
                     <p class="md-text">$100</p>
-                    <p class="md-text">Responsibility of tenant</p>
+                    <p class="md-text">This section will allow the landlord to assign payment to tenants</p>
                 </div>
             </div>
             <hr>

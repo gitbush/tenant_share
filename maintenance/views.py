@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import *
 from .forms import *
@@ -61,5 +61,14 @@ def MaintRequestCreate(request):
     }
     return render(request, 'maintenance/maint_create.html', context )
 
-def MaintRequestDetail(request):
-    return render(request, 'maintenance/maint_detail.html')
+def MaintRequestDetail(request, id):
+    """
+    Display detail view of particular maintenance request
+    """
+    maint_request = get_object_or_404(MaintRequest, id=id)
+
+    context = {
+        'maint_request': maint_request,
+    }
+
+    return render(request, 'maintenance/maint_detail.html', context)
