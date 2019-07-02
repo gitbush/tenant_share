@@ -270,6 +270,7 @@
 #home-maint-list-item {
   display: -ms-grid;
   display: grid;
+  min-height: 100px;
   -ms-grid-columns: auto 2fr;
       grid-template-columns: auto 2fr;
   -ms-grid-rows: 3fr 1fr;
