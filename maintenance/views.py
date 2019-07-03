@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import *
 from .forms import *
+from chat.models import Thread
 
 
 def Home(request):
@@ -51,10 +52,12 @@ def MaintRequestCreate(request):
         request_create_form = MaintenanceCreationForm(request.POST, request.FILES)
         if request_create_form.is_valid():
             new_request = request_create_form.save(commit=False)
-            new_request.property_ref = request.user.profile.rental
+            request_rental = request.user.profile.rental
+            new_request.property_ref = request_rental
             new_request.author = request.user
             new_request.save()
-            return redirect('maint-detail')
+            Thread.objects.create(rental=request_rental, maint_request=new_request) # create a message thread on maint request create
+            return redirect('maint-detail', id=new_request.id)
 
     context = {
         'request_create_form': request_create_form,
@@ -66,9 +69,11 @@ def MaintRequestDetail(request, id):
     Display detail view of particular maintenance request
     """
     maint_request = get_object_or_404(MaintRequest, id=id)
+    message_thread = get_object_or_404(Thread, maint_request=maint_request)
 
     context = {
         'maint_request': maint_request,
+        'message_thread': message_thread,
     }
 
     return render(request, 'maintenance/maint_detail.html', context)
