@@ -1,3 +1,5 @@
+{% load crispy_forms_tags %}
+
 <div class="col-12">
     <div class="col-12">
         <p class="md-text">
@@ -26,6 +28,19 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-11">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="form-group col-12 m-0 text-left">
+                    {{ message_form|crispy }}
+                </div>
+                <div class="col-12 text-right mb-2">
+                    <button class="edit-confirm-btn btn btn-sm btn-outline-info" type="submit">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

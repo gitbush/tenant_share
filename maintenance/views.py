@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import *
 from .forms import *
-from chat.models import Thread
+from chat.models import Thread, ChatMessage
+from chat.forms import MessageForm
 
 
 def Home(request):
@@ -71,9 +72,12 @@ def MaintRequestDetail(request, id):
     maint_request = get_object_or_404(MaintRequest, id=id)
     message_thread = get_object_or_404(Thread, maint_request=maint_request)
 
+    message_form = MessageForm()
+
     context = {
         'maint_request': maint_request,
         'message_thread': message_thread,
+        'message_form': message_form,
     }
 
     return render(request, 'maintenance/maint_detail.html', context)
