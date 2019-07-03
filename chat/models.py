@@ -5,6 +5,7 @@ from maintenance.models import *
 
 # model for each message thread
 class Thread(models.Model):
+    rental = models.ForeignKey(Rental, null=True, on_delete=models.CASCADE)
     maint_request = models.ForeignKey(MaintRequest, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
