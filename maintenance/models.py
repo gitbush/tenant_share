@@ -8,7 +8,7 @@ class Rental(models.Model):
     postcode = models.CharField(max_length=6)
     city = models.CharField(max_length=15)
     no_of_tenants = models.IntegerField()
-    image = models.ImageField(default='mantenance/no_image.jpg', upload_to='maintenance')
+    image = models.ImageField(default='maintenance/no_image.jpg', upload_to='maintenance')
     landlord = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
@@ -32,7 +32,7 @@ class MaintRequest(models.Model):
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=40)
     details = models.TextField()
-    image = models.ImageField(default='mantenance/no_image.jpg', upload_to='maintenance')
+    image = models.ImageField(default='maintenance/no_image.jpg', upload_to='maintenance')
     priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES)
     status = models.CharField(max_length=20, default='new', choices=STATUS_CHOICES)
     date_raised = models.DateTimeField(default=timezone.now)
