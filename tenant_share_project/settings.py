@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'maintenance.apps.MaintenanceConfig',
     'users.apps.UsersConfig',
     'chat.apps.ChatConfig',
+    'payments.apps.PaymentsConfig',
     'crispy_forms',
     'rest_framework',
 ]
