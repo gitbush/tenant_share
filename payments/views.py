@@ -4,7 +4,7 @@ from .forms import PaymentForm
 
 def payments_list(request):
 
-    payment_form = PaymentForm()
+    payment_form = PaymentForm(request.user.profile.rental, request.POST)
 
     context = {
         'payment_form': payment_form
