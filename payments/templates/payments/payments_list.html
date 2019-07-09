@@ -4,6 +4,7 @@
 
 {% block content %}
 <div class="container-fluid">
+    <!-- add payment -->
     <div class="row justify-content-center">
         <div class="card max-card col-11">
             <form class="" action="" method="POST">
@@ -22,6 +23,42 @@
             <hr>
         </div>
     </div>
+    <!-- end add payment -->
+    <!-- payment history list -->
+    <div class="row justify-content-center mt-3">
+        <div class="card max-card col-11 p-0">
+            <table class="table table-striped md-text text-center m-0">
+                <thead>
+                    <tr>
+                    <th scope="col">Ref</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Action/Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for payment in payment_list %}
+                        <tr>
+                        <td>#{{ payment.maint_request.id }}</td>
+                        <td>{{ payment.payment_date.date }}</td>
+                        <td>£{{ payment.amount }}</td>
+                        {% if payment.is_paid %}
+                            <td class="text-center">
+                                <span class="badge-lg badge-success">Paid</span>
+                            </td>
+                        {% else %}
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-success">Pay</button>
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </td>
+                        {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- end payment history list -->
 </div>
 
 {% endblock %}
