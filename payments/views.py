@@ -1,6 +1,12 @@
 from django.shortcuts import render
+from .forms import PaymentForm
 
 
-def payments(request):
+def payments_list(request):
 
-    return render(request, 'payments/payments_list.html')
+    payment_form = PaymentForm()
+
+    context = {
+        'payment_form': payment_form
+    }
+    return render(request, 'payments/payments_list.html', context)
