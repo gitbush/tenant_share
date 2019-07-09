@@ -10,5 +10,9 @@ class Payment(models.Model):
     payment_date = models.DateTimeField(default=timezone.now)
     is_paid = models.BooleanField(default=False)
 
+    def save_model(self, request, obj, form, change):
+        obj.user = request.user
+        super().save_model(request, obj, form, change)
+
     def __str__(self):
-        return self.maint_request
+        return self.maint_request.title
