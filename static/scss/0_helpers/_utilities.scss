@@ -46,6 +46,10 @@
     color: #0d5610;
     background: rgba(76, 175, 80, 0.3);
     border: 1px solid #0d5610;
+
+    table &{
+        border: none;
+    }
 }
 
 .badge-danger{
@@ -91,8 +95,12 @@
 }
 
 // buttons
+.btn{
+    box-shadow: 2px 3px 3px #898989;
+}
 .btn-sm{
     padding: 0px 5px;
+    font-size: .8rem;
 }
 
 .btn-md{

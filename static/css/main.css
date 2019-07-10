@@ -42,6 +42,10 @@
   border: 1px solid #0d5610;
 }
 
+table .badge-success {
+  border: none;
+}
+
 .badge-danger {
   color: #b10030;
   background: rgba(224, 19, 19, 0.3);
@@ -82,8 +86,14 @@
   color: white;
 }
 
+.btn {
+  -webkit-box-shadow: 2px 3px 3px #898989;
+          box-shadow: 2px 3px 3px #898989;
+}
+
 .btn-sm {
   padding: 0px 5px;
+  font-size: .8rem;
 }
 
 .btn-md {
