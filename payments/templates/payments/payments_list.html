@@ -6,16 +6,16 @@
 <div class="container-fluid">
     <!-- add payment -->
     <div class="row justify-content-center">
-        <div class="card max-card col-11">
+        <div class="card max-card col-11 mt-2">
             <form class="" action="" method="POST">
                 {% csrf_token %}
                 <div class="form-group justify-content-center m-0">
-                    <legend class="border-bottom mb-1">Add Payment</legend>
+                    <legend class="label-heading border-bottom mb-1">Add Payment</legend>
                     <div class="row justify-content-center">
                         <div class="col-11 col-sm-6 form-m-0">{{ payment_form.maint_request|as_crispy_field }}</div>
                         <div class="col-5 col-sm-3 form-m-0">{{ payment_form.amount|as_crispy_field }}</div>
                         <div class="col-4 col-sm-2 p-sm-0 pl-md-2 align-self-end">
-                            <button class="btn btn-outline-info" type="submit">Submit</button>
+                            <button class="btn btn-md btn-outline-info" type="submit">Submit</button>
                         </div>
                     </div>
                 </div>

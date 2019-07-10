@@ -18,6 +18,10 @@
     font-size: 2rem;
 }
 
+.label-heading{
+    font-size: 1.6rem;
+}
+
 .md-text{
     font-size: .8rem;
 }
@@ -91,10 +95,28 @@
     padding: 0px 5px;
 }
 
+.btn-md{
+    font-size: .8rem;
+    padding: .275rem .5rem;
+}
+
 // forms
 
 .form-m-0{
         .form-group{
             margin-bottom: 0px;
     }
+}
+
+.form-control{
+    height: 1.8rem;
+    font-size: .8rem;
+}
+
+.form-height{
+    height: 1.8rem !important; 
+}
+
+option{
+    font-size: .8rem;
 }

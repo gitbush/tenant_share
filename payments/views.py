@@ -18,7 +18,7 @@ def payments_list(request):
             new_payment.save()
             return redirect('payments-list')
     else:
-        payment_form = PaymentForm(request.user.profile.rental)
+        payment_form = PaymentForm(request.user.profile.rental, initial = {'maint_request': 'Please select'})
 
     context = {
         'payment_form': payment_form,
