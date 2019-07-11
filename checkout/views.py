@@ -5,9 +5,9 @@ def checkout(request, payment_id):
     """
     Handle each users payment of maintenance request
     """
-    payment = get_object_or_404(Payment, id=payment_id)
+    payment_to_pay = get_object_or_404(Payment, id=payment_id)
 
     context = {
-        'payment': payment
+        'payment_to_pay': payment_to_pay
     }
     return render(request, 'checkout/checkout.html', context)
