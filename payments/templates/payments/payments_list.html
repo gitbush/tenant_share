@@ -48,7 +48,7 @@
                             </td>
                         {% else %}
                             <td class="text-center">
-                                <button class="btn btn-sm btn-success mr-sm-1">Pay</button>
+                                <a href="{% url 'checkout' payment_id=payment.id %}" class="btn btn-sm btn-success mr-sm-1">Pay</a>
                                 <button class="btn btn-sm btn-danger ml-sm-1">Delete</button>
                             </td>
                         {% endif %}
