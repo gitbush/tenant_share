@@ -1,16 +1,47 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.contrib import messages
 from payments.models import Payment
 from .forms import MakePaymentForm
+from django.conf import settings
+import stripe
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 def checkout(request, payment_id):
     """
     Handle each users payment of maintenance request
     """
     payment_to_pay = get_object_or_404(Payment, id=payment_id)
-    payment_form = MakePaymentForm()
+
+    if request.method == 'POST':
+        payment_form = MakePaymentForm(request.POST)
+        if payment_form.is_valid():
+            # stripe processing
+            try:
+                customer = stripe.Charge.create(
+                    amount = int(payment_to_pay.amount * 100),
+                    currency = 'GBP',
+                    description = request.user.email,
+                    card = payment_form.cleaned_data['stripe_id'],
+                )
+            except stripe.error.CardError:
+                messages.error(request, 'Your card was declined!')
+
+            if customer.paid:
+                messages.error(request, 'You have successfully paid!')
+                return redirect(reverse('payments-list'))
+            else:
+                messages.error(request, 'Unable to take payment')
+        else:
+            print(payment_form.errors)
+            messages.error(request, 'We could not take payment from that card"')
+
+    else:
+        payment_form = MakePaymentForm()
 
     context = {
         'payment_to_pay': payment_to_pay,
-        'payment_form': payment_form
+        'payment_form': payment_form,
+        'publishable' : settings.STRIPE_PUBLISHABLE,
     }
     return render(request, 'checkout/checkout.html', context)
