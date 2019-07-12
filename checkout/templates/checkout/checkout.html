@@ -9,7 +9,7 @@
             <h1 class="lg-heading mb-0">Checkout</h1>
             <hr class="m-2">
             <div class="row justify-content-center">
-                <div class="col-4 col-sm-4">
+                <div class="col-5 col-sm-4">
                     <img src="{{ payment_to_pay.maint_request.image.url }}" class="img-responsive img-rounded check-img m-0" alt="maint-img">
                 </div>
                 <div class="col-4 pl-0">
@@ -27,7 +27,6 @@
                 <form class="" action="" method="POST">
                     {% csrf_token %}
                     <div class="form-group justify-content-center m-0">
-                        <legend class="md-heading border-bottom mb-1">Debit or credit card</legend>
                         <div class="row justify-content-center">
                             <div class="col-11 form-m-0 md-text">{{ payment_form|crispy }}</div>
                             <button class="btn btn-md btn-outline-info m-2" type="submit">Submit Payment</button>

@@ -484,4 +484,10 @@ option {
   border-radius: 5px;
   background-color: white;
 }
+
+@media screen and (min-width: 576px) {
+  .check-img {
+    width: 8rem;
+  }
+}
 /*# sourceMappingURL=main.css.map */

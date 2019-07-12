@@ -27,6 +27,11 @@ $fourK-width: 3000px;
     }
 }
 
+@mixin mobile-up{
+    @media screen and (min-width: $mobile-width){
+        @content;
+    }
+}
 
 @mixin tablet-device{
     @media screen and (min-width: $tablet-width) and (max-width: $desktop-width - 1px){
