@@ -29,6 +29,9 @@ def checkout(request, payment_id):
 
             if customer.paid:
                 messages.error(request, 'You have successfully paid!')
+                payment_to_pay.is_paid = True
+                payment_to_pay.payment_token = payment_form.cleaned_data['stripe_id']
+                payment_to_pay.save()
                 return redirect(reverse('payments-list'))
             else:
                 messages.error(request, 'Unable to take payment')

@@ -9,6 +9,7 @@ class Payment(models.Model):
     amount = models.IntegerField()
     payment_date = models.DateTimeField(default=timezone.now)
     is_paid = models.BooleanField(default=False)
+    payment_token = models.CharField(max_length=120, null=True)
 
     def save_model(self, request, obj, form, change):
         obj.user = request.user
