@@ -17,11 +17,11 @@ class Rental(models.Model):
 # maintenance request 
 class MaintRequest(models.Model):
 
-    STATUS_CHOICES = [(None, 'Status'),
-                      ('new', 'New'), 
+    STATUS_CHOICES = [('new', 'New'), 
                       ('in-progress', 'In Progress'), 
                       ('awaiting-payment', 'Awaiting Payment'), 
                       ('resolved', 'Resolved')]
+                      
 
     PRIORITY_CHOICES = [('low', 'Low'),
                         ('med', 'Med'),

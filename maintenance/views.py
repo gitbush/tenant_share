@@ -71,7 +71,7 @@ def MaintRequestDetail(request, id):
     Allow for landlord to assign cost to tenant/landlord
     """
     maint_request = get_object_or_404(MaintRequest, id=id)
-    message_thread = get_object_or_404(Thread, maint_request=maint_request)
+    # message_thread = get_object_or_404(Thread, maint_request=maint_request)
 
     message_form = MessageForm()
     if request.method == 'POST':
@@ -83,12 +83,14 @@ def MaintRequestDetail(request, id):
             print(assign_cost_form.errors)
     else:
         assign_cost_form = MaintenanceQuoteForm(instance=maint_request)
+        status_form = StatusUpdateForm(instance=maint_request)
 
     context = {
         'maint_request': maint_request,
-        'message_thread': message_thread,
+        # 'message_thread': message_thread,
         'message_form': message_form,
         'assign_cost_form': assign_cost_form,
+        'status_form': status_form,
     }
 
     return render(request, 'maintenance/maint_detail.html', context)

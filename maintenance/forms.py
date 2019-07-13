@@ -14,6 +14,15 @@ class MaintenanceCreationForm(forms.ModelForm):
         model = MaintRequest
         fields = ['title', 'details', 'priority', 'image']
 
+class StatusUpdateForm(forms.ModelForm):
+    class Meta:
+        model = MaintRequest
+        fields = ['status']
+
+    def __init__(self, *args, **kwargs):
+        super(StatusUpdateForm, self).__init__(*args, **kwargs)
+        self.fields['status'].label = False
+
 class MaintenanceQuoteForm(forms.ModelForm):
     class Meta:
         model = MaintRequest
