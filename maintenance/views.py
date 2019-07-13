@@ -73,11 +73,13 @@ def MaintRequestDetail(request, id):
     message_thread = get_object_or_404(Thread, maint_request=maint_request)
 
     message_form = MessageForm()
+    assign_cost_form = MaintenanceQuoteForm()
 
     context = {
         'maint_request': maint_request,
         'message_thread': message_thread,
         'message_form': message_form,
+        'assign_cost_form': assign_cost_form,
     }
 
     return render(request, 'maintenance/maint_detail.html', context)

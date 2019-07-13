@@ -1,3 +1,5 @@
+{% load crispy_forms_tags %}
+
 <div class="col-12">
     <!-- status info row -->
     <div class="row m-0 justify-content-center">
@@ -44,10 +46,20 @@
         <div class="col-12">
             <div class="row">
                 <div class="col-12">
-                    <h4 class="md-heading">Cost</h4>
-                    <p class="md-text">$100</p>
-                    <p class="md-text">This section will allow the landlord to assign payment to tenants</p>
+                    <h4 class="md-heading">Cost/Quote</h4>
                 </div>
+                {% if user.profile.register_as == 'Landlord' %}
+                <div class="col-12">
+                    <form class="row" action="" method="POST">
+                        {% csrf_token %}
+                        <div class="col-4">{{ assign_cost_form.cost|as_crispy_field }}</div>
+                        <div class="col-4">{{ assign_cost_form.paid_by|as_crispy_field }}</div>
+                        <div class="col-4">{{ assign_cost_form.invoice_pdf|as_crispy_field }}</div>
+                    </form>
+                </div>
+                {% else %}
+
+                {% endif %}
             </div>
             <hr>
         </div>

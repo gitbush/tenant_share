@@ -14,6 +14,11 @@ class MaintenanceCreationForm(forms.ModelForm):
         model = MaintRequest
         fields = ['title', 'details', 'priority', 'image']
 
+class MaintenanceQuoteForm(forms.ModelForm):
+    class Meta:
+        model = MaintRequest
+        fields = ['cost', 'invoice_pdf', 'paid_by']
+
         
 
 
