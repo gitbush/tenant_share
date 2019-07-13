@@ -67,13 +67,22 @@ def MaintRequestCreate(request):
 
 def MaintRequestDetail(request, id):
     """
-    Display detail view of particular maintenance request
+    Display detail view of particular maintenance request.
+    Allow for landlord to assign cost to tenant/landlord
     """
     maint_request = get_object_or_404(MaintRequest, id=id)
     message_thread = get_object_or_404(Thread, maint_request=maint_request)
 
     message_form = MessageForm()
-    assign_cost_form = MaintenanceQuoteForm()
+    if request.method == 'POST':
+        assign_cost_form = MaintenanceQuoteForm(request.POST, request.FILES, instance=maint_request)
+        if assign_cost_form.is_valid():
+            assign_cost_form.save()
+            return redirect('maint-detail', id=id)
+        else:
+            print(assign_cost_form.errors)
+    else:
+        assign_cost_form = MaintenanceQuoteForm(instance=maint_request)
 
     context = {
         'maint_request': maint_request,

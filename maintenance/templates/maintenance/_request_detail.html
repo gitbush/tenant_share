@@ -50,15 +50,32 @@
                 </div>
                 {% if user.profile.register_as == 'Landlord' %}
                 <div class="col-12">
-                    <form class="row" action="" method="POST">
+                    <form class="row" action="" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="col-4">{{ assign_cost_form.cost|as_crispy_field }}</div>
                         <div class="col-4">{{ assign_cost_form.paid_by|as_crispy_field }}</div>
                         <div class="col-4">{{ assign_cost_form.invoice_pdf|as_crispy_field }}</div>
+                        <div class="col-12 text-right">
+                            <button class="btn btn-md btn-primary" type="submit">Submit</button>
+                        </div>
                     </form>
                 </div>
                 {% else %}
-
+                <div class="col-12 col-sm-6">
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="md-text">Cost</p>
+                            <p class="md-text">{{ maint_request.cost }}</p>
+                        </div>
+                        <div class="col-6">
+                            <p class="md-text">Invoice/Quote</p>
+                            <p class="md-text">{{ maint_request.invoice_pdf }}</p>
+                        </div>
+                        <div class="col-12">
+                            <p class="md-text">To be paid by {{ maint_request.paid_by }}</p>
+                        </div>
+                    </div>
+                </div>
                 {% endif %}
             </div>
             <hr>
