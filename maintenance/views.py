@@ -75,15 +75,22 @@ def MaintRequestDetail(request, id):
 
     message_form = MessageForm()
     if request.method == 'POST':
-        assign_cost_form = MaintenanceQuoteForm(request.POST, request.FILES, instance=maint_request)
-        if assign_cost_form.is_valid():
-            assign_cost_form.save()
-            return redirect('maint-detail', id=id)
-        else:
-            print(assign_cost_form.errors)
-    else:
-        assign_cost_form = MaintenanceQuoteForm(instance=maint_request)
-        status_form = StatusUpdateForm(instance=maint_request)
+        if 'cost' in request.POST:
+            assign_cost_form = MaintenanceQuoteForm(request.POST, request.FILES, instance=maint_request)
+            if assign_cost_form.is_valid():
+                assign_cost_form.save()
+                return redirect('maint-detail', id=id)
+            else:
+                print(assign_cost_form.errors)
+        
+        elif 'status' in request.POST:
+            status_form = StatusUpdateForm(request.POST, instance=maint_request)
+            if status_form.is_valid():
+                status_form.save()
+                return redirect('maint-detail', id=id)
+                
+    assign_cost_form = MaintenanceQuoteForm(instance=maint_request)
+    status_form = StatusUpdateForm(instance=maint_request)
 
     context = {
         'maint_request': maint_request,

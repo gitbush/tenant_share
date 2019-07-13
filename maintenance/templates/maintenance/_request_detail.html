@@ -5,7 +5,7 @@
     <div class="row m-0 justify-content-center">
         <div class="col-5 col-sm-3 col-lg-2 text-center p-0 mb-2">
             <p class="md-text m-1">Status</p>
-            <form action="" method="POST" name="status">
+            <form action="" method="POST" name="status" id="status-form">
                 {% csrf_token %}
                 {{ status_form|crispy }}
             </form>
