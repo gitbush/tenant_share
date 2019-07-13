@@ -66,13 +66,13 @@
                 {% else %}
                 <div class="col-12 col-sm-6">
                     <div class="row">
-                        <div class="col-6">
-                            <p class="md-text">Cost</p>
-                            <p class="md-text">{{ maint_request.cost }}</p>
+                        <div class="col-12">
+                            <p class="md-text">Cost: £{{ maint_request.cost }}</p>
                         </div>
-                        <div class="col-6">
-                            <p class="md-text">Invoice/Quote</p>
-                            <p class="md-text">{{ maint_request.invoice_pdf }}</p>
+                        <div class="col-12">
+                            <p class="md-text">
+                                Invoice/Quote: <a class="btn btn-sm btn-primary" href="{{ maint_request.invoice_pdf.url }}" download="Invoice {{ maint_request.id}}">Download</a>
+                            </p>
                         </div>
                         <div class="col-12">
                             <p class="md-text">To be paid by {{ maint_request.paid_by }}</p>
