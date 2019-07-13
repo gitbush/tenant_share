@@ -3,24 +3,24 @@
 <div class="col-12">
     <!-- status info row -->
     <div class="row m-0 justify-content-center">
-        <div class="col-5 col-sm-3 col-lg-2 text-center p-0 mb-2">
+        <div class="col-5 col-sm-3 col-md-2 col-lg-2 text-center p-0 mb-2">
             <p class="md-text m-1">Status</p>
             <form action="" method="POST" name="status" id="status-form">
                 {% csrf_token %}
                 {{ status_form|crispy }}
             </form>
         </div>
-        <div class="col-5 col-sm-3 col-lg-2 text-center p-0 mb-2">
+        <div class="col-5 col-sm-3 col-md-2 col-lg-2 text-center p-0 mb-2">
             <p class="md-text m-1">Priority</p>
-            <span class="badge badge-lg badge-danger">{{ maint_request.priority }}</span>
+            <span class="badge badge-md badge-danger">{{ maint_request.priority }}</span>
         </div>
-        <div class="col-5 col-sm-3 col-lg-2 text-center p-0 mb-2">
+        <div class="col-5 col-sm-3 col-md-2 col-lg-2 text-center p-0 mb-2">
             <p class="md-text m-1">Raised by</p>
-            <span class="badge badge-lg badge-info">{{ maint_request.author }}</span>
+            <span class="badge badge-md badge-info">{{ maint_request.author }}</span>
         </div>
-        <div class="col-5 col-sm-3 col-lg-2 text-center p-0 mb-2">
+        <div class="col-5 col-sm-3 col-md-2 col-lg-2 text-center p-0 mb-2">
             <p class="md-text m-1">Date</p>
-            <span class="badge badge-lg badge-light">{{ maint_request.date_raised.date }}</span>
+            <span class="badge badge-md badge-light">{{ maint_request.date_raised.date }}</span>
         </div>
     </div>
     <!-- end status info row -->
