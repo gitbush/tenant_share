@@ -26,6 +26,9 @@ class MaintRequest(models.Model):
     PRIORITY_CHOICES = [('low', 'Low'),
                         ('med', 'Med'),
                         ('high', 'High')]
+
+    PAID_BY_CHOICES = [('tenant', 'Tenant'),
+                       ('landlord', 'Landlord')]
                         
 
     property_ref = models.ForeignKey(Rental, null=True, on_delete=models.SET_NULL ) 
@@ -36,6 +39,9 @@ class MaintRequest(models.Model):
     priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES)
     status = models.CharField(max_length=20, default='new', choices=STATUS_CHOICES)
     date_raised = models.DateTimeField(default=timezone.now)
+    cost = models.IntegerField(null=True)
+    paid_by = models.CharField(max_length=20, null=True, choices=PAID_BY_CHOICES)
+    invoice_pdf = models.FileField(null=True, upload_to='maintenance')
     
 
     def __str__(self):
