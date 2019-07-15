@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
     <div class="container-fluid">
@@ -7,7 +8,14 @@
                 <h3 class="md-heading m-1">Search Maintenance Requests</h3>
                 <hr class="m-1">
                 <div class="col-12">
-                    FORM FIELDS AND SUBMIT
+                    <form class="row" method="get">
+                        <div class="col-12">{{ maint_filter.form.title__icontains|as_crispy_field }}</div>
+                        <div class="col-6">{{ maint_filter.form.priority|as_crispy_field }}</div>
+                        <div class="col-6">{{ maint_filter.form.status|as_crispy_field }}</div>
+                        <div class="col-6">{{ maint_filter.form.author|as_crispy_field }}</div>
+                        <div class="col-6">{{ maint_filter.form.paid_by|as_crispy_field }}</div>                     
+                        <button class="btn btn-md btn-info" type="submit">Search</button>
+                    </form>
                 </div>
             </div>
         </div>

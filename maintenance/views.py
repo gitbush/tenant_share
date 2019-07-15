@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import *
 from .forms import *
+from.filters import MaintListFilter
 from chat.models import Thread, ChatMessage
 from chat.forms import MessageForm
 
@@ -36,8 +37,10 @@ def MaintRequestList(request):
     if request.user.profile.rental:
         user_rental = request.user.profile.rental
         maintenance_requests = user_rental.maintrequest_set.all()
+        maint_filter = MaintListFilter(request.GET, queryset=maintenance_requests)
         context = {
-            'maintenance_requests': maintenance_requests
+            'maintenance_requests': maintenance_requests,
+            'maint_filter': maint_filter,
         }
         return render(request, 'maintenance/maint_requests.html', context)
     else:
