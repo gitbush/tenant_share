@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'chat.apps.ChatConfig',
     'payments.apps.PaymentsConfig',
     'checkout.apps.CheckoutConfig',
+    'api.apps.ApiConfig',
     'crispy_forms',
     'rest_framework',
 ]
