@@ -104,6 +104,8 @@ if(priorityBadge && statusBadge){
 // submit status form on change
 const statusForm = document.getElementById("status-form")
 
-statusForm.addEventListener("change", function(){
-    this.submit()
-})
+if(statusForm){
+    statusForm.addEventListener("change", function(){
+        this.submit()
+    })
+}
