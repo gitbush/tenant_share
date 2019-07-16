@@ -37,10 +37,12 @@ def MaintRequestList(request):
     if request.user.profile.rental:
         user_rental = request.user.profile.rental
         maintenance_requests = user_rental.maintrequest_set.all()
+        total = maintenance_requests.count()
         maint_filter = MaintListFilter(request.GET, queryset=maintenance_requests)
         context = {
             'maintenance_requests': maintenance_requests,
             'maint_filter': maint_filter,
+            'total': total,
         }
         return render(request, 'maintenance/maint_requests.html', context)
     else:

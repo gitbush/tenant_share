@@ -17,8 +17,11 @@
                         <div class="col-6 col-sm-3">{{ maint_filter.form.paid_by|as_crispy_field }}</div>                                         
                         <div class="col-12">
                             <div class="row justify-content-between">
-                                <div class="col-3 mt-3">
+                                <div class="col-6 mt-3">
                                     <button class="btn btn-md btn-info" type="submit">Search</button>
+                                    {% if total > maint_filter.qs.count  %}
+                                    <a href="{% url 'maint-list' %}" class="btn btn-md btn-outline-info mt-2 mt-sm-0">Clear Filters</a>
+                                    {% endif %}
                                 </div>
                                 <div class="col-5 col-sm-3 mt-3">
                                         {{ maint_filter.form.ordering|as_crispy_field }}
