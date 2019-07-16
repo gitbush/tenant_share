@@ -109,3 +109,14 @@ if(statusForm){
         this.submit()
     })
 }
+
+// submit maintenance list sort form on change
+const maintSearchForm = document.getElementById("maint-search-form");
+const sortField = document.getElementById("id_ordering");
+
+
+if(maintSearchForm){
+    sortField.addEventListener("change", function(){
+        maintSearchForm.submit()
+    })
+}
