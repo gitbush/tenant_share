@@ -6,8 +6,8 @@
             <img src="{{ request.image.url }}" class="img-fluid img-rounded maint-img" alt="maintenance-photo">
         </div>
         <div id="home-maint-info">
-            <p class="md-text m-0"><b>#{{ request.id }}</b></p>
-            <p class="md-text m-0">{{ request.details }}</p>   
+            <p class="md-text m-0"><b>{{ request.date_raised.date }}</b></p>
+            <p class="md-text m-0">#{{ request.id }}&nbsp;{{ request.details }}</p>   
             <a class="btn btn-sm btn-success mt-2" href="{% url 'maint-detail' id=request.id %}">View</a>     
         </div>
         <div id="home-maint-status">
