@@ -13,9 +13,16 @@
                         <div class="col-6 col-sm-3">{{ maint_filter.form.priority|as_crispy_field }}</div>
                         <div class="col-6 col-sm-3">{{ maint_filter.form.status|as_crispy_field }}</div>
                         <div class="col-6 col-sm-3">{{ maint_filter.form.author|as_crispy_field }}</div>
-                        <div class="col-6 col-sm-3">{{ maint_filter.form.paid_by|as_crispy_field }}</div>                     
-                        <div class="col-12 text-left mt-2">
-                            <button class="btn btn-md btn-info" type="submit">Search</button>
+                        <div class="col-6 col-sm-3">{{ maint_filter.form.paid_by|as_crispy_field }}</div>                                         
+                        <div class="col-12">
+                            <div class="row justify-content-between">
+                                <div class="col-3 mt-2">
+                                    <button class="btn btn-md btn-info" type="submit">Search</button>
+                                </div>
+                                <div class="col-5">
+                                        {{ maint_filter.form.ordering|as_crispy_field }}
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>

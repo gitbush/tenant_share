@@ -2,6 +2,13 @@ from .models import MaintRequest
 import django_filters
 
 class MaintListFilter(django_filters.FilterSet):
+
+    CHOICES = [('newest', 'Newest'),
+               ('oldest', 'Oldest')]
+               
+
+    ordering = django_filters.ChoiceFilter(label='Sort',  choices=CHOICES, method='order_by')
+
     class Meta:
         model = MaintRequest
         fields = {
@@ -11,3 +18,7 @@ class MaintListFilter(django_filters.FilterSet):
             'status': ['exact',],
             'paid_by': ['exact',]
         }
+
+    def order_by(self, queryset, name, value):
+        expression = 'date_raised' if value == 'newest' else '-date_raised'
+        return queryset.order_by(expression)
