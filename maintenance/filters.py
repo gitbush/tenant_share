@@ -7,7 +7,7 @@ class MaintListFilter(django_filters.FilterSet):
                ('oldest', 'Oldest')]
                
 
-    ordering = django_filters.ChoiceFilter(label='Sort',  choices=CHOICES, method='order_by')
+    ordering = django_filters.ChoiceFilter(label=False,  choices=CHOICES, method='order_by', empty_label='Sort')
 
     class Meta:
         model = MaintRequest
