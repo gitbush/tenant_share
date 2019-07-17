@@ -9,7 +9,7 @@ class Thread(models.Model):
     maint_request = models.ForeignKey(MaintRequest, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return self.maint_request.title
+        return self.maint_request
 
 # model for message in each thread
 class ChatMessage(models.Model):
