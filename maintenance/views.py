@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
+from django.core.paginator import Paginator
 from .models import *
 from .forms import *
 from.filters import MaintListFilter
@@ -34,14 +35,19 @@ def MaintRequestList(request):
     Displays any/all maintenance requests associated with the current user rental.
     If no rental attached to user then show jumbotron with next steps text.
     """
+
     if request.user.profile.rental:
         user_rental = request.user.profile.rental
         maintenance_requests = user_rental.maintrequest_set.all()
         total = maintenance_requests.count()
         maint_filter = MaintListFilter(request.GET, queryset=maintenance_requests)
+        paginator = Paginator(maint_filter.qs, 2)
+        page = request.GET.get('page')
+        requests = paginator.get_page(page)
+
         context = {
-            'maintenance_requests': maintenance_requests,
             'maint_filter': maint_filter,
+            'requests': requests,
             'total': total,
         }
         return render(request, 'maintenance/maint_requests.html', context)

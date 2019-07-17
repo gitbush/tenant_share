@@ -33,7 +33,7 @@
             </div>
         </div>
         <!-- if user does/does not have a rental -->
-        {% if maintenance_requests %}
+        {% if requests %}
             <div class="row justify-content-center mt-2">
                 <div class="col-10 col-md-9 text-right">
                     <a href="{% url 'maint-create' %}" class="btn btn-sm btn-success">+ Add maintenance issue</a>
@@ -43,6 +43,23 @@
                 <div class="card max-card col-11 col-md-9 mt-3 mb-3">
                     <div class="row justify-content-center">
                         {% include 'maintenance/_maint_list_item.html' %}
+                    </div>
+                    <div class="pagination">
+                        <span class="step-links">
+                            {% if requests.has_previous %}
+                            <a href="?page=1">&laquo; first</a>
+                            <a href="?page={{ contacts.previous_page_number }}">previous</a>
+                            {% endif %}
+                        
+                            <span class="current">
+                                Page {{ requests.number }} of {{ requests.paginator.num_pages }}.
+                            </span>
+                        
+                            {% if requests.has_next %}
+                            <a href="?page={{ requests.next_page_number }}">next</a>
+                            <a href="?page={{ requests.paginator.num_pages }}">last &raquo;</a>
+                            {% endif %}
+                        </span>
                     </div>
                 </div>
             </div>
