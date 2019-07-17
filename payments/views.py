@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse
+from django.core.paginator import Paginator
 from .forms import PaymentForm
 from .models import Payment
 
@@ -9,7 +10,10 @@ def payments_list(request):
     Add new payment to list
     """
     payment_list = Payment.objects.filter(user=request.user).order_by('-payment_date')
-    
+    paginator = Paginator(payment_list, 2)
+    page = request.GET.get('page')
+    payments = paginator.get_page(page)
+
     if request.method == 'POST':
         payment_form = PaymentForm(request.user.profile.rental, request.POST, request.user)
         if payment_form.is_valid():
@@ -22,6 +26,6 @@ def payments_list(request):
 
     context = {
         'payment_form': payment_form,
-        'payment_list': payment_list
+        'payments': payments
     }
     return render(request, 'payments/payments_list.html', context)

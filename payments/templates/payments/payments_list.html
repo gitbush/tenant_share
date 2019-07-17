@@ -46,7 +46,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for payment in payment_list %}
+                    {% for payment in payments %}
                         <tr>
                         <td>#{{ payment.maint_request.id }}</td>
                         <td>{{ payment.payment_date.date }}</td>
@@ -65,6 +65,25 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <!-- pagination -->
+            <div class="row justify-content-center m-0 pagination-row">
+                <span class="step-links m-2">
+                    {% if payments.has_previous %}
+                    <a href="?page=1" class="btn btn-md btn-outline-info">&Lang;</a>
+                    <a href="?page={{ payments.previous_page_number }}" class="btn btn-md btn-outline-info">&lang;</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        <a href="?page= {{ payments.number }}" class="btn btn-md btn-info">{{ payments.number }}</a>
+                    </span>
+            
+                    {% if payments.has_next %}
+                    <a href="?page={{ payments.next_page_number }}" class="btn btn-md btn-outline-info">&rang;</a>
+                    <a href="?page={{ payments.paginator.num_pages }}" class="btn btn-md btn-outline-info">&Rang;</a>
+                    {% endif %}
+                </span>
+            </div>
+            <!-- end pagination -->
         </div>
     </div>
     <!-- end payment history list -->

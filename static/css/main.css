@@ -253,6 +253,10 @@ option {
   margin: 2rem 0px;
 }
 
+.pagination-row {
+  border-top: 1px solid #dee2e6;
+}
+
 .house-img {
   max-width: 8rem;
   -webkit-box-shadow: 2px 2px 4px 1px #333;
