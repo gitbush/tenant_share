@@ -5,18 +5,22 @@
     <div class="row m-0 justify-content-center">
         <div class="col-5 col-sm-3 col-md-2 col-lg-2 text-center p-0 mb-2">
             <p class="md-text m-1">Status</p>
+            {% if user.profile.register_as == 'Landlord' %}
             <form action="" method="POST" name="status" id="status-form">
                 {% csrf_token %}
                 {{ status_form|crispy }}
             </form>
+            {% else %}
+            <span class="badge badge-md badge-danger">{{ maint_request.status.title }}</span>               
+            {% endif %}
         </div>
         <div class="col-5 col-sm-3 col-md-2 col-lg-2 text-center p-0 mb-2">
             <p class="md-text m-1">Priority</p>
-            <span class="badge badge-md badge-danger">{{ maint_request.priority }}</span>
+            <span class="badge badge-md badge-danger">{{ maint_request.priority.title }}</span>
         </div>
         <div class="col-5 col-sm-3 col-md-2 col-lg-2 text-center p-0 mb-2">
             <p class="md-text m-1">Raised by</p>
-            <span class="badge badge-md badge-info">{{ maint_request.author }}</span>
+            <span class="badge badge-md badge-info">{{ maint_request.author.first_name }}</span>
         </div>
         <div class="col-5 col-sm-3 col-md-2 col-lg-2 text-center p-0 mb-2">
             <p class="md-text m-1">Date</p>
