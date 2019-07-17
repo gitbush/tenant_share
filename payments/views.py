@@ -10,7 +10,7 @@ def payments_list(request):
     Add new payment to list
     """
     payment_list = Payment.objects.filter(user=request.user).order_by('-payment_date')
-    paginator = Paginator(payment_list, 5)
+    paginator = Paginator(payment_list, 2)
     page = request.GET.get('page')
     payments = paginator.get_page(page)
 
