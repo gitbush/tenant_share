@@ -12,6 +12,7 @@
     <!-- for each message in message -->
     {% for message in messages %}
         <div class="col-11">
+            {% if message.author == user %}
             <div class="row">
                 <div class="col-3 col-sm-2 p-0 text-center">
                     <img src="{{ message.author.profile.profile_image.url }}" alt="Prof" class="profile-icon rounded-circle img-fluid">
@@ -29,6 +30,25 @@
                     </div>
                 </div>
             </div>
+            {% else  %}
+            <div class="row justify-content-end">
+                <div class="col-7 p-0">
+                    <div class="col-12">
+                        <p id="message-chat" class="md-text">
+                            {{ message }}
+                        </p>
+                    </div>
+                    <div class="col-12">
+                        <p id="message-date" class="md-text">
+                            {{ message.date_posted }}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-3 col-sm-2 p-0 text-center">
+                    <img src="{{ message.author.profile.profile_image.url }}" alt="Prof" class="profile-icon rounded-circle img-fluid">
+                </div>
+            </div>
+            {% endif %}
         </div>
         {% endfor %}
     </div>
