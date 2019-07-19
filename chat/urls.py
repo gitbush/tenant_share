@@ -8,5 +8,5 @@ router.register('thread', views.ThreadView)
 router.register('chat-message', views.ChatMessageView)
 
 urlpatterns = [
-    path('', include(router.urls), name='chat-api')
+    path('get-messages/<int:id>/', views.GetMesages, name='get-messages')
 ]

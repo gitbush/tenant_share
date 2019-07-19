@@ -120,3 +120,20 @@ if(maintSearchForm){
         maintSearchForm.submit()
     })
 }
+
+// chat message functionality
+const msgForm = $('#chat-msg-form');
+const maintId = $('#maint-title').innerText;
+const msgView = $('#message-view');
+
+// catch form and perform get request to get all messages
+msgForm.on('submit', function(e){
+    e.preventDefault()
+    $.ajax({
+        type: 'GET',
+        url: '/chat/get-messages/'+maintId+'',
+        success: function(messages){
+            msgView.html(messages);
+        }
+    })
+})
