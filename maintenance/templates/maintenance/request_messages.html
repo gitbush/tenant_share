@@ -3,7 +3,9 @@
 <div class="col-12">
     <div class="col-12">
         <p class="md-text bold">
-            #{{ maint_request.id }}&nbsp;{{ maint_request.title }}
+            <span>#</span>
+            <span id="maint-title">{{ maint_request.id }}</span>
+            <span>&nbsp;{{ maint_request.title }}</span>
         </p>
         <p class="md-text">
             All comments about this request can be seen by all tenants
