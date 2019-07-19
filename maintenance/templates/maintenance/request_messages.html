@@ -2,6 +2,9 @@
 
 <div class="col-12">
     <div class="col-12">
+        <p class="md-text bold">
+            #{{ maint_request.id }}&nbsp;{{ maint_request.title }}
+        </p>
         <p class="md-text">
             All comments about this request can be seen by all tenants
             and landlord.
@@ -54,7 +57,7 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-11">
-            <form action="" method="POST">
+            <form action="" method="POST" id="chat-msg-form">
                 {% csrf_token %}
                 <div class="form-group col-12 m-0 text-left">
                     {{ message_form|crispy }}
