@@ -28,6 +28,7 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('api/chat/', include('chat.api.urls')),
     path('api/maintenance/', include('maintenance.api.urls')),
+    path('api/users/', include('users.api.urls')),
 ]
 
 if settings.DEBUG:
