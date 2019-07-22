@@ -123,17 +123,76 @@ if(maintSearchForm){
 
 // chat message functionality
 const msgForm = $('#chat-msg-form');
-const maintId = $('#maint-title').innerText;
+const maintId = $('#maint-title').text();
 const msgView = $('#message-view');
+const msgList = $('#message-list');
+let msgInput = $('#id_message');
 
-// catch form and perform get request to get all messages
+// csrf protection. Copied from django documentation
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+var csrftoken = getCookie('csrftoken');
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+// create message list item template
+let listItem = '<li class="row">' +
+                    '<div class="col-3 col-sm-2 p-0 text-center">' +
+                        '<img src="{ image_url }" alt="Prof"class="profile-icon rounded-circle img-fluid">' +
+                    '</div>' +
+                    '<div class="col-7 p-0">' +
+                        '<div class="col-12">' +
+                            '<p id="message-chat" class="md-text">{ message }</p>' +
+                        '</div>'
+                        '<div class="col-12">'
+                            '<p id="message-date" class="md-text">{ message.date_posted }</p>' +
+                        '</div>'+
+                    '</div>'+
+                '</li>';
+
+// capture message form and send post to chat api             
 msgForm.on('submit', function(e){
     e.preventDefault()
+    let msg = msgInput.val();
+    // insert csrf token before sending request
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
     $.ajax({
-        type: 'GET',
-        url: '/chat/get-messages/'+maintId+'',
-        success: function(messages){
-            msgView.html(messages);
+        type: 'POST',
+        url: '/chat/api/chat-message/',
+        data: {"maint_request": maintId,
+                "author": 8,
+                "message": msg,
+                "date_posted": ''},
+        success: function(data){
+            msgInput.val('');
+            var msgItem = listItem.replace('{ message }', data['message'])
+            msgList.append(msgItem)
         }
     })
 })
+
+
+
