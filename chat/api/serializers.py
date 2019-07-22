@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ChatMessage, Thread
+from chat.models import ChatMessage, Thread
 from users.models import User
 
 # serializers for thread and chat models api
