@@ -181,9 +181,8 @@ msgForm.on('submit', function(e){
     });
     $.ajax({
         type: 'POST',
-        url: '/chat/api/chat-message/',
+        url: '/api/chat/chat-message/',
         data: {"maint_request": maintId,
-                "author": 8,
                 "message": msg,
                 "date_posted": ''},
         success: function(data){

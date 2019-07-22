@@ -11,7 +11,7 @@ class ThreadSerializer(serializers.ModelSerializer):
 class ChatMessageSerializer(serializers.ModelSerializer):
     # author = serializers.SlugRelatedField(many=False, slug_field='username', queryset=User.objects.all())
     # thread = serializers.SlugRelatedField(many=False, slug_field='maint_request', queryset=Thread.objects.all())
-    author = UserSerializer()
+    author = UserSerializer(read_only=True)
     class Meta:
         model = ChatMessage
         fields = ('id','maint_request', 'author', 'message', 'date_posted')
