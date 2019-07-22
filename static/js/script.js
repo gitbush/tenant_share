@@ -160,9 +160,9 @@ let listItem = '<li class="row">' +
                     '<div class="col-7 p-0">' +
                         '<div class="col-12">' +
                             '<p id="message-chat" class="md-text">{ message }</p>' +
-                        '</div>'
-                        '<div class="col-12">'
-                            '<p id="message-date" class="md-text">{ message.date_posted }</p>' +
+                        '</div>'+
+                        '<div class="col-12">'+
+                            '<p id="message-date" class="md-text">{ date_posted }</p>' +
                         '</div>'+
                     '</div>'+
                 '</li>';
@@ -188,7 +188,8 @@ msgForm.on('submit', function(e){
                 "date_posted": ''},
         success: function(data){
             msgInput.val('');
-            var msgItem = listItem.replace('{ message }', data['message'])
+            let msgItem = listItem.replace('{ message }', data['message'])
+            msgItem = msgItem.replace('{ date_posted }', data['date_posted'])
             msgList.append(msgItem)
         }
     })
