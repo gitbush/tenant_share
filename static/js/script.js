@@ -187,9 +187,17 @@ msgForm.on('submit', function(e){
                 "date_posted": ''},
         success: function(data){
             msgInput.val('');
+
+            let date = new Date(data['date_posted']);
+            let datePosted = date.toLocaleString('en-GB', { timeZone: 'UTC', hour12: true });
+
             let msgItem = listItem.replace('{ message }', data['message'])
-            msgItem = msgItem.replace('{ date_posted }', data['date_posted'])
+            msgItem = msgItem.replace('{ date_posted }', datePosted)
+            msgItem = msgItem.replace('{ image_url }', data.author.profile['profile_image'])
             msgList.append(msgItem)
+        },
+        error: function(error){
+            console.log(error)
         }
     })
 })

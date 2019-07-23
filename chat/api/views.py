@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from chat.models import ChatMessage
 from maintenance.models import MaintRequest, Rental
-from .serializers import ThreadSerializer, ChatMessageSerializer
+from .serializers import ChatMessageSerializer
 
 # api view for chat messages
 class ChatMessageView(viewsets.ModelViewSet):
