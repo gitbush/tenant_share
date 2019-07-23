@@ -21,6 +21,10 @@
   font-size: 1.6rem;
 }
 
+.sm-text {
+  font-size: .7rem;
+}
+
 .md-text {
   font-size: .8rem;
 }
@@ -247,6 +251,8 @@ option {
 .profile-icon {
   width: 3rem;
   margin: 5px 0;
+  -webkit-box-shadow: 1px 2px 2px #636363;
+          box-shadow: 1px 2px 2px #636363;
 }
 
 .user-form {
