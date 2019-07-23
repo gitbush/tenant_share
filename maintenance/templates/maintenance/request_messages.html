@@ -20,41 +20,47 @@
                 <!-- if current user is author then display to the left -->
                 {% if request.user == message.author%}
                 <li class="row">
-                    <div class="col-3 col-sm-2 p-0 text-center">
-                        <img src="{{ message.author.profile.profile_image.url }}" alt="Prof"
-                            class="profile-icon rounded-circle img-fluid">
-                    </div>
-                    <div class="col-7 p-0">
-                        <div class="col-12">
-                            <p id="message-chat" class="md-text">
-                                {{ message }}
-                            </p>
-                        </div>
-                        <div class="col-12">
-                            <p id="message-date" class="md-text">
-                                {{ message.date_posted }}
-                            </p>
+                    <div class="col-11 col-sm-10">
+                        <div class="row author-bg">
+                            <div class="col-3 col-sm-2 p-0 text-center">
+                                <img src="{{ message.author.profile.profile_image.url }}" alt="Prof" class="profile-icon rounded-circle img-fluid">
+                            </div>
+                            <div class="col-7 p-0">
+                                <div class="col-12">
+                                    <p id="message-chat" class="md-text">
+                                        {{ message }}
+                                    </p>
+                                </div>
+                                <div class="col-12">
+                                    <p id="message-date" class="md-text">
+                                        {{ message.date_posted }}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </li>
                 <!-- else display to the right -->
                 {% else %}
                 <li class="row justify-content-end">
-                    <div class="col-7 p-0 text-right">
-                        <div class="col-12">
-                            <p id="message-chat" class="md-text">
-                                {{ message }}
-                            </p>
+                    <div class="offset-1 col-11 col-sm-10">
+                        <div class="row receivers-bg justify-content-end">
+                            <div class="col-7 p-0 text-right">
+                                <div class="col-12">
+                                    <p id="message-chat" class="md-text">
+                                        {{ message }}
+                                    </p>
+                                </div>
+                                <div class="col-12 text-right">
+                                    <p id="message-date" class="md-text">
+                                        {{ message.date_posted }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-3 col-sm-2 p-0 text-center">
+                                <img src="{{ message.author.profile.profile_image.url }}" alt="Prof" class="profile-icon rounded-circle img-fluid">
+                            </div>
                         </div>
-                        <div class="col-12 text-right">
-                            <p id="message-date" class="md-text">
-                                {{ message.date_posted }}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-3 col-sm-2 p-0 text-center">
-                        <img src="{{ message.author.profile.profile_image.url }}" alt="Prof"
-                            class="profile-icon rounded-circle img-fluid">
                     </div>
                 </li>
                 {% endif %}
