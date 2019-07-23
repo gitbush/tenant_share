@@ -24,14 +24,16 @@
                         <div class="row author-bg">
                             <div class="col-3 col-sm-2 p-0 text-center">
                                 <img src="{{ message.author.profile.profile_image.url }}" alt="Prof" class="profile-icon rounded-circle img-fluid">
+                                <p class="sm-text m-1 bold"><i>"You"</i></p>
                             </div>
-                            <div class="col-7 p-0">
+                            <div class="col-7 p-0 position-relative">
                                 <div class="col-12">
                                     <p id="message-chat" class="md-text mb-2 mt-2">
                                         {{ message }}
                                     </p>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 date-posted">
+                                    <hr class="m-1">
                                     <p id="message-date" class="sm-text mb-1 mt-1">
                                         {{ message.date_posted }}
                                     </p>
@@ -45,13 +47,14 @@
                 <li class="row justify-content-end">
                     <div class="offset-1 col-11 col-sm-10">
                         <div class="row receivers-bg justify-content-end">
-                            <div class="col-7 p-0 text-right">
+                            <div class="col-7 p-0 text-right position-relative">
                                 <div class="col-12">
                                     <p id="message-chat" class="md-text mt-2 mb-2">
                                         {{ message }}
                                     </p>
                                 </div>
-                                <div class="col-12 text-right">
+                                <div class="col-12 text-right date-posted">
+                                    <hr class="m-1">
                                     <p id="message-date" class="sm-text mb-1">
                                         {{ message.date_posted }}
                                     </p>
@@ -59,6 +62,7 @@
                             </div>
                             <div class="col-3 col-sm-2 p-0 text-center">
                                 <img src="{{ message.author.profile.profile_image.url }}" alt="Prof" class="profile-icon rounded-circle img-fluid">
+                                <p class="sm-text m-1 bold"><i>"{{ message.author.first_name }}"</i></p>                           
                             </div>
                         </div>
                     </div>
@@ -68,15 +72,16 @@
             <!-- end of messages -->
         </ul>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center m-0">
         <div class="col-11">
+            <hr class="m-1">
             <form action="" method="POST" id="chat-msg-form">
                 {% csrf_token %}
                 <div class="form-group col-12 m-0 text-left">
                     {{ message_form|crispy }}
                 </div>
                 <div class="col-12 text-right mb-2">
-                    <button class="edit-confirm-btn btn btn-sm btn-outline-info" type="submit">Submit</button>
+                    <button class="edit-confirm-btn btn btn-sm btn-outline-info" type="submit">Send</button>
                 </div>
             </form>
         </div>

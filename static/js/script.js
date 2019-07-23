@@ -154,17 +154,23 @@ function csrfSafeMethod(method) {
 
 // create message list item template
 let listItem = '<li class="row">' +
-                    '<div class="col-3 col-sm-2 p-0 text-center">' +
-                        '<img src="{ image_url }" alt="Prof"class="profile-icon rounded-circle img-fluid">' +
+                    '<div class="col-11 col-sm-10">' +
+                        '<div class="row author-bg">' +
+                            '<div class="col-3 col-sm-2 p-0 text-center">' +
+                                '<img src="{ image_url }" alt="Prof"class="profile-icon rounded-circle img-fluid">' +
+                                '<p class="sm-text m-1 bold"><i>"You"</i></p>' +
+                            '</div>' +
+                            '<div class="col-7 p-0 position-relative">' +
+                                '<div class="col-12">' +
+                                    '<p id="message-chat" class="md-text mb-2 mt-2">{ message }</p>' +
+                                '</div>'+
+                                '<div class="col-12 date-posted">'+
+                                    '<hr class="m-1">' +
+                                    '<p id="message-date" class="sm-text mb-1 mt-1">{ date_posted }</p>' +
+                                '</div>'+
+                            '</div>'+
+                        '</div>' +
                     '</div>' +
-                    '<div class="col-7 p-0">' +
-                        '<div class="col-12">' +
-                            '<p id="message-chat" class="md-text">{ message }</p>' +
-                        '</div>'+
-                        '<div class="col-12">'+
-                            '<p id="message-date" class="md-text">{ date_posted }</p>' +
-                        '</div>'+
-                    '</div>'+
                 '</li>';
 
 // capture message form and send post to chat api             
