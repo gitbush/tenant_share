@@ -193,7 +193,6 @@ msgForm.on('submit', function(e){
                 "date_posted": ''},
         success: function(data){
             msgInput.val('');
-
             let date = new Date(data['date_posted']);
             let datePosted = date.toLocaleString('en-GB', { timeZone: 'UTC', hour12: true });
 
@@ -207,6 +206,32 @@ msgForm.on('submit', function(e){
         }
     })
 })
+
+
+// get all chat messages when message is clicked
+
+
+function getMessages(){
+    console.log('get')
+    const maintId = $('#maint-title').text();
+
+    $.get('/api/chat/chat-message/?q='+maintId+'', function(data){
+            console.log(data)
+            if (data.length !== 0)
+                {
+                    for(let i=0;i<data.length;i++) {
+                        console.log(data[i]);
+                        let msgItem = listItem.replace('{ message }', data[i].message);
+                        msgItem = msgItem.replace('{ date_posted }', data[i].date_posted);
+                        msgItem = msgItem.replace('{ image_url }', data[i].author.profile['profile_image'])
+                        msgList.append(msgItem);
+                    }
+                }
+        }
+    )
+    
+}
+    
 
 
 
