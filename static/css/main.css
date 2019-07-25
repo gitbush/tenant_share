@@ -21,6 +21,10 @@
   font-size: 1.6rem;
 }
 
+.sm-text {
+  font-size: .7rem;
+}
+
 .md-text {
   font-size: .8rem;
 }
@@ -247,6 +251,8 @@ option {
 .profile-icon {
   width: 3rem;
   margin: 5px 0;
+  -webkit-box-shadow: 1px 2px 2px #636363;
+          box-shadow: 1px 2px 2px #636363;
 }
 
 .user-form {
@@ -517,5 +523,28 @@ option {
   .check-img {
     width: 8rem;
   }
+}
+
+.author-bg {
+  background-color: #d8efd8;
+  margin: 5px 0px 5px 0px;
+  border: 1px solid #e8e8e8;
+  -webkit-box-shadow: 1px 2px 5px -4px #000;
+          box-shadow: 1px 2px 5px -4px #000;
+  border-radius: 9px;
+}
+
+.receivers-bg {
+  background-color: #ecf6ff;
+  margin: 5px 0px 5px 0px;
+  border: 1px solid #e8e8e8;
+  -webkit-box-shadow: 1px 2px 5px -4px #000;
+          box-shadow: 1px 2px 5px -4px #000;
+  border-radius: 9px;
+}
+
+.date-posted {
+  position: absolute;
+  bottom: 0;
 }
 /*# sourceMappingURL=main.css.map */

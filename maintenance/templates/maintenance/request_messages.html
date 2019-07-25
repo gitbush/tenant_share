@@ -1,0 +1,90 @@
+{% load crispy_forms_tags %}
+
+<div class="col-12">
+    <div class="col-12">
+        <p class="md-text bold">
+            <span>#</span>
+            <span id="maint-title">{{ maint_request.id }}</span>
+            <span>&nbsp;{{ maint_request.title }}</span>
+        </p>
+        <p class="md-text">
+            All comments about this request can be seen by all tenants
+            and landlord.
+        </p>
+    </div>
+    <hr>
+    <div class="row justify-content-center">
+        <ul class="col-11" id="message-list">
+            <!-- for each message in message -->
+            {% for message in messages %}
+                <!-- if current user is author then display to the left -->
+                {% if request.user == message.author%}
+                <li class="row">
+                    <div class="col-11 col-sm-10">
+                        <div class="row author-bg">
+                            <div class="col-3 col-sm-2 p-0 text-center">
+                                <img src="{{ message.author.profile.profile_image.url }}" alt="Prof" class="profile-icon rounded-circle img-fluid">
+                                <p class="sm-text m-1 bold"><i>"You"</i></p>
+                            </div>
+                            <div class="col-7 p-0 position-relative">
+                                <div class="col-12">
+                                    <p id="message-chat" class="md-text mb-2 mt-2">
+                                        {{ message }}
+                                    </p>
+                                </div>
+                                <div class="col-12 date-posted">
+                                    <hr class="m-1">
+                                    <p id="message-date" class="sm-text mb-1 mt-1">
+                                        {{ message.date_posted }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- else display to the right -->
+                {% else %}
+                <li class="row justify-content-end">
+                    <div class="offset-1 col-11 col-sm-10">
+                        <div class="row receivers-bg justify-content-end">
+                            <div class="col-7 p-0 text-right position-relative">
+                                <div class="col-12">
+                                    <p id="message-chat" class="md-text mt-2 mb-2">
+                                        {{ message }}
+                                    </p>
+                                </div>
+                                <div class="col-12 text-right date-posted">
+                                    <hr class="m-1">
+                                    <p id="message-date" class="sm-text mb-1">
+                                        {{ message.date_posted }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-3 col-sm-2 p-0 text-center">
+                                <img src="{{ message.author.profile.profile_image.url }}" alt="Prof" class="profile-icon rounded-circle img-fluid">
+                                <p class="sm-text m-1 bold"><i>"{{ message.author.first_name }}"</i></p>                           
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {% endif %}
+            {% endfor %}
+            <!-- end of messages -->
+        </ul>
+    </div>
+    <div class="row justify-content-center m-0">
+        <div class="col-11">
+            <hr class="m-1">
+            <form action="" method="POST" id="chat-msg-form">
+                {% csrf_token %}
+                <div class="form-group col-12 m-0 text-left">
+                    {{ message_form|crispy }}
+                </div>
+                <div class="col-12 text-right mb-2">
+                    <button class="edit-confirm-btn btn btn-sm btn-outline-info" type="submit">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -81,8 +81,8 @@ def MaintRequestDetail(request, id):
     Display detail view of particular maintenance request.
     Allow for landlord to assign cost to tenant/landlord
     """
-    maint_request = get_object_or_404(MaintRequest, id=id)
-    # message_thread = get_object_or_404(Thread, maint_request=maint_request)
+    maint_request = get_object_or_404(MaintRequest, id=id) 
+    messages = ChatMessage.objects.filter(maint_request=maint_request) # get chat messages
 
     message_form = MessageForm()
     if request.method == 'POST':
@@ -105,7 +105,7 @@ def MaintRequestDetail(request, id):
 
     context = {
         'maint_request': maint_request,
-        # 'message_thread': message_thread,
+        'messages': messages,
         'message_form': message_form,
         'assign_cost_form': assign_cost_form,
         'status_form': status_form,
