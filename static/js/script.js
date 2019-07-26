@@ -114,19 +114,13 @@ if(statusForm){
 const maintSearchForm = document.getElementById("maint-search-form");
 const sortField = document.getElementById("id_ordering");
 
-
 if(maintSearchForm){
     sortField.addEventListener("change", function(){
         maintSearchForm.submit()
     })
 }
 
-// chat message functionality
-const msgForm = $('#chat-msg-form');
-const maintId = $('#maint-title').text();
-const msgView = $('#message-view');
-const msgList = $('#message-list');
-let msgInput = $('#id_message');
+//========== chat message functionality
 
 // csrf protection. Copied from django documentation
 function getCookie(name) {
@@ -153,7 +147,8 @@ function csrfSafeMethod(method) {
 }
 
 // create message list item template
-let listItem = '<li class="row">' +
+// author left hand side item
+let authorListItem = '<li class="row">' +
                     '<div class="col-11 col-sm-10">' +
                         '<div class="row author-bg">' +
                             '<div class="col-3 col-sm-2 p-0 text-center">' +
@@ -163,6 +158,7 @@ let listItem = '<li class="row">' +
                             '<div class="col-7 p-0 position-relative">' +
                                 '<div class="col-12">' +
                                     '<p id="message-chat" class="md-text mb-2 mt-2">{ message }</p>' +
+                                    '<p class="msg-id" hidden>{ id }</p>'+
                                 '</div>'+
                                 '<div class="col-12 date-posted">'+
                                     '<hr class="m-1">' +
@@ -172,6 +168,36 @@ let listItem = '<li class="row">' +
                         '</div>' +
                     '</div>' +
                 '</li>';
+
+// reciever right hand side item
+let recieverListItem = '<li class="row justify-content-end">'+
+                            '<div class="offset-1 col-11 col-sm-10">'+
+                                '<div class="row receivers-bg justify-content-end">'+
+                                    '<div class="col-7 p-0 text-right position-relative">'+
+                                        '<div class="col-12">'+
+                                            '<p id="message-chat" class="md-text mt-2 mb-2">{ message }</p>'+ 
+                                            '<p class="msg-id" hidden>{ id }</p>'+
+                                        '</div>'+
+                                        '<div class="col-12 text-right date-posted">'+
+                                            '<hr class="m-1">'+
+                                            '<p id="message-date" class="sm-text mb-1">{ date_posted }</p>'+
+                                        '</div>'+
+                                    '</div>'+
+                                    '<div class="col-3 col-sm-2 p-0 text-center">'+
+                                        '<img src="{ image_url }" alt="Prof" class="profile-icon rounded-circle img-fluid">'+
+                                        '<p class="sm-text m-1 bold"><i>"{ author }"</i></p>'+                           
+                                    '</div>'+
+                                '</div'+
+                            '</div>'+
+                        '</li>'
+
+// global chat variables 
+const msgForm = $('#chat-msg-form');
+const maintId = $('#maint-title').text();
+const msgView = $('#message-view');
+const msgList = $('#message-list');
+let msgInput = $('#id_message');
+
 
 // capture message form and send post to chat api             
 msgForm.on('submit', function(e){
@@ -185,6 +211,7 @@ msgForm.on('submit', function(e){
             }
         }
     });
+    
     $.ajax({
         type: 'POST',
         url: '/api/chat/chat-message/',
@@ -196,42 +223,49 @@ msgForm.on('submit', function(e){
             let date = new Date(data['date_posted']);
             let datePosted = date.toLocaleString('en-GB', { timeZone: 'UTC', hour12: true });
 
-            let msgItem = listItem.replace('{ message }', data['message'])
-            msgItem = msgItem.replace('{ date_posted }', datePosted)
-            msgItem = msgItem.replace('{ image_url }', data.author.profile['profile_image'])
-            msgList.append(msgItem)
+            let msgItem = authorListItem.replace('{ message }', data['message']);
+            msgItem = msgItem.replace('{ date_posted }', datePosted);
+            msgItem = msgItem.replace('{ image_url }', data.author.profile['profile_image']);
+            msgItem = msgItem.replace('{ id }', data['id']);
+            msgList.append(msgItem);
         },
         error: function(error){
-            console.log(error)
+            console.log(error);
         }
-    })
-})
+    });
+});
 
+// get all chat messages is current page is maint detail every 2 seconds
+if(maintId){
+    
+    setInterval(
 
-// get all chat messages when message is clicked
-
-
-function getMessages(){
-    console.log('get')
-    const maintId = $('#maint-title').text();
-
-    $.get('/api/chat/chat-message/?q='+maintId+'', function(data){
-            console.log(data)
-            if (data.length !== 0)
-                {
-                    for(let i=0;i<data.length;i++) {
-                        console.log(data[i]);
-                        let msgItem = listItem.replace('{ message }', data[i].message);
-                        msgItem = msgItem.replace('{ date_posted }', data[i].date_posted);
-                        msgItem = msgItem.replace('{ image_url }', data[i].author.profile['profile_image'])
-                        msgList.append(msgItem);
-                    }
+        function getMessages(){
+        
+            const maintId = $('#maint-title').text();
+            let lastMsgId = $('.msg-id').last().text();
+    
+            $.get('/api/chat/chat-message/?q='+maintId+'&id='+lastMsgId+'', function(data){
+    
+                    if (data.length !== 0)
+                        {
+                            for(let i=0;i<data.length;i++) {
+                                console.log(lastMsgId);
+                                let msgItem = recieverListItem.replace('{ message }', data[i].message);
+                                msgItem = msgItem.replace('{ date_posted }', data[i].date_posted);
+                                msgItem = msgItem.replace('{ author }', data[i].author['first_name']);
+                                msgItem = msgItem.replace('{ image_url }', data[i].author.profile['profile_image']);
+                                msgItem = msgItem.replace('{ id }', data[i].id);
+                                msgList.append(msgItem);
+                            };
+                        };
                 }
-        }
+            )
+            
+        }, 2000
     )
-    
-}
-    
+};
+
 
 
 
