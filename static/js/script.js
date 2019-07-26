@@ -244,8 +244,9 @@ if(maintId){
         
             const maintId = $('#maint-title').text();
             let lastMsgId = $('.msg-id').last().text();
-    
-            $.get('/api/chat/chat-message/?q='+maintId+'&id='+lastMsgId+'', function(data){
+            
+            if(lastMsgId){
+                $.get('/api/chat/chat-message/?q='+maintId+'&id='+lastMsgId+'', function(data){
     
                     if (data.length !== 0)
                         {
@@ -261,6 +262,7 @@ if(maintId){
                         };
                 }
             )
+            }
             
         }, 2000
     )

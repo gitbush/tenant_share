@@ -6,16 +6,25 @@ from .serializers import ChatMessageSerializer
 
 # api view for chat messages
 class ChatMessageView(viewsets.ModelViewSet):
+    """
+    Chat messages api view
+    """
     queryset = ChatMessage.objects.all()
     serializer_class = ChatMessageSerializer
 
     def get_queryset(self, *args, **kwargs):
-        queryset = ChatMessage.objects.all()
+        """
+        get_queryset to handle url parameters
+        """
         query = self.request.GET.get('q')
         last_msg_id = self.request.GET.get('id')
-        if query and last_msg_id:
-            queryset = queryset.filter(Q(maint_request=query)&
+        if query and last_msg_id: # if parameters in url
+            queryset = ChatMessage.objects.filter(Q(maint_request=query)&
                                        Q(id__gt=last_msg_id))
+            
+        else:
+            queryset = ChatMessage.objects.all()
+
         return queryset
 
     def perform_create(self, serializer):
