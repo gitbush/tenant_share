@@ -14,7 +14,7 @@ def register(request):
         if registerForm.is_valid():
             registerForm.save()
             if asForm.is_valid():
-                profile = Profile.objects.filter(user__email=registerForm.cleaned_data['email']).first()
+                profile = Profile.objects.filter(user__username=registerForm.cleaned_data['username']).first()
                 register_as = asForm.cleaned_data['register_as']
                 profile.register_as = register_as
                 profile.save()
