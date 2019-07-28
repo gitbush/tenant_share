@@ -250,6 +250,7 @@ option {
 
 .profile-icon {
   width: 3rem;
+  height: 3rem;
   margin: 5px 0;
   -webkit-box-shadow: 1px 2px 2px #636363;
           box-shadow: 1px 2px 2px #636363;
@@ -264,13 +265,15 @@ option {
 }
 
 .house-img {
-  max-width: 8rem;
+  width: 8rem;
+  height: 8rem;
   -webkit-box-shadow: 2px 2px 4px 1px #333;
           box-shadow: 2px 2px 4px 1px #333;
 }
 
 .landlord-img {
-  max-width: 3rem;
+  width: 3rem;
+  height: 3rem;
   -webkit-box-shadow: 2px 2px 4px 1px #333;
           box-shadow: 2px 2px 4px 1px #333;
 }
@@ -436,7 +439,8 @@ option {
 .account-img {
   margin-top: .8rem;
   padding: .5rem;
-  max-width: 12rem;
+  width: 12rem;
+  height: 12rem;
   -webkit-box-shadow: 2px 2px 4px 1px #333;
           box-shadow: 2px 2px 4px 1px #333;
 }
