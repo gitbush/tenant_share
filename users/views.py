@@ -42,7 +42,9 @@ def account(request, id):
         elif 'rental' in request.POST:
             user_profile = get_object_or_404(Profile, user=request.user)
             if rental_form.is_valid():
-                new_rental = rental_form.save()
+                new_rental = rental_form.save(commit=False)
+                new_rental.landlord = request.user
+                new_rental.save()
                 user_profile.rental = new_rental
                 user_profile.save()
                 return redirect('account', id=request.user.id)
