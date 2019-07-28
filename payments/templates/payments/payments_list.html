@@ -36,6 +36,7 @@
     <!-- payment history list -->
     <div class="row justify-content-center mt-3">
         <div class="card max-card col-11 p-0">
+            {% if payments %}
             <table class="table table-striped md-text text-center m-0">
                 <thead>
                     <tr>
@@ -84,6 +85,15 @@
                 </span>
             </div>
             <!-- end pagination -->
+            {% else %}
+            <div class="row justify-content-center">
+                <div class="card col-10 col-md-9 mt-3 mb-3">
+                    <div class="col-12 text-center">
+                        <p class="md-text m-2">- No payments -</p>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
     <!-- end payment history list -->
