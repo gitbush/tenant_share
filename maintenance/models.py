@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # rental model for instances of rental properties
 class Rental(models.Model):
     address = models.CharField(max_length=30)
-    postcode = models.CharField(max_length=6)
+    postcode = models.CharField(max_length=8)
     city = models.CharField(max_length=15)
     no_of_tenants = models.IntegerField()
     image = models.ImageField(default='maintenance/no_image.jpg', upload_to='maintenance')
