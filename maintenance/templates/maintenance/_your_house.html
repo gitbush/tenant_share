@@ -24,6 +24,7 @@
                             <h4 class="sm-heading">Landlord</h4>
                             <hr class="m-2">
                         </div>
+                        {% if userLandlord %}
                         <div class="col-12 col-md-10 text-center text-md-left">
                             <span>
                                 <img src="{{ userLandlord.profile.profile_image.url}}" class="rounded-circle img-fluid landlord-img d-inline" alt="man">
@@ -33,24 +34,35 @@
                                 <p class="d-cm-block m-0 md-text">{{ userLandlord.email }}</p>        
                             </span>
                         </div>
+                        {% else %}
+                            <div class="col-5 col-sm-5 text-center">
+                                <p class="md-text m-2">- No landlord currently added -</p>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12 p-1">
                             <h4 class="sm-heading">Housemates</h4>
                             <hr class="m-2">                    
                         </div>
-                        {% for tenant in userTenants %}
-                        <div class="col-5 col-sm-5 text-center p-1 m-1">
-                            <span id="tenant-img">
-                                <img src="{{ tenant.profile_image.url }}" class="rounded-circle img-fluid landlord-img d-inline" alt="man">
-                            </span>
-                            <span class="tenant-name d-inline-block align-middle ml-2">
-                                <p class="m-0 md-text">{{ tenant.user.first_name }}</p>
-                                <p class="m-0 md-text">{{ tenant.user.last_name }}</p>
-                                <!-- <p class="d-inline m-2 md-text">{{ tenant.user.email }}</p> -->
-                            </span>
-                        </div>
-                        {% endfor %}
+                        {% if userTenants %}
+                            {% for tenant in userTenants %}
+                            <div class="col-5 col-sm-5 text-center p-1 m-1">
+                                <span id="tenant-img">
+                                    <img src="{{ tenant.profile_image.url }}" class="rounded-circle img-fluid landlord-img d-inline" alt="man">
+                                </span>
+                                <span class="tenant-name d-inline-block align-middle ml-2">
+                                    <p class="m-0 md-text">{{ tenant.user.first_name }}</p>
+                                    <p class="m-0 md-text">{{ tenant.user.last_name }}</p>
+                                    <!-- <p class="d-inline m-2 md-text">{{ tenant.user.email }}</p> -->
+                                </span>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="col-5 col-sm-5 text-center">
+                                <p class="md-text m-2">- No tenants currently added -</p>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
