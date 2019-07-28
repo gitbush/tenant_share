@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import UserRegisterForm, RegisterAsForm, UserUpdateForm, ProfileUpdateForm
 from .models import *
 from maintenance.forms import RentalCreationForm
@@ -40,8 +40,11 @@ def account(request, id):
                 profile_img_form.save()
                 return redirect('account', id=request.user.id)
         elif 'rental' in request.POST:
+            user_profile = get_object_or_404(Profile, user=request.user)
             if rental_form.is_valid():
-                rental_form.save()
+                new_rental = rental_form.save()
+                user_profile.rental = new_rental
+                user_profile.save()
                 return redirect('account', id=request.user.id)
     # populate boths forms on GET
     else:
