@@ -12,7 +12,7 @@
                 <p class="md-text">{{ userRental.postcode|upper }}, {{ userRental.city.title }}</p>
                 <div class="col-12 m-2">
                     <p>Search email field</p>
-                    <button class="btn btn-sm btn-success" href="">+ Add Tenant</button>
+                    <a href="{% url 'add-tenant' id=userRental.id %}" class="btn btn-sm btn-success" href="">+ Add Tenant</a>
                 </div>
             </div>
             <span><img src="static/imgs/line_shad.png" class="line-shadow d-none d-sm-block" alt=""></span>

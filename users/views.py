@@ -61,3 +61,22 @@ def account(request, id):
     }
 
     return render(request, 'users/account.html', context)
+
+
+def add_tenant(request, id):
+
+    if request.method == 'POST':
+        registerForm = UserRegisterForm(request.POST)
+        asForm = RegisterAsForm(request.POST)
+        if registerForm.is_valid():
+            registerForm.save()
+            if asForm.is_valid():
+                profile = Profile.objects.filter(user__username=registerForm.cleaned_data['username']).first()
+                register_as = asForm.cleaned_data['register_as']
+                profile.register_as = register_as
+                profile.save()
+            return redirect('home')
+    else:
+        registerForm = UserRegisterForm()
+        asForm = RegisterAsForm()
+    return render(request, 'users/add_tenant.html', {'registerForm': registerForm, 'asForm': asForm})
