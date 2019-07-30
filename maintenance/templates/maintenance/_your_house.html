@@ -11,9 +11,11 @@
                 <p class="md-text">{{ userRental.address.title }}</p>
                 <p class="md-text">{{ userRental.postcode|upper }}, {{ userRental.city.title }}</p>
                 {% if userLandlord %}
-                <div class="col-12 m-2">
-                    <a href="{% url 'add-tenant' id=userRental.id %}" class="btn btn-sm btn-success" href="">+ Add Tenant</a>
-                </div>
+                    {% if userTenants.count != userRental.no_of_tenants %}
+                    <div class="col-12 m-2">
+                        <a href="{% url 'add-tenant' id=userRental.id %}" class="btn btn-sm btn-success" href="">+ Add Tenant</a>
+                    </div>
+                    {% endif %}
                 {% endif %}
             </div>
             <span><img src="static/imgs/line_shad.png" class="line-shadow d-none d-sm-block" alt=""></span>
