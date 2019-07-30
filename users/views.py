@@ -64,7 +64,12 @@ def account(request, id):
 
 
 def add_tenant(request, id):
+    """
+    Register a new user and add to the current rental property.
+    """
 
+    current_rental = get_object_or_404(Rental, id=id)
+    
     if request.method == 'POST':
         registerForm = UserRegisterForm(request.POST)
         asForm = RegisterAsForm(request.POST)
@@ -74,8 +79,9 @@ def add_tenant(request, id):
                 profile = Profile.objects.filter(user__username=registerForm.cleaned_data['username']).first()
                 register_as = asForm.cleaned_data['register_as']
                 profile.register_as = register_as
+                profile.rental = current_rental
                 profile.save()
-            return redirect('home')
+            return redirect('maint-home')
     else:
         registerForm = UserRegisterForm()
         asForm = RegisterAsForm()
