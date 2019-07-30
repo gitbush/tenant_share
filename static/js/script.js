@@ -269,5 +269,18 @@ if(maintId){
 };
 
 
+// get user id on delete tenant modal
+let tenant = document.querySelectorAll('#tenant-img');
+let tenantName = document.getElementById('remove-name');
 
+for(let i=0;i<tenant.length;i++){
+        tenant[i].addEventListener('click', function(e){
+            
+            let firstName = tenant[i].querySelector('#ten-first').innerText;
+            let lastName = tenant[i].querySelector('#ten-last').innerText;
+
+            tenantName.innerText = firstName + ' ' + lastName
+        })
+}
+    
 

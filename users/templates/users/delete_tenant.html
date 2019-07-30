@@ -9,12 +9,12 @@
         </button>
     </div>
     <div class="modal-body">
-        <p>Are you sure you want to remove <strong class="bold">{{ tenant.user.first_name }} {{ tenant.user.last_name }}</strong>
+        <p>Are you sure you want to remove <strong id="remove-name" class="bold">{{ tenant.user.first_name }} {{ tenant.user.last_name }}</strong>
         from this property?</p>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-md btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-md btn-primary">Confirm</button>
+        <a href="{% url 'remove-tenant' rental_id=userRental.id id=tenant.id%}" type="button" class="btn btn-md btn-primary">Confirm</a>
     </div>
     </div>
 </div>
