@@ -52,6 +52,18 @@
     line-height: 1rem;
 }
 
+#tenant-img{
+    position: relative;
+    width: 4rem;
+    display: inline-block;
+}
+
+.fa-times-circle{
+    position: absolute;
+    color: red;
+    left: -5px;
+}
+
 .maint-list-item{
     border: 1px solid #c5bfbf;
     background-color: #f3f3f3;

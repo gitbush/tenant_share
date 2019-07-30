@@ -20,7 +20,7 @@
             </div>
             <span><img src="static/imgs/line_shad.png" class="line-shadow d-none d-sm-block" alt=""></span>
             <!-- details of landlord and tenants -->
-            <div class="col-12 col-sm-7 col-md-8 ten-lan-sect">
+            <div class="col-12 col-sm-7 col-md-8 ten-lan-sect mb-3">
                 <div class="float col-12 col-md-11">
                     <div class="row justify-content-center">
                         <div class="col-12 p-1">
@@ -50,15 +50,18 @@
                         </div>
                         {% if userTenants %}
                             {% for tenant in userTenants %}
-                            <div class="col-5 col-sm-5 text-center p-1 m-1">
-                                <span id="tenant-img">
-                                    <img src="{{ tenant.profile_image.url }}" class="rounded-circle img-fluid landlord-img d-inline" alt="man">
-                                </span>
-                                <span class="tenant-name d-inline-block align-middle ml-2">
-                                    <p class="m-0 md-text">{{ tenant.user.first_name }}</p>
-                                    <p class="m-0 md-text">{{ tenant.user.last_name }}</p>
-                                    <!-- <p class="d-inline m-2 md-text">{{ tenant.user.email }}</p> -->
-                                </span>
+                            <div class="col-5 col-sm-3 col-lg-2 text-center p-2">
+                                <div id="tenant-img">
+                                    <span>
+                                        <img src="{{ tenant.profile_image.url }}" class="rounded-circle img-fluid landlord-img d-inline" alt="man">
+                                        <i class="fas fa-times-circle"></i>
+                                    </span>
+                                    <span class="tenant-name d-inline-block align-middle m-2">
+                                        <p class="m-0 md-text">{{ tenant.user.first_name }}</p>
+                                        <p class="m-0 md-text">{{ tenant.user.last_name }}</p>
+                                    </span>
+                                </div>
+                                
                             </div>
                             {% endfor %}
                         {% else %}
