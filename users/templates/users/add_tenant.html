@@ -7,7 +7,16 @@
             <form action="" method="POST">
                 {% csrf_token %}
                 <div class="form-group row justify-content-center">
-                    <legend class="border-bottom mb-4">Register</legend>
+                    <legend class="border-bottom mb-4">Register a new tenant</legend>
+                    <div class="col-12 text-center">
+                        <p class="md-text">
+                            By submitting this form you are registering a new tenant. An email
+                            will be sent the new tenant asking for them to log in using the username and 
+                            password defined below.
+                            Once logged in, they can change their details as they like.
+                        </p>
+                        <hr class="m-1">
+                    </div>
                     <div class="col-6">{{ registerForm.first_name|as_crispy_field}}</div>
                     <div class="col-6">{{ registerForm.last_name|as_crispy_field }}</div>
                     <div class="col-6">{{ registerForm.username|as_crispy_field }}</div>
