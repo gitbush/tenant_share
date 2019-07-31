@@ -272,7 +272,7 @@ if(maintId){
 // remove tenant modal
 const removeIcon = document.querySelectorAll('#modal-opener');
 const modal = document.querySelector('.modal');
-let rentalId = document.getElementById('rental-id').innerText;
+let tenantName = document.getElementById('tenant-name');
 
 function attachModalListeners(modalElm) {
     modalElm.querySelector('.close-modal').addEventListener('click', toggleModal);
@@ -284,7 +284,7 @@ function detachModalListeners(modalElm) {
   modalElm.querySelector('.overlay').removeEventListener('click', toggleModal);
 }
 
-function toggleModal(tenId) {
+function toggleModal(tenId, rentalId, name) {
   let currentState = modal.style.display;
 
   // If modal is visible, hide it. Else, display it.
@@ -296,6 +296,9 @@ function toggleModal(tenId) {
     let removeTen = document.getElementById('remove-tenant');
     let setHref = removeTen.setAttribute('href', '/users/tenant/remove/'+rentalId+'/'+tenId+'');
 
+    // set tenant name in modal to selected tenant
+    tenantName.innerText = name
+
   } else {
     modal.style.display = 'none';
     detachModalListeners(modal);  
@@ -305,9 +308,17 @@ function toggleModal(tenId) {
 
 for(let i=0;i<removeIcon.length;i++){
         removeIcon[i].addEventListener('click', function(e){
+            
+            let rentalId = document.getElementById('rental-id').innerText;
+            let tenId = this.querySelector('#ten-id').innerText;
+            
+            // get grandparent node of clicked and get first and last name of tenant
+            let parent = this.parentNode.parentNode
+            let firstName = parent.querySelector('#ten-first').innerText;
+            let lastName = parent.querySelector('#ten-last').innerText;
+            let name = firstName + ' ' + lastName
 
-            let tenId = this.querySelector('#ten-id').innerText
-            toggleModal(tenId)
+            toggleModal(tenId, rentalId, name)
 
         })
 }

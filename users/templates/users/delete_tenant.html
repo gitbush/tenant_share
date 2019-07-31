@@ -3,7 +3,16 @@
 <div class="modal" style="display: none">
     <div class="overlay"></div>
     <div class="modal-content col-10 col-sm-5">
-        <h2>Delete tenant</h2>
+        <div class="col-12 text-left">
+            <h2 class="lg-heading">Delete tenant</h2>
+        </div>
+        <hr class="m-1">
+        <div class="col-12">
+            <p class="md-text">
+                Are you sure you want to remove <strong id="tenant-name" class="bold"></strong> from this property?
+            </p>
+        </div>
+        <hr class="m-1">
         <div class="row justify-content-end">
             <button type="button" class="btn btn-md btn-secondary close-modal m-1">Close</button>
             <a id="remove-tenant" href="" type="button" class="btn btn-md btn-primary m-1">Confirm</a>                
