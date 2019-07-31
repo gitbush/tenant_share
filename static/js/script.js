@@ -269,14 +269,14 @@ if(maintId){
 };
 
     
-// modal
+// remove tenant modal
 const removeIcon = document.querySelectorAll('#modal-opener');
 const modal = document.querySelector('.modal');
-
+let rentalId = document.getElementById('rental-id').innerText;
 
 function attachModalListeners(modalElm) {
-  modalElm.querySelector('.close-modal').addEventListener('click', toggleModal);
-  modalElm.querySelector('.overlay').addEventListener('click', toggleModal);
+    modalElm.querySelector('.close-modal').addEventListener('click', toggleModal);
+    modalElm.querySelector('.overlay').addEventListener('click', toggleModal);
 }
 
 function detachModalListeners(modalElm) {
@@ -284,13 +284,18 @@ function detachModalListeners(modalElm) {
   modalElm.querySelector('.overlay').removeEventListener('click', toggleModal);
 }
 
-function toggleModal() {
+function toggleModal(tenId) {
   let currentState = modal.style.display;
 
   // If modal is visible, hide it. Else, display it.
   if (currentState === 'none') {
     modal.style.display = 'block';
     attachModalListeners(modal);
+
+    // set href of confirm link with current rental and selected tenant
+    let removeTen = document.getElementById('remove-tenant');
+    let setHref = removeTen.setAttribute('href', '/users/tenant/remove/'+rentalId+'/'+tenId+'');
+
   } else {
     modal.style.display = 'none';
     detachModalListeners(modal);  
@@ -300,9 +305,9 @@ function toggleModal() {
 
 for(let i=0;i<removeIcon.length;i++){
         removeIcon[i].addEventListener('click', function(e){
-            toggleModal()
-            let tenId = this.querySelector('#ten-id').innerText
 
+            let tenId = this.querySelector('#ten-id').innerText
+            toggleModal(tenId)
 
         })
 }

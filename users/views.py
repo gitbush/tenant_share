@@ -88,13 +88,14 @@ def add_tenant(request, id):
     return render(request, 'users/add_tenant.html', {'registerForm': registerForm, 'asForm': asForm})
 
 def remove_tenant(request, rental_id, id):
+    """
+    Remove a tenant from the current property
+    """
 
     current_rental = get_object_or_404(Rental, id=rental_id)
     tenant_to_remove = get_object_or_404(User, id=id) 
 
-    if request.method == 'POST':
-        tenant_to_remove.profile.rental = False
-        tenant_to_remove.save()
+    tenant_to_remove.profile.rental = None
+    tenant_to_remove.save()
 
-
-        return redirect('maint-home')
+    return redirect('maint-home')
