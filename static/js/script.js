@@ -268,19 +268,41 @@ if(maintId){
     )
 };
 
+    
+// modal
+const removeIcon = document.querySelectorAll('#modal-opener');
+const modal = document.querySelector('.modal');
 
-// get user id on delete tenant modal
-let tenant = document.querySelectorAll('#tenant-img');
-let tenantName = document.getElementById('remove-name');
 
-for(let i=0;i<tenant.length;i++){
-        tenant[i].addEventListener('click', function(e){
-            
-            let firstName = tenant[i].querySelector('#ten-first').innerText;
-            let lastName = tenant[i].querySelector('#ten-last').innerText;
+function attachModalListeners(modalElm) {
+  modalElm.querySelector('.close-modal').addEventListener('click', toggleModal);
+  modalElm.querySelector('.overlay').addEventListener('click', toggleModal);
+}
 
-            tenantName.innerText = firstName + ' ' + lastName
+function detachModalListeners(modalElm) {
+  modalElm.querySelector('.close-modal').removeEventListener('click', toggleModal);
+  modalElm.querySelector('.overlay').removeEventListener('click', toggleModal);
+}
+
+function toggleModal() {
+  let currentState = modal.style.display;
+
+  // If modal is visible, hide it. Else, display it.
+  if (currentState === 'none') {
+    modal.style.display = 'block';
+    attachModalListeners(modal);
+  } else {
+    modal.style.display = 'none';
+    detachModalListeners(modal);  
+  }
+}
+
+
+for(let i=0;i<removeIcon.length;i++){
+        removeIcon[i].addEventListener('click', function(e){
+            toggleModal()
+            let tenId = this.querySelector('#ten-id').innerText
+
+
         })
 }
-    
-
