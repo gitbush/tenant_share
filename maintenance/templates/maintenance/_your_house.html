@@ -8,6 +8,7 @@
             <div class="col-12 col-sm-4 col-md-3 mt-3 text-center">
                 <img src="{{ userRental.image.url }}" class="rounded-circle img-fluid house-img" alt="Cinque Terre">
                 <hr class="m-2">
+                <p id="rental-id" hidden>{{ userRental.id }}</p>
                 <p class="md-text">{{ userRental.address.title }}</p>
                 <p class="md-text">{{ userRental.postcode|upper }}, {{ userRental.city.title }}</p>
                 {% if userLandlord %}
@@ -55,9 +56,8 @@
                                 <div id="tenant-img">
                                     <span>
                                         <img src="{{ tenant.profile_image.url }}" class="rounded-circle img-fluid landlord-img d-inline" alt="man">
-                                        <i id="modal-opener" class="fas fa-times-circle modal-open" data-modal="removeModal">
-                                            <p id="rental-id" hidden>{{ userRental.id }}</p>
-                                            <p id="ten-id" hidden>{{ tenant.user.id }}</p>
+                                        <i id="modal-opener" class="fas fa-times-circle modal-open" data-modal="removeModal" data-ten-id="{{ tenant.user.id }}">
+                                            <!-- <p id="ten-id" hidden>{{ tenant.user.id }}</p> -->
                                         </i>
                                         
                                         {% include 'users/delete_tenant.html' %}

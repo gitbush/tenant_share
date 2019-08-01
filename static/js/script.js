@@ -273,12 +273,27 @@ if(maintId){
 
 let modalOpen = document.querySelectorAll('.modal-open');
 let modalClose = document.querySelectorAll('.modal-close');
-
+let rentalId = document.getElementById('rental-id').innerText;
+let tenantName = document.getElementById('tenant-name');
+        
 modalOpen.forEach(function(openBtn){
     openBtn.addEventListener('click', function(){
         let modal = openBtn.getAttribute('data-modal');
-
         document.getElementById(modal).style.display = 'block';
+
+        let tenId = this.getAttribute('data-ten-id');
+
+        // if modal is remove tenant
+        if(modal === 'removeModal'){
+            // show tenant name
+            let tenDiv = this.parentNode.parentNode
+            let firstName = tenDiv.querySelector('#ten-first').innerText;
+            let lastName = tenDiv.querySelector('#ten-last').innerText;
+            let name = firstName + ' ' + lastName
+            tenantName.innerText =  name
+
+            // set remove tenant href on confirm
+        }
     }) 
 })
 
@@ -294,3 +309,4 @@ window.addEventListener('click', function(e){
         e.target.closest('.modal').style.display = 'none';
     }
 })
+
