@@ -292,7 +292,9 @@ modalOpen.forEach(function(openBtn){
             let name = firstName + ' ' + lastName
             tenantName.innerText =  name
 
-            // set remove tenant href on confirm
+            // set href of confirm link with current rental and selected tenant
+            let removeTen = document.getElementById('remove-confirm');
+            let setHref = removeTen.setAttribute('href', '/users/tenant/remove/'+rentalId+'/'+tenId+'');
         }
     }) 
 })
@@ -309,4 +311,6 @@ window.addEventListener('click', function(e){
         e.target.closest('.modal').style.display = 'none';
     }
 })
+
+
 
