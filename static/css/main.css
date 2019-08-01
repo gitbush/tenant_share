@@ -272,6 +272,10 @@ option {
   height: 100%;
   z-index: 990;
   display: none;
+  -webkit-animation: modal-open;
+          animation: modal-open;
+  -webkit-animation-duration: .5s;
+          animation-duration: .5s;
 }
 
 .modal .overlay {
@@ -281,7 +285,7 @@ option {
   width: 100%;
   height: 100%;
   z-index: 995;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .modal .modal-content {
@@ -301,6 +305,24 @@ option {
   border-radius: 4px;
   width: 520px;
   /* This just a default width */
+}
+
+@-webkit-keyframes modal-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .house-img {
