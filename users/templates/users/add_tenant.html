@@ -1,21 +1,30 @@
 <!-- add tenant modal -->
 
-<div id="addModal" class="modal">
+<div id="addModal" class="modal" style="display: block">
         <div class="overlay"></div>
         <div class="modal-content col-10 col-sm-5">
-            <div class="col-12 text-left">
-                <h2 class="lg-heading">Add tenant</h2>
+            <div class="row">
+                <div class="col-10 text-left">
+                    <h2 class="md-heading m-2">Add tenant</h2>
+                </div>
+                <div class="col-2 modal-close">&times;</div>
             </div>
-            <hr class="m-1">
-            <div class="col-12">
-                <p class="md-text">
-                    Add form to add tenant
-                </p>
+            <div class="row">
+                <div class="col-12">
+                    <hr class="m-1">
+                    <p class="md-text">
+                        Search for a tenant by their username.
+                    </p>
+                </div>
             </div>
-            <hr class="m-1">
-            <div class="row justify-content-end">
-                <button type="button" class="btn btn-md btn-secondary modal-close m-1">Close</button>
-                <a id="remove-tenant" href="" type="button" class="btn btn-md btn-primary m-1">Confirm</a>                
-            </div>
+            <form class="row" action="">
+                    {% csrf_token %}
+                <div class="col-12">
+                    <input type="text" class="form-control" id="txtSearch" name="txtSearch">
+                </div>
+                <div class="col-12 text-right mt-2">
+                    <button type="submit" class="btn btn-md btn-primary btn-submit">Submit</button>                
+                </div>
+            </form>
         </div>
     </div>
