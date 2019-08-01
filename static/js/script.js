@@ -269,56 +269,28 @@ if(maintId){
 };
 
     
-// remove tenant modal
-const removeIcon = document.querySelectorAll('#modal-opener');
-const modal = document.querySelector('.modal');
-let tenantName = document.getElementById('tenant-name');
+// add and remove tenant modals
 
-function attachModalListeners(modalElm) {
-    modalElm.querySelector('.close-modal').addEventListener('click', toggleModal);
-    modalElm.querySelector('.overlay').addEventListener('click', toggleModal);
-}
+let modalOpen = document.querySelectorAll('.modal-open');
+let modalClose = document.querySelectorAll('.modal-close');
 
-function detachModalListeners(modalElm) {
-  modalElm.querySelector('.close-modal').removeEventListener('click', toggleModal);
-  modalElm.querySelector('.overlay').removeEventListener('click', toggleModal);
-}
+modalOpen.forEach(function(openBtn){
+    openBtn.addEventListener('click', function(){
+        let modal = openBtn.getAttribute('data-modal');
 
-function toggleModal(tenId, rentalId, name) {
-  let currentState = modal.style.display;
+        document.getElementById(modal).style.display = 'block';
+    }) 
+})
 
-  // If modal is visible, hide it. Else, display it.
-  if (currentState === 'none') {
-    modal.style.display = 'block';
-    attachModalListeners(modal);
+modalClose.forEach(function(closeBtn){
+    closeBtn.addEventListener('click', function(){
 
-    // set href of confirm link with current rental and selected tenant
-    let removeTen = document.getElementById('remove-tenant');
-    let setHref = removeTen.setAttribute('href', '/users/tenant/remove/'+rentalId+'/'+tenId+'');
+        closeBtn.closest('.modal').style.display = 'none';
+    }) 
+})
 
-    // set tenant name in modal to selected tenant
-    tenantName.innerText = name
-
-  } else {
-    modal.style.display = 'none';
-    detachModalListeners(modal);  
-  }
-}
-
-
-for(let i=0;i<removeIcon.length;i++){
-        removeIcon[i].addEventListener('click', function(e){
-            
-            let rentalId = document.getElementById('rental-id').innerText;
-            let tenId = this.querySelector('#ten-id').innerText;
-            
-            // get grandparent node of clicked and get first and last name of tenant
-            let parent = this.parentNode.parentNode
-            let firstName = parent.querySelector('#ten-first').innerText;
-            let lastName = parent.querySelector('#ten-last').innerText;
-            let name = firstName + ' ' + lastName
-
-            toggleModal(tenId, rentalId, name)
-
-        })
-}
+window.addEventListener('click', function(e){
+    if(e.target.className === 'overlay'){
+        e.target.closest('.modal').style.display = 'none';
+    }
+})
