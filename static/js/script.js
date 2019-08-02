@@ -318,6 +318,15 @@ window.addEventListener('click', function(e){
 const searchTenForm = $('#txt-search');
 const addTenantList = $('#add-user-list');
 
+// check if suggestion list is empty and display message
+function emptyUserList(list, e, form){
+    if(list.is(':empty') || ((e.keyCode == 8 && !form))){
+        list.empty();
+        list.append('<p class="md-text text-left m-2">No results found</p>')
+    } 
+}
+
+// template for add tenant suggestion 
 let tenantSuggestion =  '<li class="row m-1 tenant-suggestion">'+
                             '<div class="col-3 col-sm-4">'+
                                 '<img src="{ img_url }" alt="" class="add-tenant-icon rounded-circle">'+
@@ -328,27 +337,32 @@ let tenantSuggestion =  '<li class="row m-1 tenant-suggestion">'+
                             '</div>'+
                         '</li>'
 
+emptyUserList(addTenantList);
+// handling of add tenant form
 searchTenForm.on('keyup', function(e){
-    // console.log(searchTenForm.val())
 
     let formVal = searchTenForm.val()
 
     addTenantList.empty();
+    
 
     $.ajax({
         type:'GET',
         url: '/api/users/user-list/?q='+formVal+'',
         success: function(data){
             data.forEach(function(d){
-                // console.log(d.profile['profile_image'])
 
+
+                // replace relevant placeholders with incoming values
                 let suggestion = tenantSuggestion.replace('{ img_url }', d.profile['profile_image']);
                 suggestion = suggestion.replace('{ name }', d.username);
                 suggestion = suggestion.replace('{ email }', d.email);
                 addTenantList.append(suggestion)
 
+                emptyUserList(addTenantList, e, formVal);
+
             })
-            
+            emptyUserList(addTenantList, e, formVal);
         }
     })
 })
