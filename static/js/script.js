@@ -314,3 +314,41 @@ window.addEventListener('click', function(e){
 
 
 
+// add tenant form
+const searchTenForm = $('#txt-search');
+const addTenantList = $('#add-user-list');
+
+let tenantSuggestion =  '<li class="row m-1 tenant-suggestion">'+
+                            '<div class="col-3 col-sm-4">'+
+                                '<img src="{ img_url }" alt="" class="add-tenant-icon rounded-circle">'+
+                            '</div>'+
+                            '<div class="col-7 text-left pl-1">'+
+                                '<p class="md-text m-1">{ name }</p>'+
+                                '<p class="md-text m-1">{ email }</p>'+
+                            '</div>'+
+                        '</li>'
+
+searchTenForm.on('keyup', function(e){
+    // console.log(searchTenForm.val())
+
+    let formVal = searchTenForm.val()
+
+    addTenantList.empty();
+
+    $.ajax({
+        type:'GET',
+        url: '/api/users/user-list/?q='+formVal+'',
+        success: function(data){
+            data.forEach(function(d){
+                // console.log(d.profile['profile_image'])
+
+                let suggestion = tenantSuggestion.replace('{ img_url }', d.profile['profile_image']);
+                suggestion = suggestion.replace('{ name }', d.username);
+                suggestion = suggestion.replace('{ email }', d.email);
+                addTenantList.append(suggestion)
+
+            })
+            
+        }
+    })
+})
