@@ -1,0 +1,14 @@
+.add-tenant-icon{
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 5px 0;
+    box-shadow: 1px 2px 2px #636363;
+}
+
+.tenant-suggestion{
+    cursor: pointer;
+    &:hover{
+        background-color: #bbb;
+        border-radius: 5px;
+    }
+}

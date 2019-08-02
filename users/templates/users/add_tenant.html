@@ -2,7 +2,7 @@
 
 <div id="addModal" class="modal" style="display: block">
         <div class="overlay"></div>
-        <div class="modal-content col-10 col-sm-5">
+        <div class="modal-content col-10 col-sm-6">
             <div class="row">
                 <div class="col-10 text-left">
                     <h2 class="md-heading m-2">Add tenant</h2>
@@ -20,9 +20,25 @@
             <form class="row" action="">
                     {% csrf_token %}
                 <div class="col-12">
-                    <input type="text" class="form-control" id="txtSearch" name="txtSearch">
+                    <input type="text" class="form-control" id="txt-search" name="txtSearch">
+                </div>
+                <div id="add-user-list" class="col-12">
+                {% if userTenants %}
+                    {% for tenant in userTenants %}
+                        <div class="row m-1 tenant-suggestion">
+                            <div class="col-3 col-sm-4">
+                                <img src="{{ tenant.profile_image.url }}" alt="" class="add-tenant-icon rounded-circle">
+                            </div>
+                            <div class="col-7 text-left pl-1">
+                                <p class="md-text m-1">{{ tenant.user.username }}</p>
+                                <p class="md-text m-1">{{ tenant.user.email }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
                 </div>
                 <div class="col-12 text-right mt-2">
+                    <hr class="m-1">
                     <button type="submit" class="btn btn-md btn-primary btn-submit">Submit</button>                
                 </div>
             </form>
