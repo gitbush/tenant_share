@@ -1,3 +1,13 @@
+.add-modal-content {
+    top: 50%;
+    min-height: 350px;
+}
+
+.remove-modal-content{
+    top: 30%;
+    min-height: 180px;
+}
+
 .add-tenant-icon{
     width: 2.5rem;
     height: 2.5rem;
@@ -17,3 +27,4 @@
     max-height: 200px;
     overflow: scroll;
 }
+

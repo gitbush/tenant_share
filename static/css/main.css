@@ -291,11 +291,9 @@ option {
 .modal .modal-content {
   z-index: 999;
   position: absolute;
-  top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  min-height: 350px;
   overflow: auto;
   background: #fff;
   padding: 10px;
@@ -323,6 +321,16 @@ option {
   to {
     opacity: 1;
   }
+}
+
+.add-modal-content {
+  top: 50%;
+  min-height: 350px;
+}
+
+.remove-modal-content {
+  top: 30%;
+  min-height: 180px;
 }
 
 .add-tenant-icon {
