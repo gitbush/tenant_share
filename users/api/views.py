@@ -1,8 +1,9 @@
 from django.shortcuts import render
+from django.db.models import Q
 from rest_framework import viewsets
 
 from .serializers import UserSerializer
-from users.models import User
+from users.models import User, Profile
 
 # Create your views here.
 
@@ -16,7 +17,8 @@ class UserListApiView(viewsets.ModelViewSet):
         """
         query = self.request.GET.get('q')
         if query: # if parameters in url
-            queryset = User.objects.filter(username__startswith=query)
+            queryset = User.objects.filter(Q(username__startswith=query)&
+                                           Q(profile__rental=None))
             
         else:
             queryset = User.objects.all()
