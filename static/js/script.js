@@ -4,15 +4,20 @@ const sidebar = document.getElementById("sidebar");
 const content = document.getElementById("content");
 
 if(window.innerWidth >= 960){
-    sidebar.classList.add("show-sidebar");
-    content.style.marginLeft = "60px";
+    if(sidebar){
+        sidebar.classList.add("show-sidebar");
+        content.style.marginLeft = "60px";
+    }
 }
 
 else if(window.innerWidth < 960){
-    menuIcon.addEventListener("click", function(){
-        sidebar.classList.add("show-sidebar");
-        event.stopPropagation();
-    });
+    if(menuIcon){
+        menuIcon.addEventListener("click", function(){
+            sidebar.classList.add("show-sidebar");
+            event.stopPropagation();
+        });
+    }
+    
 
     document.addEventListener("click", function(e){
         if(e.target.classList.contains("show-sidebar") === false){
@@ -273,7 +278,7 @@ if(maintId){
 
 let modalOpen = document.querySelectorAll('.modal-open');
 let modalClose = document.querySelectorAll('.modal-close');
-let rentalId = document.getElementById('rental-id').innerText;
+let rental = document.getElementById('rental-id');
 let tenantName = document.getElementById('tenant-name');
         
 modalOpen.forEach(function(openBtn){
@@ -293,6 +298,7 @@ modalOpen.forEach(function(openBtn){
             tenantName.innerText =  name
 
             // set href of confirm link with current rental and selected tenant
+            let rentalId = rental.innerText;
             let removeTen = document.getElementById('remove-confirm');
             let setHref = removeTen.setAttribute('href', '/users/tenant/remove/'+rentalId+'/'+tenId+'');
         }
@@ -320,10 +326,13 @@ const addTenantList = $('#add-user-list');
 
 // check if suggestion list is empty and display message
 function emptyUserList(list, e, form){
-    if(list.is(':empty') || ((e.keyCode == 8 && !form))){
-        list.empty();
+    if(list.is(':empty')){
         list.append('<p class="md-text text-left m-2">No results found</p>')
     } 
+    else if((e.keyCode == 8 && !form)){
+        list.empty();
+        list.append('<p class="md-text text-left m-2">No results found</p>')
+    }
 }
 
 // template for add tenant suggestion 
