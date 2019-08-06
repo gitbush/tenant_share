@@ -63,29 +63,18 @@ def account(request, id):
     return render(request, 'users/account.html', context)
 
 
-def add_tenant(request, id):
+def add_tenant(request, rental_id):
     """
-    Register a new user and add to the current rental property.
+    Add the current rental to the new tenants profile
     """
 
-    current_rental = get_object_or_404(Rental, id=id)
-    
-    if request.method == 'POST':
-        registerForm = UserRegisterForm(request.POST)
-        asForm = RegisterAsForm(request.POST)
-        if registerForm.is_valid():
-            registerForm.save()
-            if asForm.is_valid():
-                profile = Profile.objects.filter(user__username=registerForm.cleaned_data['username']).first()
-                register_as = asForm.cleaned_data['register_as']
-                profile.register_as = register_as
-                profile.rental = current_rental
-                profile.save()
-            return redirect('maint-home')
-    else:
-        registerForm = UserRegisterForm()
-        asForm = RegisterAsForm()
-    return render(request, 'users/add_tenant.html', {'registerForm': registerForm, 'asForm': asForm})
+    current_rental = get_object_or_404(Rental, id=rental_id)
+    username = request.POST.get('txtSearch')
+    new_tenant = get_object_or_404(User, username=username)
+    new_tenant.profile.rental = current_rental
+    new_tenant.profile.save()
+
+    return redirect('maint-home')
 
 def remove_tenant(request, rental_id, id):
     """
