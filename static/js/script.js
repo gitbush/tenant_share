@@ -332,13 +332,13 @@ let tenantSuggestion =  '<li class="row m-1 tenant-suggestion">'+
                                 '<img src="{ img_url }" alt="" class="add-tenant-icon rounded-circle">'+
                             '</div>'+
                             '<div class="col-7 text-left pl-1">'+
-                                '<p class="md-text m-1">{ name }</p>'+
+                                '<p id="ten-name" class="md-text m-1">{ name }</p>'+
                                 '<p class="md-text m-1">{ email }</p>'+
                             '</div>'+
                         '</li>'
 
 emptyUserList(addTenantList);
-// handling of add tenant form
+// handling of add tenant form suggestions
 searchTenForm.on('keyup', function(e){
 
     let formVal = searchTenForm.val()
@@ -352,7 +352,6 @@ searchTenForm.on('keyup', function(e){
         success: function(data){
             data.forEach(function(d){
 
-
                 // replace relevant placeholders with incoming values
                 let suggestion = tenantSuggestion.replace('{ img_url }', d.profile['profile_image']);
                 suggestion = suggestion.replace('{ name }', d.username);
@@ -363,6 +362,17 @@ searchTenForm.on('keyup', function(e){
 
             })
             emptyUserList(addTenantList, e, formVal);
+
+            // add tenant form processing 
+            let suggestionEl = $('.tenant-suggestion');
+
+            suggestionEl.on('click', function(e){
+                let clickUsername = $(this).find('#ten-name').text()
+                searchTenForm.val(clickUsername)
+            })
+            
         }
     })
 })
+
+
