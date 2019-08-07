@@ -355,6 +355,25 @@ option {
   overflow-y: scroll;
 }
 
+#edit-profile-alert {
+  position: fixed;
+  bottom: 40px;
+  right: -300px;
+  height: 150px;
+  width: 300px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  background-color: #ecebeb;
+  -webkit-transition: .5s ease-out;
+  transition: .5s ease-out;
+}
+
+#edit-profile-alert.show-alert {
+  -webkit-transition: 1.5s;
+  transition: 1.5s;
+  right: 50px;
+}
+
 .house-img {
   width: 8rem;
   height: 8rem;

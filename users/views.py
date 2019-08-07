@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from .forms import UserRegisterForm, RegisterAsForm, UserUpdateForm, ProfileUpdateForm
 from .models import *
 from maintenance.forms import RentalCreationForm
@@ -36,8 +37,10 @@ def account(request, id):
     # check which form is submitted 
         if 'profile' in request.POST:
             if user_update_form.is_valid() and profile_img_form.is_valid():
+                username = user_update_form.cleaned_data['username']
                 user_update_form.save()
                 profile_img_form.save()
+                messages.add_message(request, messages.INFO, f'Profile updated')
                 return redirect('account', id=request.user.id)
         elif 'rental' in request.POST:
             user_profile = get_object_or_404(Profile, user=request.user)

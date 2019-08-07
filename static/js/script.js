@@ -346,7 +346,7 @@ let tenantSuggestion =  '<li class="row m-1 tenant-suggestion">'+
                             '</div>'+
                         '</li>'
 
-emptyUserList(addTenantList);
+// emptyUserList(addTenantList);
 
 // handling of add tenant form suggestions
 searchTenForm.on('keyup', function(e){
@@ -388,5 +388,15 @@ searchTenForm.on('keyup', function(e){
     }
 })    
 
+// alert modal for user messages
+const alertDiv = document.getElementById('edit-profile-alert');
+
+document.addEventListener('DOMContentLoaded', function(e){
+    console.log(alertDiv.innerText)
+    if(alertDiv.innerText != false){
+        console.log(alertDiv.innerHTML)
+        alertDiv.classList.toggle('show-alert')
+    }
+})
 
 
