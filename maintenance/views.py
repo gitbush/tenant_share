@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from .models import *
@@ -68,6 +69,7 @@ def MaintRequestCreate(request):
             new_request.property_ref = request_rental
             new_request.author = request.user
             new_request.save()
+            messages.add_message(request, messages.INFO, f'New maintenance request created')
             Thread.objects.create(rental=request_rental, maint_request=new_request) # create a message thread on maint request create
             return redirect('maint-detail', id=new_request.id)
 
@@ -82,7 +84,7 @@ def MaintRequestDetail(request, id):
     Allow for landlord to assign cost to tenant/landlord
     """
     maint_request = get_object_or_404(MaintRequest, id=id) 
-    messages = ChatMessage.objects.filter(maint_request=maint_request) # get chat messages
+    chat_messages = ChatMessage.objects.filter(maint_request=maint_request) # get chat messages
 
     message_form = MessageForm()
     if request.method == 'POST':
@@ -105,7 +107,7 @@ def MaintRequestDetail(request, id):
 
     context = {
         'maint_request': maint_request,
-        'messages': messages,
+        'chat_messages': chat_messages,
         'message_form': message_form,
         'assign_cost_form': assign_cost_form,
         'status_form': status_form,

@@ -102,3 +102,16 @@
     </div>
     <!-- end detail row -->
 </div>
+
+
+<!-- alert modal for messages -->
+<div id="edit-profile-alert">
+    {% if messages %}
+    <h3 class="alert-header md-heading m-2">SUCCESS!</h3>
+    <ul class="alert-list mb-1">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>

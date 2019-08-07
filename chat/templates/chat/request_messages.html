@@ -16,27 +16,27 @@
     <div class="row justify-content-center">
         <ul class="col-11" id="message-list">
             <!-- for each message in message -->
-            {% for message in messages %}
+            {% for msg in chat_messages %}
                 <!-- if current user is author then display to the left -->
-                {% if request.user == message.author%}
+                {% if request.user == msg.author%}
                 <li class="row">
                     <div class="col-11 col-sm-10">
                         <div class="row author-bg">
                             <div class="col-3 col-sm-2 p-0 text-center">
-                                <img src="{{ message.author.profile.profile_image.url }}" alt="Prof" class="profile-icon rounded-circle img-fluid">
+                                <img src="{{ msg.author.profile.profile_image.url }}" alt="Prof" class="profile-icon rounded-circle img-fluid">
                                 <p class="sm-text m-1 bold"><i>"You"</i></p>
                             </div>
                             <div class="col-7 p-0 position-relative">
                                 <div class="col-12">
                                     <p id="message-chat" class="md-text mb-2 mt-2">
-                                        {{ message }}
+                                        {{ msg }}
                                     </p>
-                                    <p class="msg-id" hidden>{{ message.id }}</p>
+                                    <p class="msg-id" hidden>{{ msg.id }}</p>
                                 </div>
                                 <div class="col-12 date-posted">
                                     <hr class="m-1">
                                     <p id="message-date" class="sm-text mb-1 mt-1">
-                                        {{ message.date_posted }}
+                                        {{ msg.date_posted }}
                                     </p>
                                 </div>
                             </div>
@@ -51,20 +51,20 @@
                             <div class="col-7 p-0 text-right position-relative">
                                 <div class="col-12">
                                     <p id="message-chat" class="md-text mt-2 mb-2">
-                                        {{ message }}
+                                        {{ msg }}
                                     </p>
-                                    <p class="msg-id" hidden>{{ message.id }}</p>
+                                    <p class="msg-id" hidden>{{ msg.id }}</p>
                                 </div>
                                 <div class="col-12 text-right date-posted">
                                     <hr class="m-1">
                                     <p id="message-date" class="sm-text mb-1">
-                                        {{ message.date_posted }}
+                                        {{ msg.date_posted }}
                                     </p>
                                 </div>
                             </div>
                             <div class="col-3 col-sm-2 p-0 text-center">
-                                <img src="{{ message.author.profile.profile_image.url }}" alt="Prof" class="profile-icon rounded-circle img-fluid">
-                                <p class="sm-text m-1 bold"><i>"{{ message.author.first_name }}"</i></p>                           
+                                <img src="{{ msg.author.profile.profile_image.url }}" alt="Prof" class="profile-icon rounded-circle img-fluid">
+                                <p class="sm-text m-1 bold"><i>"{{ msg.author.first_name }}"</i></p>                           
                             </div>
                         </div>
                     </div>
