@@ -16,10 +16,11 @@ class UserListApiView(viewsets.ModelViewSet):
         get_queryset to handle url parameters
         """
         query = self.request.GET.get('q')
-        if self.request.is_ajax:
+        if self.request.is_ajax and query:
             if len(query) > 0: # if parameters in url
                 queryset = User.objects.filter(Q(username__startswith=query)&
                                             Q(profile__rental=None))
+                return queryset
         else:
             queryset = User.objects.all()
 

@@ -337,7 +337,7 @@ function emptyUserList(list, e, form){
 
 // template for add tenant suggestion 
 let tenantSuggestion =  '<li class="row m-1 tenant-suggestion">'+
-                            '<div class="col-3 col-sm-4">'+
+                            '<div class="col-3 col-sm-4 col-md-3">'+
                                 '<img src="{ img_url }" alt="" class="add-tenant-icon rounded-circle">'+
                             '</div>'+
                             '<div class="col-7 text-left pl-1">'+

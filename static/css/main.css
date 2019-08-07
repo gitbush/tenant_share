@@ -351,8 +351,8 @@ option {
 }
 
 #add-user-list {
-  max-height: 200px;
-  overflow: scroll;
+  height: 200px;
+  overflow-y: scroll;
 }
 
 .house-img {
