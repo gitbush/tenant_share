@@ -28,10 +28,10 @@ def checkout(request, payment_id):
                 messages.error(request, 'Your card was declined!')
 
             if customer.paid:
-                messages.error(request, 'You have successfully paid!')
                 payment_to_pay.is_paid = True
                 payment_to_pay.payment_token = payment_form.cleaned_data['stripe_id']
                 payment_to_pay.save()
+                messages.add_message(request, messages.INFO, f'Payment made successfully ')
                 return redirect(reverse('payments-list'))
             else:
                 messages.error(request, 'Unable to take payment')
