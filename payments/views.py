@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse
+from django.contrib import messages
 from django.core.paginator import Paginator
 from .forms import PaymentForm
 from .models import Payment
@@ -20,6 +21,7 @@ def payments_list(request):
             new_payment = payment_form.save(commit=False)
             new_payment.user = request.user
             new_payment.save()
+            messages.add_message(request, messages.INFO, f'New pending payment added')
             return redirect('payments-list')
     else:
         payment_form = PaymentForm(request.user.profile.rental, initial = {'maint_request': 'Please select'})
