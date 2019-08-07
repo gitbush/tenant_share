@@ -392,10 +392,14 @@ searchTenForm.on('keyup', function(e){
 const alertDiv = document.getElementById('edit-profile-alert');
 
 document.addEventListener('DOMContentLoaded', function(e){
-    console.log(alertDiv.innerText)
     if(alertDiv.innerText != false){
-        console.log(alertDiv.innerHTML)
         alertDiv.classList.toggle('show-alert')
+        setTimeout(function(){
+            alertDiv.classList.toggle('show-alert')
+        }, 4000);
+    } else{
+        console.log('error')
+        console.log(alertDiv.innerText)
     }
 })
 
