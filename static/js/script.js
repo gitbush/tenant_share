@@ -347,41 +347,46 @@ let tenantSuggestion =  '<li class="row m-1 tenant-suggestion">'+
                         '</li>'
 
 emptyUserList(addTenantList);
+
 // handling of add tenant form suggestions
 searchTenForm.on('keyup', function(e){
 
     let formVal = searchTenForm.val()
 
     addTenantList.empty();
+
+    keys = [32, 37, 38, 39, 40]
+    if(keys.includes(e.keyCode) == false){
+        $.ajax({
+            type:'GET',
+            url: '/api/users/user-list/?q='+formVal+'',
+            success: function(data){
+                data.forEach(function(d){
     
-
-    $.ajax({
-        type:'GET',
-        url: '/api/users/user-list/?q='+formVal+'',
-        success: function(data){
-            data.forEach(function(d){
-
-                // replace relevant placeholders with incoming values
-                let suggestion = tenantSuggestion.replace('{ img_url }', d.profile['profile_image']);
-                suggestion = suggestion.replace('{ name }', d.username);
-                suggestion = suggestion.replace('{ email }', d.email);
-                addTenantList.append(suggestion)
-
+                    // replace relevant placeholders with incoming values
+                    let suggestion = tenantSuggestion.replace('{ img_url }', d.profile['profile_image']);
+                    suggestion = suggestion.replace('{ name }', d.username);
+                    suggestion = suggestion.replace('{ email }', d.email);
+                    addTenantList.append(suggestion)
+    
+                    emptyUserList(addTenantList, e, formVal);
+    
+                })
                 emptyUserList(addTenantList, e, formVal);
+    
+                // add tenant form processing 
+                let suggestionEl = $('.tenant-suggestion');
+    
+                suggestionEl.on('click', function(e){
+                    let clickUsername = $(this).find('#ten-name').text()
+                    searchTenForm.val(clickUsername)
+                })
+            }
+        })
+    } else {
+        e.preventDefault();
+    }
+})    
 
-            })
-            emptyUserList(addTenantList, e, formVal);
-
-            // add tenant form processing 
-            let suggestionEl = $('.tenant-suggestion');
-
-            suggestionEl.on('click', function(e){
-                let clickUsername = $(this).find('#ten-name').text()
-                searchTenForm.val(clickUsername)
-            })
-            
-        }
-    })
-})
 
 
