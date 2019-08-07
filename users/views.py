@@ -37,7 +37,6 @@ def account(request, id):
     # check which form is submitted 
         if 'profile' in request.POST:
             if user_update_form.is_valid() and profile_img_form.is_valid():
-                username = user_update_form.cleaned_data['username']
                 user_update_form.save()
                 profile_img_form.save()
                 messages.add_message(request, messages.INFO, f'Profile updated')
@@ -50,6 +49,7 @@ def account(request, id):
                 new_rental.save()
                 user_profile.rental = new_rental
                 user_profile.save()
+                messages.add_message(request, messages.INFO, f'Property updated')
                 return redirect('account', id=request.user.id)
     # populate boths forms on GET
     else:

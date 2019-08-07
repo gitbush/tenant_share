@@ -391,16 +391,19 @@ searchTenForm.on('keyup', function(e){
 // alert modal for user messages
 const alertDiv = document.getElementById('edit-profile-alert');
 
-document.addEventListener('DOMContentLoaded', function(e){
-    if(alertDiv.innerText != false){
-        alertDiv.classList.toggle('show-alert')
-        setTimeout(function(){
+if(alertDiv){
+    document.addEventListener('DOMContentLoaded', function(e){
+        if(alertDiv.innerText != false){
             alertDiv.classList.toggle('show-alert')
-        }, 4000);
-    } else{
-        console.log('error')
-        console.log(alertDiv.innerText)
-    }
-})
+            setTimeout(function(){
+                alertDiv.classList.toggle('show-alert')
+            }, 4000);
+        } else{
+            console.log('error')
+            console.log(alertDiv.innerText)
+        }
+    })
+}
+
 
 
