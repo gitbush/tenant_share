@@ -398,10 +398,7 @@ if(alertDiv){
             setTimeout(function(){
                 alertDiv.classList.toggle('show-alert')
             }, 4000);
-        } else{
-            console.log('error')
-            console.log(alertDiv.innerText)
-        }
+        } 
     })
 }
 

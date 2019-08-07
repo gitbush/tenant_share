@@ -661,6 +661,15 @@ option {
   }
 }
 
+#credit-card-errors {
+  display: none;
+  color: red;
+  height: 30px;
+  border-radius: 2px;
+  padding: 5px;
+  background-color: rgba(242, 38, 19, 0.2);
+}
+
 .author-bg {
   background-color: #d8efd8;
   margin: 5px 0px 5px 0px;

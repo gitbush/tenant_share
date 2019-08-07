@@ -21,11 +21,13 @@ $(function() {
             
             form.submit();
         } else {
+            console.log(response.error.message)
+            console.log($("#stripe-error-message").text(response.error.message))
             $("#stripe-error-message").text(response.error.message);
             $("#credit-card-errors").show();
-            $("#validate_card_btn").attr("disabled", false);
         }
     });
     return false;
     });
 });
+
