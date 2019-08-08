@@ -24,20 +24,19 @@ def checkout(request, payment_id):
                     description = request.user.email,
                     card = payment_form.cleaned_data['stripe_id'],
                 )
+                if customer.paid:
+                    payment_to_pay.is_paid = True
+                    payment_to_pay.payment_token = payment_form.cleaned_data['stripe_id']
+                    payment_to_pay.save()
+                    messages.success(request,  'Payment made successfully ')
+                    return redirect(reverse('payments-list'))
+                else:
+                    messages.error(request, 'Unable to take payment')
             except stripe.error.CardError:
                 messages.error(request, 'Your card was declined!')
-
-            if customer.paid:
-                payment_to_pay.is_paid = True
-                payment_to_pay.payment_token = payment_form.cleaned_data['stripe_id']
-                payment_to_pay.save()
-                messages.add_message(request, messages.INFO, f'Payment made successfully ')
-                return redirect(reverse('payments-list'))
-            else:
-                messages.error(request, 'Unable to take payment')
         else:
             print(payment_form.errors)
-            messages.error(request, 'We could not take payment from that card"')
+            messages.error(request, 'Card details are incorrect')
 
     else:
         payment_form = MakePaymentForm()
