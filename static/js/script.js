@@ -286,7 +286,7 @@ modalOpen.forEach(function(openBtn){
         let modal = openBtn.getAttribute('data-modal');
         document.getElementById(modal).style.display = 'block';
 
-        let tenId = this.getAttribute('data-ten-id');
+        
 
         // if modal is remove tenant
         if(modal === 'removeModal'){
@@ -298,6 +298,7 @@ modalOpen.forEach(function(openBtn){
             tenantName.innerText =  name
 
             // set href of confirm link with current rental and selected tenant
+            let tenId = this.getAttribute('data-ten-id');
             let rentalId = rental.innerText;
             let removeTen = document.getElementById('remove-confirm');
             let setHref = removeTen.setAttribute('href', '/users/tenant/remove/'+rentalId+'/'+tenId+'');
@@ -417,6 +418,20 @@ function msgType(){
     }
 }
 
+// delete payment from list
+const deletePaymentBtn= document.getElementById('delete-payment-btn');
+const deleteConfirm = document.getElementById('delete-confirm');
+
+if(deletePaymentBtn){
+    deletePaymentBtn.addEventListener('click', function(e){
+        console.log(this.getAttribute('data-payId'));
+        let payId = this.getAttribute('data-payId');
+    
+        let href = '/payments/delete/'+payId+'';
+        deleteConfirm.setAttribute('href', href)
+    
+    })
+}
 
 
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.core.paginator import Paginator
 from .forms import PaymentForm
@@ -11,7 +11,7 @@ def payments_list(request):
     Add new payment to list
     """
     payment_list = Payment.objects.filter(user=request.user).order_by('-payment_date')
-    paginator = Paginator(payment_list, 2)
+    paginator = Paginator(payment_list, 12)
     page = request.GET.get('page')
     payments = paginator.get_page(page)
 
@@ -21,7 +21,7 @@ def payments_list(request):
             new_payment = payment_form.save(commit=False)
             new_payment.user = request.user
             new_payment.save()
-            messages.add_message(request, messages.INFO, f'New pending payment added')
+            messages.success(request, 'New pending payment added')
             return redirect('payments-list')
     else:
         payment_form = PaymentForm(request.user.profile.rental, initial = {'maint_request': 'Please select'})
@@ -31,3 +31,11 @@ def payments_list(request):
         'payments': payments
     }
     return render(request, 'payments/payments_list.html', context)
+
+def delete_payment(request, id):
+
+    current_payment = get_object_or_404(Payment, id=id)
+    current_payment.delete()
+    messages.success(request, 'Payment has been deleted')
+
+    return redirect('payments-list')
