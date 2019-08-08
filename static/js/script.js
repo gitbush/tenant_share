@@ -402,5 +402,21 @@ if(alertDiv){
     })
 }
 
+// handle message tags error/success
+let msgTag = document.getElementById('msg-tag');
+const msgHeading = document.getElementsByClassName('alert-header')[0];
+
+if(msgTag){
+    msgType();
+}
+
+function msgType(){
+    if(msgTag.classList.contains('error')){
+        msgHeading.innerText = 'WOOPS!';
+        msgHeading.style.color = 'red';
+    }
+}
+
+
 
 
