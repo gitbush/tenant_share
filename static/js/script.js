@@ -293,10 +293,13 @@ function confirmModal(title, message, href){
 
 let modalClose = document.getElementById('modal-close');
 
-modalClose.addEventListener('click', function(){
+if(modalClose){
+    modalClose.addEventListener('click', function(){
 
-    modalClose.closest('.modal').style.display = 'none';
-}) 
+        modalClose.closest('.modal').style.display = 'none';
+    }) 
+}
+
 
 window.addEventListener('click', function(e){
     if(e.target.className === 'overlay'){
