@@ -276,42 +276,27 @@ if(maintId){
     
 // add and remove tenant modals
 
-let modalOpen = document.querySelectorAll('.modal-open');
-let modalClose = document.querySelectorAll('.modal-close');
-let rental = document.getElementById('rental-id');
-let tenantName = document.getElementById('tenant-name');
-        
-modalOpen.forEach(function(openBtn){
-    openBtn.addEventListener('click', function(){
-        let modal = openBtn.getAttribute('data-modal');
-        document.getElementById(modal).style.display = 'block';
 
-        
+function confirmModal(title, message, href){
 
-        // if modal is remove tenant
-        if(modal === 'removeModal'){
-            // show tenant name
-            let tenDiv = this.parentNode.parentNode
-            let firstName = tenDiv.querySelector('#ten-first').innerText;
-            let lastName = tenDiv.querySelector('#ten-last').innerText;
-            let name = firstName + ' ' + lastName
-            tenantName.innerText =  name
+    const modalTitle = document.getElementById('title');
+    const modalMessage = document.getElementById('message');
+    const modalConfirm = document.getElementById('delete-confirm');
 
-            // set href of confirm link with current rental and selected tenant
-            let tenId = this.getAttribute('data-ten-id');
-            let rentalId = rental.innerText;
-            let removeTen = document.getElementById('remove-confirm');
-            let setHref = removeTen.setAttribute('href', '/users/tenant/remove/'+rentalId+'/'+tenId+'');
-        }
-    }) 
-})
+    modalTitle.innerText = title
+    modalMessage.innerText = message
+    modalConfirm.setAttribute('href', href) 
+    
+    document.getElementById('confirm-modal').style.display = 'block';
 
-modalClose.forEach(function(closeBtn){
-    closeBtn.addEventListener('click', function(){
+}
 
-        closeBtn.closest('.modal').style.display = 'none';
-    }) 
-})
+let modalClose = document.getElementById('modal-close');
+
+modalClose.addEventListener('click', function(){
+
+    modalClose.closest('.modal').style.display = 'none';
+}) 
 
 window.addEventListener('click', function(e){
     if(e.target.className === 'overlay'){
@@ -319,10 +304,26 @@ window.addEventListener('click', function(e){
     }
 })
 
+// add tenant functionality
+
+const addTenantBtn = document.getElementById('add-tenant-btn');
+
+function addTenantModal(){
+    document.getElementById('add-tenant-modal').style.display = 'block';
+
+}
+
+if(addTenantBtn){
+    addTenantBtn.addEventListener('click', function(){
+        addTenantModal();
+    })
+}
 
 
 // add tenant form
-const searchTenForm = $('#txt-search');
+
+
+const searchTenForm = $('#txt-search'); 
 const addTenantList = $('#add-user-list');
 
 // check if suggestion list is empty and display message
@@ -424,14 +425,38 @@ const deleteConfirm = document.getElementById('delete-confirm');
 
 if(deletePaymentBtn){
     deletePaymentBtn.addEventListener('click', function(e){
-        console.log(this.getAttribute('data-payId'));
-        let payId = this.getAttribute('data-payId');
-    
-        let href = '/payments/delete/'+payId+'';
-        deleteConfirm.setAttribute('href', href)
+
+        const payId = this.getAttribute('data-payId')
+        const href = `/payments/delete/${payId}`;
+        const message = 'Are you sure you want to delete this payment?'
+        const title = 'Delete payment'
+
+        confirmModal(title, message, href);
     
     })
 }
 
+// remove tenant from rental property
+const deleteTenantBtn = document.querySelectorAll('#delete-tenant-btn');
+
+if(deleteTenantBtn){
+    deleteTenantBtn.forEach(function(btn){
+        btn.addEventListener('click', function(e){
+
+            const firstName = this.parentNode.parentNode.querySelector('#ten-first').innerText;
+            const lastName = this.parentNode.parentNode.querySelector('#ten-last').innerText;
+
+            const tenId = this.getAttribute('data-ten-Id')
+            const rentId = this.getAttribute('data-rent-Id')
+
+            const href = `/tenant/remove/${rentId}/${tenId}`;
+            const message = `Are you sure you want to remove ${firstName} ${lastName} from this property?`
+            const title = 'Remove tenant'
+
+            confirmModal(title, message, href);
+        
+        })
+    })
+}
 
 

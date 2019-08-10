@@ -59,7 +59,7 @@
                         {% else %}
                             <td class="text-center">
                                 <a href="{% url 'checkout' payment_id=payment.id %}" class="btn btn-sm btn-success mr-sm-1">Pay</a>
-                                <button id="delete-payment-btn" class="btn btn-sm btn-danger ml-sm-1 modal-open" data-modal="deletePaymentModal" data-payID="{{ payment.id }}">Delete</button>
+                                <button id="delete-payment-btn" class="btn btn-sm btn-danger ml-sm-1 modal-open delete-btn" data-payID="{{ payment.id }}">Delete</button>
                             </td>
                         {% endif %}
                         </tr>
@@ -99,6 +99,5 @@
     <!-- end payment history list -->
 </div>
 
-{% include 'payments/delete_payment.html' %}
 
 {% endblock %}

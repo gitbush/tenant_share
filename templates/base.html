@@ -39,17 +39,10 @@
             <li class="sidebar-item"><a href="{% url 'payments-list' %}"><img src="https://i.ibb.co/X7QC7F3/imageedit-3-6563832234.png" alt="imageedit-3-6563832234" border="0" class="sidebar-icon"></a></li>
         </ul>
     </div>
-    <!-- alert modal for messages -->
-    <div id="edit-profile-alert">
-        {% if messages %}
-        <h3 class="alert-header md-heading m-2">SUCCESS!</h3>
-        <ul class="alert-list mb-2 pl-3">
-            {% for message in messages %}
-            <li id="msg-tag" {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-    </div>
+    
+    {% include 'alert_messages.html' %}
+
+    {% include 'confirm_modal.html' %}
 
     {% include 'scripts.html' %}
 </body>

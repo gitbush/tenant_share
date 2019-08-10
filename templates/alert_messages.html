@@ -1,0 +1,11 @@
+<!-- alert modal for messages -->
+<div id="edit-profile-alert">
+    {% if messages %}
+    <h3 class="alert-header md-heading m-2">SUCCESS!</h3>
+    <ul class="alert-list mb-2 pl-3">
+        {% for message in messages %}
+        <li id="msg-tag" {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
