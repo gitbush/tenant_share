@@ -476,4 +476,21 @@ if(deleteTenantBtn){
     })
 }
 
+// loading spinner
+function showLoader(){
+    const spinner = this.document.querySelector('.spinner');
+}
+
+function hideLoader(){
+    const spinner = this.document.querySelector('.spinner');
+    spinner.className += ' hidden'
+}
+
+window.addEventListener('DOMContentLoaded', function(){
+    showLoader();
+})
+
+window.addEventListener('load', function(){
+    hideLoader();
+})
 
