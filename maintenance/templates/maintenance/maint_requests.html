@@ -5,7 +5,7 @@
 {% block content %}
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="card col-11 col-md-9 mt-3 max-card">
+            <div class="card col-11 mt-3 max-card">
                 <h3 class="md-heading m-1">Search Maintenance Requests</h3>
                 <hr class="m-1">
                 <div class="col-12">
@@ -35,12 +35,12 @@
         <!-- if user does/does not have a rental -->
         {% if requests %}
             <div class="row justify-content-center mt-2">
-                <div class="col-10 col-md-9 text-right">
+                <div class="col-10 text-right">
                     <a href="{% url 'maint-create' %}" class="btn btn-sm btn-success">+ Add maintenance issue</a>
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="card max-card col-11 col-md-9 mt-3 mb-3">
+                <div class="card max-card col-11 mt-3 mb-3">
                     <div class="row justify-content-center">
                         {% include 'maintenance/_maint_list_item.html' %}
                     </div>
