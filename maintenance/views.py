@@ -114,3 +114,11 @@ def MaintRequestDetail(request, id):
     }
 
     return render(request, 'maintenance/maint_detail.html', context)
+
+def MaintRequestDelete(request, id):
+
+    current_request = get_object_or_404(MaintRequest, id=id)
+    current_request.delete()
+    messages.success(request, 'Maintenance request has been deleted')
+
+    return redirect('maint-list')
