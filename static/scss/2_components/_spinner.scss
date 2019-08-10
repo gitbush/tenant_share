@@ -10,15 +10,3 @@
     align-items: center;
     background-color: white;
 }
-
-.hidden{
-    animation: fade-out 1.5s; 
-    animation-fill-mode: forwards;
-}
-@keyframes fade-out {
-    100% {
-        opacity: 0;
-        visibility: hidden;
-    }
-
-}

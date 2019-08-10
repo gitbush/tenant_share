@@ -404,27 +404,6 @@ option {
   background-color: white;
 }
 
-.hidden {
-  -webkit-animation: fade-out 1.5s;
-          animation: fade-out 1.5s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-}
-
-@-webkit-keyframes fade-out {
-  100% {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
-@keyframes fade-out {
-  100% {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
 .house-img {
   width: 8rem;
   height: 8rem;

@@ -478,12 +478,13 @@ if(deleteTenantBtn){
 
 // loading spinner
 function showLoader(){
-    const spinner = this.document.querySelector('.spinner');
+    const spinner = document.querySelector('.spinner');
+    spinner.style.visibility = 'visible'
 }
 
 function hideLoader(){
-    const spinner = this.document.querySelector('.spinner');
-    spinner.className += ' hidden'
+    const spinner = document.querySelector('.spinner');
+    spinner.style.visibility = 'hidden'
 }
 
 window.addEventListener('DOMContentLoaded', function(){
@@ -491,6 +492,6 @@ window.addEventListener('DOMContentLoaded', function(){
 })
 
 window.addEventListener('load', function(){
-    hideLoader();
+    setTimeout(hideLoader, 500) 
 })
 
