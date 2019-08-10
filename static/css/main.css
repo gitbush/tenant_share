@@ -207,7 +207,7 @@ option {
 }
 
 #sidebar {
-  position: absolute;
+  position: fixed;
   display: block;
   width: 60px;
   left: -60px;
