@@ -353,6 +353,7 @@ option {
 #add-user-list {
   max-height: 175px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #edit-profile-alert {
@@ -404,8 +405,8 @@ option {
 }
 
 .hidden {
-  -webkit-animation: fade-out 2.5s;
-          animation: fade-out 2.5s;
+  -webkit-animation: fade-out 1.5s;
+          animation: fade-out 1.5s;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
 }
