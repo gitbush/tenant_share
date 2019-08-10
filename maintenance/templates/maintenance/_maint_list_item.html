@@ -8,7 +8,10 @@
         <div id="home-maint-info">
             <p class="md-text m-0"><b>{{ request.date_raised.date }}</b></p>
             <p class="md-text m-0">#{{ request.id }}&nbsp;{{ request.title }}</p>   
-            <a class="btn btn-sm btn-success mt-2" href="{% url 'maint-detail' id=request.id %}">View</a>     
+            <a class="btn btn-sm btn-success mt-2" href="{% url 'maint-detail' id=request.id %}">View</a> 
+            {% if request.user == userLandlord %}
+            <button id="delete-request-btn" class="btn btn-sm btn-danger mt-2 modal-open" data-maint-id="{{ request.id }}">Delete</button>
+            {% endif %}
         </div>
         <div id="home-maint-status">
             <hr class="m-0 d-md-none">

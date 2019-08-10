@@ -436,6 +436,23 @@ if(deletePaymentBtn){
     })
 }
 
+// delete maintenance request
+const deleteRequestBtn= document.querySelectorAll('#delete-request-btn');
+
+if(deleteRequestBtn){
+    deleteRequestBtn.forEach(function(btn){
+        btn.addEventListener('click', function(e){
+            const maintId = this.getAttribute('data-maint-id')
+            const href = `/maintenance/delete/${maintId}`;
+            const message = 'Are you sure you want to delete this maintenance request?'
+            const title = 'Delete maintenance request'
+    
+            confirmModal(title, message, href);
+        
+        })
+    })
+}
+
 // remove tenant from rental property
 const deleteTenantBtn = document.querySelectorAll('#delete-tenant-btn');
 
