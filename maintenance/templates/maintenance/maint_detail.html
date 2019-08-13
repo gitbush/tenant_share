@@ -7,7 +7,8 @@
             <div class="card-header">
                 <h3 class="sm-heading">Maintenance Request #{{ maint_request.id }}</h3>
             </div>
-            <!-- toggle row -->
+
+            <!-- toggle maintenance request/message tab -->
             <div class="row m-0 justify-content-center">
                 <div class="text-center request-toggle">
                     <div id="request-toggle-switch"></div>    
@@ -19,18 +20,22 @@
                     </span>                    
                 </div>
             </div>
-            <!-- end toggle row -->
+            <!-- END: toggle maintenance request/message tab -->
+
             <hr class="m-1">
+
             <!-- maint request detail view -->
             <div id="detail-view" class="row justify-content-center m-0">
                 {% include 'maintenance/_request_detail.html' %}
             </div>
-            <!-- end maint request detail view -->
+            <!-- END: maint request detail view -->
+
             <!-- maint request message view -->
             <div id="message-view" class="row justify-content-center">
                 {% include 'chat/request_messages.html' %}
             </div>
-            <!-- end maint request message view -->
+            <!-- END: maint request message view -->
+            
         </div>
     </div>
 </div>
