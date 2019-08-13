@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 
-    {% block content %}
-    <div class="container-fluid">
-        <!-- checks if current user is registered and has a rental assigned to it -->
-        {% if userRental %}
-            {% include 'maintenance/_your_house.html' %}
-        {% else %}
-            {% include 'maintenance/_no_rental.html' %}
-        {% endif %}
-    </div>
-    {% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <!-- if user has a rental assigned -->
+    {% if userRental %}
+        {% include 'maintenance/your_house.html' %}
+    <!-- if user has no rental assigned yet -->
+    {% else %}
+        {% include 'maintenance/no_rental.html' %}
+    {% endif %}
+</div>
+{% endblock %}
