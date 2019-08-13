@@ -10,13 +10,11 @@ if(window.innerWidth >= 960){
     }
 }
 
-else if(window.innerWidth < 960){
-    if(menuIcon){
-        menuIcon.addEventListener("click", function(){
-            sidebar.classList.add("show-sidebar");
-            event.stopPropagation();
-        });
-    }
+else if(menuIcon && (window.innerWidth < 960)){
+    menuIcon.addEventListener("click", function(){
+        sidebar.classList.add("show-sidebar");
+        event.stopPropagation();
+    });
     
 
     document.addEventListener("click", function(e){
