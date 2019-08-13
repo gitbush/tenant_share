@@ -4,6 +4,7 @@
 
 {% block content %}
     <div class="container-fluid">
+        {% if request.user.profile.rental %}
         <div class="row justify-content-center">
             <div class="card col-11 mt-3 max-card">
                 <h3 class="md-heading m-1">Search Maintenance Requests</h3>
@@ -33,41 +34,42 @@
             </div>
         </div>
         <!-- if user does/does not have a rental -->
+        <div class="row justify-content-center mt-2">
+            <div class="col-9 text-right">
+                <a href="{% url 'maint-create' %}" class="btn btn-sm btn-success">+ Add maintenance issue</a>
+            </div>
+        </div>
+        {% endif %}
         {% if requests %}
-            <div class="row justify-content-center mt-2">
-                <div class="col-10 text-right">
-                    <a href="{% url 'maint-create' %}" class="btn btn-sm btn-success">+ Add maintenance issue</a>
+        <div class="row justify-content-center">
+            <div class="card max-card col-11 max-card mt-3 mb-3">
+                <div class="row justify-content-center">
+                    {% include 'maintenance/_maint_list_item.html' %}
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="card max-card col-11 mt-3 mb-3">
-                    <div class="row justify-content-center">
-                        {% include 'maintenance/_maint_list_item.html' %}
-                    </div>
-                    <!-- pagination -->
-                    <div class="row justify-content-center mb-2">
-                        <span class="step-links">
-                            {% if requests.has_previous %}
-                            <a href="?page=1" class="btn btn-md btn-outline-info">&Lang;</a>
-                            <a href="?page={{ requests.previous_page_number }}" class="btn btn-md btn-outline-info">&lang;</a>
-                            {% endif %}
-                        
-                            <span class="current">
-                                <a href="?page= {{ requests.number }}" class="btn btn-md btn-info">{{ requests.number }}</a>
-                            </span>
-                        
-                            {% if requests.has_next %}
-                            <a href="?page={{ requests.next_page_number }}" class="btn btn-md btn-outline-info">&rang;</a>
-                            <a href="?page={{ requests.paginator.num_pages }}" class="btn btn-md btn-outline-info">&Rang;</a>
-                            {% endif %}
+                <!-- pagination -->
+                <div class="row justify-content-center mb-2">
+                    <span class="step-links">
+                        {% if requests.has_previous %}
+                        <a href="?page=1" class="btn btn-md btn-outline-info">&Lang;</a>
+                        <a href="?page={{ requests.previous_page_number }}" class="btn btn-md btn-outline-info">&lang;</a>
+                        {% endif %}
+                    
+                        <span class="current">
+                            <a href="?page= {{ requests.number }}" class="btn btn-md btn-info">{{ requests.number }}</a>
                         </span>
-                    </div>
-                    <!-- end pagination -->
+                    
+                        {% if requests.has_next %}
+                        <a href="?page={{ requests.next_page_number }}" class="btn btn-md btn-outline-info">&rang;</a>
+                        <a href="?page={{ requests.paginator.num_pages }}" class="btn btn-md btn-outline-info">&Rang;</a>
+                        {% endif %}
+                    </span>
                 </div>
+                <!-- end pagination -->
             </div>
+        </div>
         {% else %}
         <div class="row justify-content-center">
-            <div class="card col-10 col-md-9 mt-3 mb-3">
+            <div class="card col-11 max-card mt-3 mb-3">
                 <div class="col-12 text-center">
                     <p class="md-text m-2">- No maintenance issues for this property -</p>
                 </div>
