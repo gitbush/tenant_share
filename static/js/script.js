@@ -10,13 +10,11 @@ if(window.innerWidth >= 960){
     }
 }
 
-else if(window.innerWidth < 960){
-    if(menuIcon){
-        menuIcon.addEventListener("click", function(){
-            sidebar.classList.add("show-sidebar");
-            event.stopPropagation();
-        });
-    }
+else if(menuIcon && (window.innerWidth < 960)){
+    menuIcon.addEventListener("click", function(){
+        sidebar.classList.add("show-sidebar");
+        event.stopPropagation();
+    });
     
 
     document.addEventListener("click", function(e){
@@ -293,10 +291,13 @@ function confirmModal(title, message, href){
 
 let modalClose = document.getElementById('modal-close');
 
-modalClose.addEventListener('click', function(){
+if(modalClose){
+    modalClose.addEventListener('click', function(){
 
-    modalClose.closest('.modal').style.display = 'none';
-}) 
+        modalClose.closest('.modal').style.display = 'none';
+    }) 
+}
+
 
 window.addEventListener('click', function(e){
     if(e.target.className === 'overlay'){
@@ -478,12 +479,13 @@ if(deleteTenantBtn){
 
 // loading spinner
 function showLoader(){
-    const spinner = this.document.querySelector('.spinner');
+    const spinner = document.querySelector('.spinner');
+    spinner.style.visibility = 'visible'
 }
 
 function hideLoader(){
-    const spinner = this.document.querySelector('.spinner');
-    spinner.className += ' hidden'
+    const spinner = document.querySelector('.spinner');
+    spinner.style.visibility = 'hidden'
 }
 
 window.addEventListener('DOMContentLoaded', function(){
@@ -491,6 +493,6 @@ window.addEventListener('DOMContentLoaded', function(){
 })
 
 window.addEventListener('load', function(){
-    hideLoader();
+    setTimeout(hideLoader, 500) 
 })
 

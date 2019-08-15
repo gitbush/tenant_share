@@ -1,4 +1,5 @@
 {% load crispy_forms_tags %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,13 +8,19 @@
     <title>Document</title>
 </head>
 <body>
-    <main class="container">
-        <div class="row justify-content-center">
-            <div class="card col-8 user-form">
+    <main class="container-fluid register-bg">
+        <section class="row justify-content-center">
+            <div class="col-10 text-center">
+                <img src="{% static 'imgs/tenant_share_white.png' %}" class="company-img" alt="logo">
+                <h1 class="slogan">Taking the hassle out of house sharing</h1>
+            </div>
+        </section>
+        <section class="row justify-content-center">
+            <div class="card col-10 col-sm-6 user-form">
                 <form action="" method="POST">
                     {% csrf_token %}
                     <div class="form-group row justify-content-center">
-                        <legend class="border-bottom mb-4">Register</legend>
+                        <legend class=" text-center mb-2 p-1">Sign up to TenantShare!</legend>
                         <div class="col-6">{{ registerForm.first_name|as_crispy_field}}</div>
                         <div class="col-6">{{ registerForm.last_name|as_crispy_field }}</div>
                         <div class="col-6">{{ registerForm.username|as_crispy_field }}</div>
@@ -22,13 +29,19 @@
                         <div class="col-12">{{ registerForm.password1|as_crispy_field }}</div>
                         <div class="col-12">{{ registerForm.password2|as_crispy_field }}</div>
                     </div>
-                    <div class="form-group">
-                        <button class="btn btn-info" type="submit">Submit</button>
+                    <small>Already have an account? <a href="{% url 'login' %}">Log in</a></small>
+                    <div class="form-group text-right">
+                        <button class="btn btn-info btn-md" type="submit">Submit</button>
                     </div>
                 </form>
             </div>
-        </div>
+        </section>
     </main>
+
+    <!-- spinner -->
+    <div class="spinner">
+        <img src="{% static 'animations/500.gif' %}" alt="">
+    </div>
 
     {% include 'scripts.html' %}
 </body>

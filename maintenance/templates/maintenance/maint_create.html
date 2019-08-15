@@ -7,11 +7,12 @@
         <div class="card col-11 col-md-9 mt-3 text-center">
             <div class="row justify-content-center">
                 <div class="col-12 card-header text-left">Add Maintenance Request</div>
+
+                <!-- create a maintenance request form -->
                 <div class="col-10">
                     <form action="{% url 'maint-create' %}" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="form-group row m-0 text-left">
-                            <!-- <legend class="border-bottom mb-4">Add Maintenance Request</legend> -->
                             <div class="col-12">{{ request_create_form.title|as_crispy_field }}</div>
                             <div class="col-12">{{ request_create_form.details|as_crispy_field }}</div>
                             <div class="col-6">{{ request_create_form.priority|as_crispy_field }}</div>
@@ -23,6 +24,8 @@
                         </div>
                     </form>
                 </div>
+                <!-- END: create a maintenance request form -->
+                
             </div>
         </div>
     </div>

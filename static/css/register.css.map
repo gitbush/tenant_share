@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../scss/3_pages/register.scss"
+    ],
+    "names": [],
+    "file": "register.css"
+}

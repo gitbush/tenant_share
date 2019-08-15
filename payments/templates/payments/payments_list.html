@@ -24,15 +24,6 @@
         </div>
     </div>
     <!-- end add payment -->
-    <!-- display messages -->
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-            {% endfor %}
-    </ul>
-    {% endif %}
-    <!-- end of messages -->
     <!-- payment history list -->
     <div class="row justify-content-center mt-3">
         <div class="card max-card col-11 p-0">
