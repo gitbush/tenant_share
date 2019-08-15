@@ -4,7 +4,9 @@ from chat.models import ChatMessage, Thread
 from users.api.serializers import UserSerializer
 
 class ChatMessageSerializer(serializers.ModelSerializer):
-
+    """
+    Serializer for chat message model for api
+    """
     author = UserSerializer(read_only=True)
     class Meta:
         model = ChatMessage

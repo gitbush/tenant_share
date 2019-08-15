@@ -8,6 +8,7 @@ from .serializers import ChatMessageSerializer
 class ChatMessageView(viewsets.ModelViewSet):
     """
     Chat messages api view
+    Alter queryset to handle ajax requests with relevant maintenance request ID.
     """
     queryset = ChatMessage.objects.all()
     serializer_class = ChatMessageSerializer
@@ -27,6 +28,7 @@ class ChatMessageView(viewsets.ModelViewSet):
 
         return queryset
 
+    # save current user to chat message on create via api
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
