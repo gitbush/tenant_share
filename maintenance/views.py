@@ -10,13 +10,15 @@ from chat.forms import MessageForm
 
 
 def Home(request):
+    """
+    If user has a rental assigned, show rental details and tenants. 
+    Else show only user profile details
+    """
     currentUser = request.user
-    try: 
+    if currentUser.profile.rental: 
         userRental = currentUser.profile.rental
         userLandlord = userRental.landlord
         userTenants = userRental.profile_set.filter(register_as='Tenant').all()
-        # print(userRental.profile_set.filter(register_as='Tenant').all())
-        # print(currentRental.profile_set.filter(register_as='Tenant').all())
 
         context = {
             'userProfile': currentUser.profile,
@@ -24,7 +26,7 @@ def Home(request):
             'userLandlord': userLandlord,
             'userTenants': userTenants
         }
-    except:
+    else:
         context = {
             'userProfile': currentUser.profile,
         }
@@ -116,6 +118,9 @@ def MaintRequestDetail(request, id):
     return render(request, 'maintenance/maint_detail.html', context)
 
 def MaintRequestDelete(request, id):
+    """
+    Delete relevant maintenance request
+    """
 
     current_request = get_object_or_404(MaintRequest, id=id)
     current_request.delete()
