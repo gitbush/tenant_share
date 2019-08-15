@@ -16,15 +16,15 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
 
     #  resize uploaded profile img
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
 
-        img = Image.open(self.profile_image.path)
+    #     img = Image.open(self.profile_image.path)
 
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.profile_image.path)
+    #     if img.height > 300 or img.width > 300:
+    #         output_size = (300, 300)
+    #         img.thumbnail(output_size)
+    #         img.save(self.profile_image.path)
     
 
 
