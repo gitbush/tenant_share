@@ -5,7 +5,7 @@ from django.core.paginator import Paginator
 from .models import *
 from .forms import *
 from.filters import MaintListFilter
-from chat.models import Thread, ChatMessage
+from chat.models import ChatMessage
 from chat.forms import MessageForm
 
 

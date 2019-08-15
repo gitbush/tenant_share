@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.utils import timezone
-from chat.models import ChatMessage, Thread
+from chat.models import ChatMessage
 from users.api.serializers import UserSerializer
 
 class ChatMessageSerializer(serializers.ModelSerializer):
