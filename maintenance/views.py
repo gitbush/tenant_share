@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponse
 from django.core.paginator import Paginator
@@ -8,7 +9,7 @@ from.filters import MaintListFilter
 from chat.models import ChatMessage
 from chat.forms import MessageForm
 
-
+@login_required
 def Home(request):
     """
     If user has a rental assigned, show rental details and tenants. 
@@ -33,6 +34,7 @@ def Home(request):
             
     return render(request, 'maintenance/home.html', context)
 
+@login_required
 def MaintRequestList(request):
     """
     Displays any/all maintenance requests associated with the current user rental.
@@ -57,6 +59,7 @@ def MaintRequestList(request):
     else:
         return render(request, 'maintenance/maint_requests.html')
 
+@login_required
 def MaintRequestCreate(request):
     """
     Create maintenance issue relevant to user and user rental
@@ -80,6 +83,7 @@ def MaintRequestCreate(request):
     }
     return render(request, 'maintenance/maint_create.html', context )
 
+@login_required
 def MaintRequestDetail(request, id):
     """
     Display detail view of particular maintenance request.
@@ -117,6 +121,7 @@ def MaintRequestDetail(request, id):
 
     return render(request, 'maintenance/maint_detail.html', context)
 
+@login_required
 def MaintRequestDelete(request, id):
     """
     Delete relevant maintenance request
