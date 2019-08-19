@@ -4,6 +4,9 @@ from .models import Payment
 from maintenance.models import MaintRequest
 
 class PaymentForm(forms.ModelForm):
+    """
+    New payment form
+    """
     class Meta:
         model = Payment
         fields = ['maint_request', 'amount']

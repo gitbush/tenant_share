@@ -35,6 +35,9 @@ def payments_list(request):
 
 @login_required
 def delete_payment(request, id):
+    """
+    Delete relevant payment
+    """
 
     current_payment = get_object_or_404(Payment, id=id)
     current_payment.delete()
