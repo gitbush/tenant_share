@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden, HttpResponseNotFound, HttpResponseNotAllowed
+from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator
 from .models import *
 from .forms import *
@@ -86,40 +87,44 @@ def MaintRequestCreate(request):
 @login_required
 def MaintRequestDetail(request, id):
     """
+    If user has current rental assigned to their profile.
     Display detail view of particular maintenance request.
     Allow for landlord to assign cost to tenant/landlord
     """
     maint_request = get_object_or_404(MaintRequest, id=id) 
     chat_messages = ChatMessage.objects.filter(maint_request=maint_request) # get chat messages
 
-    message_form = MessageForm()
-    if request.method == 'POST':
-        if 'cost' in request.POST:
-            assign_cost_form = MaintenanceQuoteForm(request.POST, request.FILES, instance=maint_request)
-            if assign_cost_form.is_valid():
-                assign_cost_form.save()
-                return redirect('maint-detail', id=id)
-            else:
-                print(assign_cost_form.errors)
-        
-        elif 'status' in request.POST:
-            status_form = StatusUpdateForm(request.POST, instance=maint_request)
-            if status_form.is_valid():
-                status_form.save()
-                return redirect('maint-detail', id=id)
-                
-    assign_cost_form = MaintenanceQuoteForm(instance=maint_request)
-    status_form = StatusUpdateForm(instance=maint_request)
+    if request.user.profile.rental == maint_request.property_ref:
+        message_form = MessageForm()
+        if request.method == 'POST':
+            if 'cost' in request.POST:
+                assign_cost_form = MaintenanceQuoteForm(request.POST, request.FILES, instance=maint_request)
+                if assign_cost_form.is_valid():
+                    assign_cost_form.save()
+                    return redirect('maint-detail', id=id)
+                else:
+                    print(assign_cost_form.errors)
+            
+            elif 'status' in request.POST:
+                status_form = StatusUpdateForm(request.POST, instance=maint_request)
+                if status_form.is_valid():
+                    status_form.save()
+                    return redirect('maint-detail', id=id)
+                    
+        assign_cost_form = MaintenanceQuoteForm(instance=maint_request)
+        status_form = StatusUpdateForm(instance=maint_request)
 
-    context = {
-        'maint_request': maint_request,
-        'chat_messages': chat_messages,
-        'message_form': message_form,
-        'assign_cost_form': assign_cost_form,
-        'status_form': status_form,
-    }
+        context = {
+            'maint_request': maint_request,
+            'chat_messages': chat_messages,
+            'message_form': message_form,
+            'assign_cost_form': assign_cost_form,
+            'status_form': status_form,
+        }
 
-    return render(request, 'maintenance/maint_detail.html', context)
+        return render(request, 'maintenance/maint_detail.html', context)
+    else:
+        raise PermissionDenied()
 
 @login_required
 def MaintRequestDelete(request, id):

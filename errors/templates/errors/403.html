@@ -1,0 +1,13 @@
+{% extends 'errors/base_error.html' %}
+
+{% block title %}
+403 Page not found!
+{% endblock %}
+
+{% block error %}
+    <section class="text-center">
+        <h1 class="error-heading">403 Error</h1>
+        <p>Sorry, you don't have access to that page!</p>
+        <a href="{% url 'maint-home' %}" class="btn btn-primary">Your Home Page</a>
+    </section>
+{% endblock %}
