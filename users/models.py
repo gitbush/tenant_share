@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from maintenance.models import Rental, MaintRequest
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
 from PIL import Image
 
 class Profile(models.Model):
@@ -12,7 +14,12 @@ class Profile(models.Model):
     # custom fields
     rental = models.ForeignKey(Rental, null=True, on_delete=models.SET_NULL)
     register_as = models.CharField(max_length=10, null=True)
-    profile_image = models.ImageField(default='users/default_profile.jpg', upload_to='users')
+
+    # resize image on upload with django-imagekit
+    profile_image = ProcessedImageField(upload_to='users',
+                                           processors=[ResizeToFill(300, 300)],
+                                           format='JPEG',
+                                           options={'quality': 60})
 
     def __str__(self):
         return f'{self.user.username} Profile'

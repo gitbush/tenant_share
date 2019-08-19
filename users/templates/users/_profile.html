@@ -7,7 +7,11 @@
             <h1 class="md-heading">Profile Information</h1>
         </div>
         <div class="col-12 col-sm-6 text-center">
+            {% if user.profile.profile_image %}
             <img src="{{ user.profile.profile_image.url }}" alt="Prof" class="account-img rounded-circle img-fluid">
+            {% else %}
+            <img src="/media/users/default_profile.jpg" alt="Prof" class="account-img rounded-circle img-fluid">
+            {% endif %}
         </div>
         <div class="col-12 col-sm-6 p-0">
             <hr class="m-1 d-sm-none">

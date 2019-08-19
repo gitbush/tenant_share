@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'trb@spvwqm3po(v+ik!iew-=q%y=8uo_oy1qxn3iuxa+&&^)g)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'storages',
     'errors',
+    'imagekit',
 ]
 
 MIDDLEWARE = [
