@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'storages',
     'errors',
-    'imagekit',
+    'utils',
     'django_cleanup',
 ]
 
