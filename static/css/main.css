@@ -228,6 +228,7 @@ option {
 #content {
   margin-top: 60px;
   padding-bottom: 2rem;
+  padding-top: 1rem;
 }
 
 #sidebar.show-sidebar {
