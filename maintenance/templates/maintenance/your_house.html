@@ -13,11 +13,14 @@
                 <p class="md-text">{{ userRental.postcode|upper }}, {{ userRental.city.title }}</p>
                 {% if request.user == userLandlord %}
                     {% if userTenants.count != userRental.no_of_tenants %}
-                    <div class="col-12 m-2">
+                    <div class="col-12 mb-2">
                         <button id="add-tenant-btn" class="btn btn-sm btn-success modal-open" data-modal="addModal">+ Add Tenant</button>
                     </div>
                     {% include 'users/add_tenant.html' %}
                     {% endif %}
+                    <div class="col-12 mt-2">
+                        <p class="md-text">Occupancy: {{ userTenants.count }}/{{ userRental.no_of_tenants }}</p>
+                    </div>
                 {% endif %}
             </div>
             <span><img src="static/imgs/line_shad.png" class="line-shadow d-none d-sm-block" alt=""></span>
