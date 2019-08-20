@@ -345,7 +345,6 @@ let tenantSuggestion =  `<li class="row m-1 tenant-suggestion">
                             </div>
                             <div class="col-7 text-left pl-1">
                                 <p id="ten-name" class="md-text m-1">{ name }</p>
-                                <p class="md-text m-1">{ email }</p>
                             </div>
                         </li>`
 
@@ -369,7 +368,6 @@ searchTenForm.on('keyup', function(e){
                     // replace relevant placeholders with incoming values
                     let suggestion = tenantSuggestion.replace('{ img_url }', d.profile['profile_image']);
                     suggestion = suggestion.replace('{ name }', d.username);
-                    suggestion = suggestion.replace('{ email }', d.email);
                     addTenantList.append(suggestion)
     
                     emptyUserList(addTenantList, e, formVal);

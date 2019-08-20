@@ -285,6 +285,10 @@ option {
           animation-duration: .5s;
 }
 
+.modal-close {
+  cursor: pointer;
+}
+
 .modal .overlay {
   position: absolute;
   left: 0;
@@ -301,7 +305,6 @@ option {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  overflow: auto;
   background: #fff;
   padding: 10px;
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
@@ -358,7 +361,7 @@ option {
 }
 
 #add-user-list {
-  max-height: 175px;
+  min-height: 170px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
