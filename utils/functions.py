@@ -7,10 +7,11 @@ from django.core.files.storage import default_storage as storage
 def upload_to(instance, filename):
     return "users/%s/%s" % (instance.user.username.lower(), filename)
 
-
 # save function, resize image
 def resize_image(context, model, image_field, size_px, *args, **kwargs):
     """
+    Installed 'django-cleanup' to auto-remove old image.
+    Installed 'pillow' to resize larger images.
     Arguments are: 
     - self
     - model the save is referencing

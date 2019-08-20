@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from utils.functions import resize_image
 
 # rental model for instances of rental properties
 class Rental(models.Model):
@@ -13,6 +14,10 @@ class Rental(models.Model):
 
     def __str__(self):
         return self.address
+
+    def save(self, *args, **kwargs):
+        resize_image(self, Rental, self.image, 300)
+
 
 # maintenance request 
 class MaintRequest(models.Model):
@@ -46,6 +51,9 @@ class MaintRequest(models.Model):
 
     def __str__(self):
         return f"#{self.id}  {self.title} "
+
+    def save(self, *args, **kwargs):
+        resize_image(self, MaintRequest, self.image, 300)
 
 
 

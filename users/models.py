@@ -26,10 +26,6 @@ class Profile(models.Model):
 
     # resize uploaded profile img
     def save(self, *args, **kwargs):
-        """
-        - installed 'django-cleanup' to auto-remove old image.
-        - installed 'pillow' to resize larger images.
-        """
         resize_image(self, Profile, self.profile_image, 300)
      
     
