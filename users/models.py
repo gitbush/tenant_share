@@ -6,6 +6,10 @@ from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
 from PIL import Image, ImageOps
 
+# have username in uploaded image path
+def upload_to(instance, filename):
+    return "users/%s/%s" % (instance.user.username.lower(), filename)
+
 class Profile(models.Model):
     """
     Extend django user model and add custom fields
@@ -16,23 +20,16 @@ class Profile(models.Model):
     rental = models.ForeignKey(Rental, null=True, on_delete=models.SET_NULL)
     register_as = models.CharField(max_length=10, null=True)
 
-    profile_image = models.ImageField(default='users/default_profile.jpg', upload_to='users')
-
-    # resize image on upload with django-imagekit
-    # profile_image = ProcessedImageField(upload_to='users',
-    #                                        processors=[ResizeToFill(300, 300)],
-    #                                        format='JPEG',
-    #                                        options={'quality': 60})
+    profile_image = models.ImageField(default='users/default_profile.jpg', upload_to=upload_to)
 
     def __str__(self):
         return f'{self.user.username} Profile'
 
-    #  resize uploaded profile img
+    # resize uploaded profile img
     def save(self, *args, **kwargs):
         """
         - installed 'django-cleanup' to auto-remove old image.
         - installed 'pillow' to resize larger images.
-        - resizes all image formats except '.gif' as these cannot be resized
         """
         super(Profile, self).save(*args, **kwargs)
         if self.profile_image:

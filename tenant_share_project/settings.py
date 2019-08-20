@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'storages',
     'errors',
     'imagekit',
+    'django_cleanup',
 ]
 
 MIDDLEWARE = [
