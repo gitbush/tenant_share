@@ -17,7 +17,7 @@
                     </p>
                 </div>
             </div>
-            <form method="POST" class="row" action="{% url 'add-tenant' rental_id=user.profile.rental.id %}" autocomplete="off">
+            <form id="add-tenant-form" method="POST" class="row" action="{% url 'add-tenant' rental_id=user.profile.rental.id %}" autocomplete="off">
                     {% csrf_token %}
                 <div class="col-12">
                     <div class="row justify-content-center">

@@ -324,7 +324,8 @@ if(addTenantBtn){
 // add tenant form
 
 
-const searchTenForm = $('#txt-search'); 
+const searchTenForm = $('#txt-search');
+const addTenForm = $('#add-tenant-form'); 
 const addTenantList = $('#add-user-list');
 
 // check if suggestion list is empty and display message
@@ -381,6 +382,7 @@ searchTenForm.on('keyup', function(e){
                 suggestionEl.on('click', function(e){
                     let clickUsername = $(this).find('#ten-name').text()
                     searchTenForm.val(clickUsername)
+                    addTenForm.submit()
                 })
             }
         })
