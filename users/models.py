@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.core.files.storage import default_storage as storage
 from maintenance.models import Rental, MaintRequest
 from PIL import Image, ImageOps
-from utils.functions import upload_to
+from utils.functions import upload_to, resize_image
 
 # # have username in uploaded image path
 # def upload_to(instance, filename):
@@ -30,22 +30,8 @@ class Profile(models.Model):
         - installed 'django-cleanup' to auto-remove old image.
         - installed 'pillow' to resize larger images.
         """
-        super(Profile, self).save(*args, **kwargs)
-        if self.profile_image:
-            img = Image.open(self.profile_image)
-            size = 300
-            thumb = (size, size)
-            method = Image.ANTIALIAS
-            center = (0.5, 0.5)
-            extension = "jpeg"
-            # if greater than 300px on any side, then resize it to 300x300
-            if img.height > size or img.width > size:
-                img.thumbnail((size, size), method)
-                new = ImageOps.fit(img, thumb, method, centering=center)
-                temp = storage.open(self.profile_image.name, "w")
-                new.save(temp, extension)
-                temp.close()
-                super(Profile, self).save(*args, **kwargs)
+        resize_image(self, Profile, self.profile_image, 300)
+     
     
 
 
