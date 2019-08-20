@@ -153,6 +153,10 @@ option {
 .navbar {
   height: 60px;
   background-color: #343347;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 98;
 }
 
 .navbar-light .navbar-nav.nav-link,
@@ -212,12 +216,18 @@ option {
   width: 60px;
   left: -60px;
   top: 0;
+  z-index: 99;
   height: 100vh;
   background-image: -webkit-gradient(linear, left bottom, left top, from(#008161), color-stop(23%, #2f5f5b), to(#343347));
   background-image: linear-gradient(0deg, #008161 0%, #2f5f5b 23%, #343347 100%);
   color: #FAFAFA;
   -webkit-transition: all .5s;
   transition: all .5s;
+}
+
+#content {
+  margin-top: 60px;
+  padding-bottom: 2rem;
 }
 
 #sidebar.show-sidebar {
