@@ -396,12 +396,14 @@ const alertDiv = document.getElementById('edit-profile-alert');
 
 if(alertDiv){
     document.addEventListener('DOMContentLoaded', function(e){
-        if(alertDiv.innerText != false){
-            alertDiv.classList.toggle('show-alert')
-            setTimeout(function(){
+        setTimeout(function(){
+            if(alertDiv.innerText != false){
                 alertDiv.classList.toggle('show-alert')
-            }, 4000);
-        } 
+                setTimeout(function(){
+                    alertDiv.classList.toggle('show-alert')
+                }, 5000);
+            } 
+        }, 1000)
     })
 }
 

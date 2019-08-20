@@ -383,7 +383,7 @@ option {
 #edit-profile-alert.show-alert {
   -webkit-transition: 1.5s;
   transition: 1.5s;
-  top: 50px;
+  top: 80px;
 }
 
 .alert-list {
