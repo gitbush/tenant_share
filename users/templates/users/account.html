@@ -2,14 +2,19 @@
 
 {% block content %}
 <div class="container-fluid">
+    <!-- user profile section -->
     <div class="row justify-content-center">
-        {% include 'users/_profile.html' %}
+        {% include 'users/profile.html' %}
     </div>
+    <!-- END:  user profile section -->
+
+    <!-- if user is a landlord then show rental property profile -->
     {% if user.profile.register_as == 'Landlord' %}
         <div class="row justify-content-center">
-            {% include 'users/_property.html' %}
+            {% include 'users/property.html' %}
         </div>
     {% endif %}
+    <!-- END: rental property profile -->
 </div>
 
 
