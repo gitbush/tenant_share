@@ -393,6 +393,7 @@ option {
 .alert-header {
   color: green;
   font-weight: bold;
+  font-size: 1rem;
 }
 
 .spinner {

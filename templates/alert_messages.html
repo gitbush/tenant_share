@@ -4,7 +4,7 @@
     <h3 class="alert-header md-heading m-2">SUCCESS!</h3>
     <ul class="alert-list mb-2 pl-3">
         {% for message in messages %}
-        <li id="msg-tag" {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        <li id="msg-tag" {% if message.tags %} class="{{ message.tags }} md-text" {% endif %}>{{ message }}</li>
         {% endfor %}
     </ul>
     {% endif %}
