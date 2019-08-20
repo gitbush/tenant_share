@@ -7,11 +7,7 @@
             <h1 class="md-heading">Profile Information</h1>
         </div>
         <div class="col-12 col-sm-6 text-center">
-            {% if user.profile.profile_image %}
             <img src="{{ user.profile.profile_image.url }}" alt="Prof" class="account-img rounded-circle img-fluid">
-            {% else %}
-            <img src="/media/users/default_profile.jpg" alt="Prof" class="account-img rounded-circle img-fluid">
-            {% endif %}
         </div>
         <div class="col-12 col-sm-6 p-0">
             <hr class="m-1 d-sm-none">
@@ -31,7 +27,7 @@
         <div class="col-12 text-right p-0">
             <button id="edit-btn" class="account-edit-btn btn btn-sm btn-info" type="button" data-toggle="collapse" data-target="#edit-collapse" aria-expanded="false" aria-controls="edit-collapse">Edit</button>
         </div>
-        <!-- end user profile info -->
+        <!-- END: user profile info -->
     </div>
         <!-- edit profile form -->
     <div id="edit-collapse" class="row account-edit-section collapse">
@@ -57,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <!-- end profile form -->
+        <!-- END: profile form -->
     </div>
 </div>
 
