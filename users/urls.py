@@ -9,5 +9,11 @@ urlpatterns = [
     path('account/<int:id>', views.account, name='account'),
     path('tenant/add/<int:rental_id>', views.add_tenant, name='add-tenant'),
     path('tenant/remove/<int:rental_id>/<int:id>', views.remove_tenant, name='remove-tenant'),
-    path('password/', include('django.contrib.auth.urls')),
+    path('auth/password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+    path('auth/password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('auth/reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('auth/password_reset/complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+
+
 ]
+
