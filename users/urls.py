@@ -8,5 +8,7 @@ urlpatterns = [
     path('logout', auth_views.LogoutView.as_view(template_name='users/login.html'), name='logout'),
     path('account/<int:id>', views.account, name='account'),
     path('tenant/add/<int:rental_id>', views.add_tenant, name='add-tenant'),
-    path('tenant/remove/<int:rental_id>/<int:id>', views.remove_tenant, name='remove-tenant')
+    path('tenant/remove/<int:rental_id>/<int:id>', views.remove_tenant, name='remove-tenant'),
+    path('password-reset', auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'), name='password-reset'),
+
 ]

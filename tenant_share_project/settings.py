@@ -171,3 +171,5 @@ LOGOUT_REDIRECT_URL = 'login'
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
 STRIPE_SECRET_KEY =  os.getenv('STRIPE_SECRET_KEY')
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
