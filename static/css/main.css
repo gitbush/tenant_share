@@ -727,6 +727,9 @@ option {
 .register-bg {
   position: relative;
   background-color: #2c4024;
+  min-height: -webkit-fill-available;
+  min-height: -moz-available;
+  min-height: -webkit-fill-available;
 }
 
 .register-bg:before {
