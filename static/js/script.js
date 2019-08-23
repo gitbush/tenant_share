@@ -73,35 +73,23 @@ for (let i = 0; i < toggleSelect.length; i++){
 
 
 // maintenance request priority and status colors
+const priorityBadge = document.querySelectorAll(".priority-badge");
 
-const priorityBadge = document.getElementById("priority-badge");
-const statusBadge = document.getElementById("status-badge");
-
-if(priorityBadge && statusBadge){
-    if(priorityBadge.innerText == "low"){
-        priorityBadge.classList.add("badge-success");
+priorityBadge.forEach(function(badge){
+    switch(badge.innerText) {
+        case "Low":
+            badge.classList.add("badge-success");
+          break;
+        case "Med":
+            badge.classList.add("badge-amber");
+          break;
+        case "High":
+            badge.classList.add("badge-danger");
+            break
+        default:
+            badge.classList.add("badge-info");
     }
-    else if(priorityBadge.innerText == "med"){
-        priorityBadge.classList.add("badge-amber");
-    }
-    else if(priorityBadge.innerText == "high"){
-        priorityBadge.classList.add("badge-danger");
-    }
-
-    if(statusBadge.innerText == "new"){
-        statusBadge.classList.add("badge-info");
-    }
-    else if(statusBadge.innerText == "In Progress"){
-        statusBadge.classList.add("badge-info");
-    }
-    else if(statusBadge.innerText == "Awaiting Payment"){
-        statusBadge.classList.add("badge-amber");
-    }
-    else if(statusBadge.innerText == "Resolved"){
-        statusBadge.classList.add("badge-success");
-    }
-
-}
+})
 
 
 // submit status form on change
