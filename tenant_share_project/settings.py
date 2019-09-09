@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'trb@spvwqm3po(v+ik!iew-=q%y=8uo_oy1qxn3iuxa+&&^)g)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -131,7 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 # if in development use local settings
-if DEBUG == True:
+if DEBUG != True:
     STATIC_URL = '/static/'
 
     STATICFILES_DIRS = (
@@ -143,6 +143,7 @@ if DEBUG == True:
     MEDIA_URL = '/media/'
 # else use s3 settings
 else:
+
     # AWS access settings
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
@@ -155,9 +156,11 @@ else:
 
     STATICFILES_LOCATION = 'static'
     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 
     MEDIAFILES_LOCATION = 'media'
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
 # crispy forms bootstrap setting
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
