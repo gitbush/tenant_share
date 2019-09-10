@@ -1,6 +1,10 @@
 .navbar{
     height: 60px;
     background-color: #343347;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 98;
 }
 
 .navbar-light .navbar-nav{

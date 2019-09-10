@@ -1,7 +1,7 @@
 <!-- your house share section -->
 <!-- media/maintenance/no_image.jpg -->
 <div class="row your-house justify-content-center">
-    <div class="card col-11 p-0 mt-3 max-card">
+    <div class="card col-11 p-0 max-card">
         <div class=" card-top-color"></div>
         <div class="row m-0">
             <!-- image of house and address -->
@@ -13,11 +13,14 @@
                 <p class="md-text">{{ userRental.postcode|upper }}, {{ userRental.city.title }}</p>
                 {% if request.user == userLandlord %}
                     {% if userTenants.count != userRental.no_of_tenants %}
-                    <div class="col-12 m-2">
+                    <div class="col-12 mb-2">
                         <button id="add-tenant-btn" class="btn btn-sm btn-success modal-open" data-modal="addModal">+ Add Tenant</button>
                     </div>
                     {% include 'users/add_tenant.html' %}
                     {% endif %}
+                    <div class="col-12 mt-2">
+                        <p class="md-text">Occupancy: {{ userTenants.count }}/{{ userRental.no_of_tenants }}</p>
+                    </div>
                 {% endif %}
             </div>
             <span><img src="static/imgs/line_shad.png" class="line-shadow d-none d-sm-block" alt=""></span>
@@ -71,8 +74,11 @@
                             </div>
                             {% endfor %}
                         {% else %}
-                            <div class="col-5 col-sm-5 text-center">
+                            <div class="col-10 text-center">
                                 <p class="md-text m-2">- No tenants currently added -</p>
+                                <p class="md-text">Once you've found a tenant, get them to create an account with us
+                                                    and then add them by their username.
+                                </p>
                             </div>
                         {% endif %}
                     </div>

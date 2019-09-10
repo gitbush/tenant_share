@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'head_tags.html' %}
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <main class="error-bg jumbotron">
+        {% block error %}
+            
+        {% endblock %}
+    </main>
+
+    {% include 'scripts.html' %}
+</body>
+</html>

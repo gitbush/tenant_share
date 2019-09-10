@@ -12,7 +12,6 @@
                 <div id="menu-icon">
                     <div id="hamburger"></div>
                 </div>
-                <!-- <a class="navbar-brand" href="#">Navbar</a> -->
                 <div class="ml-auto" id="navbarText">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
@@ -31,7 +30,11 @@
     </main>
     <div id="sidebar">
         <div class="sidebar-image text-center">
+            {% if user.profile.profile_image %}
             <img src="{{ user.profile.profile_image.url }}" alt="Prof" class="profile-icon rounded-circle img-fluid">
+            {% else %}
+            <img src="/media/users/default_profile.jpg" alt="Prof" class="profile-icon rounded-circle img-fluid">
+            {% endif %}
         </div>
         <ul class="sidebar-menu">
             <li class="sidebar-item"><a href="{% url 'maint-home' %}"><img src="https://i.ibb.co/1vjMj7h/imageedit-23-4235679998.png" alt="imageedit-23-4235679998" border="0" class="sidebar-icon"></a></li>

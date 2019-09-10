@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'head_tags.html' %}
+
+    <title>Document</title>
+</head>
+<body>
+    <main class="container-fluid register-bg">
+        <section class="row justify-content-center">
+            <div class="col-10 text-center">
+                <img src="{% static 'imgs/tenant_share_white.png' %}" class="company-img" alt="logo">
+                <h1 class="slogan">Taking the hassle out of house sharing</h1>
+            </div>
+        </section>
+
+        {% block form %}{% endblock %}
+    </main>
+
+    <!-- spinner -->
+    <div class="spinner">
+        <img src="{% static 'animations/500.gif' %}" alt="">
+    </div>
+
+    {% include 'scripts.html' %}
+</body>
+</html>

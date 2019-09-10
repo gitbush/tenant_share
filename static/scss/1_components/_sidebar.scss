@@ -4,10 +4,17 @@
 	width: 60px;
     left: -60px;
     top: 0;
+    z-index: 99;
 	height: 100vh;
 	background-image: linear-gradient(0deg, #008161 0%, #2f5f5b 23%, #343347 100%);
 	color:#FAFAFA;
 	transition: all .5s;
+}
+
+#content{
+    margin-top: 60px;
+    padding-bottom: 2rem;
+    padding-top: 1rem;
 }
 
 #sidebar.show-sidebar {

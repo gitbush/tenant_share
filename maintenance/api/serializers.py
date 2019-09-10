@@ -2,6 +2,9 @@ from rest_framework import serializers
 from maintenance.models import MaintRequest
 
 class MaintenanceRequestSerializer(serializers.ModelSerializer):
+    """
+    Serializer for maintenance request model for api
+    """
     class Meta:
         model = MaintRequest
         fields = ('id', 

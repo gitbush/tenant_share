@@ -1,6 +1,9 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.core.files.storage import default_storage as storage
+from PIL import Image, ImageOps
+from utils.functions import resize_image
 
 # rental model for instances of rental properties
 class Rental(models.Model):
@@ -13,6 +16,30 @@ class Rental(models.Model):
 
     def __str__(self):
         return self.address
+
+     # TODO: DRY save method for resize images
+    def save(self, *args, **kwargs):
+        """
+        - installed 'django-cleanup' to auto-remove old image.
+        - installed 'pillow' to resize larger images.
+        """
+        super(Rental, self).save(*args, **kwargs)
+        if self.image:
+            img = Image.open(self.image)
+            size = 300
+            thumb = (size, size)
+            method = Image.ANTIALIAS
+            center = (0.5, 0.5)
+            extension = "png"
+            # if greater than 300px on any side, then resize it to 300x300
+            if img.height > size or img.width > size:
+                img.thumbnail((size, size), method)
+                center_img = ImageOps.fit(img, thumb, method, centering=center)
+                temp = storage.open(self.image.name, "w")
+                center_img.save(temp, extension)
+                temp.close()
+                super(Rental, self).save(*args, **kwargs) 
+
 
 # maintenance request 
 class MaintRequest(models.Model):
@@ -46,6 +73,29 @@ class MaintRequest(models.Model):
 
     def __str__(self):
         return f"#{self.id}  {self.title} "
+
+    # TODO: DRY save method for resize images
+    def save(self, *args, **kwargs):
+        """
+        - installed 'django-cleanup' to auto-remove old image.
+        - installed 'pillow' to resize larger images.
+        """
+        super(MaintRequest, self).save(*args, **kwargs)
+        if self.image:
+            img = Image.open(self.image)
+            size = 300
+            thumb = (size, size)
+            method = Image.ANTIALIAS
+            center = (0.5, 0.5)
+            extension = "png"
+            # if greater than 300px on any side, then resize it to 300x300
+            if img.height > size or img.width > size:
+                img.thumbnail((size, size), method)
+                center_img = ImageOps.fit(img, thumb, method, centering=center)
+                temp = storage.open(self.image.name, "w")
+                center_img.save(temp, extension)
+                temp.close()
+                super(MaintRequest, self).save(*args, **kwargs) 
 
 
 

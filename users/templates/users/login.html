@@ -1,44 +1,23 @@
+{% extends 'base_registration.html' %}
 {% load crispy_forms_tags %}
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% include 'head_tags.html' %}
-
-    <title>Document</title>
-</head>
-<body>
-    <main class="container-fluid register-bg">
-        <section class="row justify-content-center">
-            <div class="col-10 text-center">
-                <img src="{% static 'imgs/tenant_share_white.png' %}" class="company-img" alt="logo">
-                <h1 class="slogan">Taking the hassle out of house sharing</h1>
+{% block form %}
+<section class="row justify-content-center">
+    <div class="card col-10 col-sm-6 user-form">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-group row justify-content-center">
+                <legend class="text-center mb-2 p-1">Login</legend>
+                <div class="col-11">{{ form|crispy }}</div>
             </div>
-        </section>
-        <section class="row justify-content-center">
-            <div class="card col-10 col-sm-6 user-form">
-                <form action="" method="POST">
-                    {% csrf_token %}
-                    <div class="form-group row justify-content-center">
-                        <legend class="text-center mb-2 p-1">Login</legend>
-                        <div class="col-11">{{ form|crispy }}</div>
-                    </div>
-                    <div class="form-group text-right">
-                        <button class="btn btn-info btn-md" type="submit">Submit</button>
-                    </div>
-                </form>
+            <div class="form-group row">
+                <div class="col-11 text-right">
+                    <a href="{% url 'password_reset' %}" class="md-text text-muted text-decoration-none">Reset password</a>
+                    <button class="btn btn-info btn-md" type="submit">Submit</button>        
+                </div>
             </div>
-        </section>
-    </main>
-
-    <!-- spinner -->
-    <div class="spinner">
-        <img src="{% static 'animations/500.gif' %}" alt="">
+        </form>
     </div>
-
-    {% include 'scripts.html' %}
-</body>
-</html>
-
+</section>
+{% endblock %}  
 
 

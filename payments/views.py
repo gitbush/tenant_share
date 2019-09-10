@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse 
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.paginator import Paginator
 from .forms import PaymentForm
 from .models import Payment
 
-
+@login_required
 def payments_list(request):
     """
     List all payment history of the current user.
@@ -32,7 +33,11 @@ def payments_list(request):
     }
     return render(request, 'payments/payments_list.html', context)
 
+@login_required
 def delete_payment(request, id):
+    """
+    Delete relevant payment
+    """
 
     current_payment = get_object_or_404(Payment, id=id)
     current_payment.delete()

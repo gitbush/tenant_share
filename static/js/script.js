@@ -73,35 +73,23 @@ for (let i = 0; i < toggleSelect.length; i++){
 
 
 // maintenance request priority and status colors
+const priorityBadge = document.querySelectorAll(".priority-badge");
 
-const priorityBadge = document.getElementById("priority-badge");
-const statusBadge = document.getElementById("status-badge");
-
-if(priorityBadge && statusBadge){
-    if(priorityBadge.innerText == "low"){
-        priorityBadge.classList.add("badge-success");
+priorityBadge.forEach(function(badge){
+    switch(badge.innerText) {
+        case "Low":
+            badge.classList.add("badge-success");
+          break;
+        case "Med":
+            badge.classList.add("badge-amber");
+          break;
+        case "High":
+            badge.classList.add("badge-danger");
+            break
+        default:
+            badge.classList.add("badge-info");
     }
-    else if(priorityBadge.innerText == "med"){
-        priorityBadge.classList.add("badge-amber");
-    }
-    else if(priorityBadge.innerText == "high"){
-        priorityBadge.classList.add("badge-danger");
-    }
-
-    if(statusBadge.innerText == "new"){
-        statusBadge.classList.add("badge-info");
-    }
-    else if(statusBadge.innerText == "In Progress"){
-        statusBadge.classList.add("badge-info");
-    }
-    else if(statusBadge.innerText == "Awaiting Payment"){
-        statusBadge.classList.add("badge-amber");
-    }
-    else if(statusBadge.innerText == "Resolved"){
-        statusBadge.classList.add("badge-success");
-    }
-
-}
+})
 
 
 // submit status form on change
@@ -151,48 +139,48 @@ function csrfSafeMethod(method) {
 
 // create message list item template
 // author left hand side item
-let authorListItem = '<li class="row">' +
-                    '<div class="col-11 col-sm-10">' +
-                        '<div class="row author-bg">' +
-                            '<div class="col-3 col-sm-2 p-0 text-center">' +
-                                '<img src="{ image_url }" alt="Prof"class="profile-icon rounded-circle img-fluid">' +
-                                '<p class="sm-text m-1 bold"><i>"You"</i></p>' +
-                            '</div>' +
-                            '<div class="col-7 p-0 position-relative">' +
-                                '<div class="col-12">' +
-                                    '<p id="message-chat" class="md-text mb-2 mt-2">{ message }</p>' +
-                                    '<p class="msg-id" hidden>{ id }</p>'+
-                                '</div>'+
-                                '<div class="col-12 date-posted">'+
-                                    '<hr class="m-1">' +
-                                    '<p id="message-date" class="sm-text mb-1 mt-1">{ date_posted }</p>' +
-                                '</div>'+
-                            '</div>'+
-                        '</div>' +
-                    '</div>' +
-                '</li>';
+let authorListItem =    `<li class="row"> 
+                            <div class="col-11 col-sm-10"> 
+                                <div class="row author-bg"> 
+                                    <div class="col-3 col-sm-2 p-0 text-center"> 
+                                        <img src="{ image_url }" alt="Prof"class="profile-icon rounded-circle img-fluid"> 
+                                        <p class="sm-text m-1 bold"><i>"You"</i></p> 
+                                    </div> 
+                                    <div class="col-7 p-0 position-relative"> 
+                                        <div class="col-12"> 
+                                            <p id="message-chat" class="md-text mb-2 mt-2">{ message }</p> 
+                                            <p class="msg-id" hidden>{ id }</p>
+                                        </div>
+                                        <div class="col-12 date-posted">
+                                            <hr class="m-1"> 
+                                            <p id="message-date" class="sm-text mb-1 mt-1">{ date_posted }</p> 
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div> 
+                        </li>`;
 
 // reciever right hand side item
-let recieverListItem = '<li class="row justify-content-end">'+
-                            '<div class="offset-1 col-11 col-sm-10">'+
-                                '<div class="row receivers-bg justify-content-end">'+
-                                    '<div class="col-7 p-0 text-right position-relative">'+
-                                        '<div class="col-12">'+
-                                            '<p id="message-chat" class="md-text mt-2 mb-2">{ message }</p>'+ 
-                                            '<p class="msg-id" hidden>{ id }</p>'+
-                                        '</div>'+
-                                        '<div class="col-12 text-right date-posted">'+
-                                            '<hr class="m-1">'+
-                                            '<p id="message-date" class="sm-text mb-1">{ date_posted }</p>'+
-                                        '</div>'+
-                                    '</div>'+
-                                    '<div class="col-3 col-sm-2 p-0 text-center">'+
-                                        '<img src="{ image_url }" alt="Prof" class="profile-icon rounded-circle img-fluid">'+
-                                        '<p class="sm-text m-1 bold"><i>"{ author }"</i></p>'+                           
-                                    '</div>'+
-                                '</div'+
-                            '</div>'+
-                        '</li>'
+let recieverListItem = `<li class="row justify-content-end">
+                            <div class="offset-1 col-11 col-sm-10">
+                                <div class="row receivers-bg justify-content-end">
+                                    <div class="col-7 p-0 text-right position-relative">
+                                        <div class="col-12">
+                                            <p id="message-chat" class="md-text mt-2 mb-2">{ message }</p> 
+                                            <p class="msg-id" hidden>{ id }</p>
+                                        </div>
+                                        <div class="col-12 text-right date-posted">
+                                            <hr class="m-1">
+                                            <p id="message-date" class="sm-text mb-1">{ date_posted }</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-sm-2 p-0 text-center">
+                                        <img src="{ image_url }" alt="Prof" class="profile-icon rounded-circle img-fluid">
+                                        <p class="sm-text m-1 bold"><i>"{ author }"</i></p>                           
+                                    </div>
+                                </div
+                            </div>
+                        </li>`;
 
 // global chat variables 
 const msgForm = $('#chat-msg-form');
@@ -249,7 +237,7 @@ if(maintId){
             let lastMsgId = $('.msg-id').last().text();
             
             if(lastMsgId){
-                $.get('/api/chat/chat-message/?q='+maintId+'&id='+lastMsgId+'', function(data){
+                $.get(`/api/chat/chat-message/?q=${maintId}&id=${lastMsgId}`, function(data){
     
                     if (data.length !== 0)
                         {
@@ -324,7 +312,8 @@ if(addTenantBtn){
 // add tenant form
 
 
-const searchTenForm = $('#txt-search'); 
+const searchTenForm = $('#txt-search');
+const addTenForm = $('#add-tenant-form'); 
 const addTenantList = $('#add-user-list');
 
 // check if suggestion list is empty and display message
@@ -339,15 +328,14 @@ function emptyUserList(list, e, form){
 }
 
 // template for add tenant suggestion 
-let tenantSuggestion =  '<li class="row m-1 tenant-suggestion">'+
-                            '<div class="col-3 col-sm-4 col-md-3">'+
-                                '<img src="{ img_url }" alt="" class="add-tenant-icon rounded-circle">'+
-                            '</div>'+
-                            '<div class="col-7 text-left pl-1">'+
-                                '<p id="ten-name" class="md-text m-1">{ name }</p>'+
-                                '<p class="md-text m-1">{ email }</p>'+
-                            '</div>'+
-                        '</li>'
+let tenantSuggestion =  `<li class="row m-1 tenant-suggestion">
+                            <div class="col-3 col-sm-4 col-md-3">
+                                <img src="{ img_url }" alt="" class="add-tenant-icon rounded-circle">
+                            </div>
+                            <div class="col-7 text-left pl-1">
+                                <p id="ten-name" class="md-text m-1">{ name }</p>
+                            </div>
+                        </li>`
 
 // emptyUserList(addTenantList);
 
@@ -362,14 +350,13 @@ searchTenForm.on('keyup', function(e){
     if(keys.includes(e.keyCode) == false){
         $.ajax({
             type:'GET',
-            url: '/api/users/user-list/?q='+formVal+'',
+            url: `/api/users/user-list/?q=${formVal}`,
             success: function(data){
                 data.forEach(function(d){
     
                     // replace relevant placeholders with incoming values
                     let suggestion = tenantSuggestion.replace('{ img_url }', d.profile['profile_image']);
                     suggestion = suggestion.replace('{ name }', d.username);
-                    suggestion = suggestion.replace('{ email }', d.email);
                     addTenantList.append(suggestion)
     
                     emptyUserList(addTenantList, e, formVal);
@@ -383,6 +370,7 @@ searchTenForm.on('keyup', function(e){
                 suggestionEl.on('click', function(e){
                     let clickUsername = $(this).find('#ten-name').text()
                     searchTenForm.val(clickUsername)
+                    addTenForm.submit()
                 })
             }
         })
@@ -396,12 +384,14 @@ const alertDiv = document.getElementById('edit-profile-alert');
 
 if(alertDiv){
     document.addEventListener('DOMContentLoaded', function(e){
-        if(alertDiv.innerText != false){
-            alertDiv.classList.toggle('show-alert')
-            setTimeout(function(){
+        setTimeout(function(){
+            if(alertDiv.innerText != false){
                 alertDiv.classList.toggle('show-alert')
-            }, 4000);
-        } 
+                setTimeout(function(){
+                    alertDiv.classList.toggle('show-alert')
+                }, 5000);
+            } 
+        }, 1000)
     })
 }
 

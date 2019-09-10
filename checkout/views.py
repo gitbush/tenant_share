@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from payments.models import Payment
 from .forms import MakePaymentForm
@@ -7,6 +8,7 @@ import stripe
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+@login_required
 def checkout(request, payment_id):
     """
     Handle each users payment of maintenance request

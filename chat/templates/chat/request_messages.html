@@ -1,6 +1,7 @@
 {% load crispy_forms_tags %}
 
 <div class="col-12">
+    <!-- display information of relevant maintenance request -->
     <div class="col-12">
         <p class="md-text bold">
             <span>#</span>
@@ -12,10 +13,13 @@
             and landlord.
         </p>
     </div>
+    <!-- END: display information of relevant maintenance request -->
+
     <hr>
+
+    <!-- messages container -->
     <div class="row justify-content-center">
         <ul class="col-11" id="message-list">
-            <!-- for each message in message -->
             {% for msg in chat_messages %}
                 <!-- if current user is author then display to the left -->
                 {% if request.user == msg.author%}
@@ -71,9 +75,11 @@
                 </li>
                 {% endif %}
             {% endfor %}
-            <!-- end of messages -->
         </ul>
     </div>
+    <!-- END: message container -->
+
+    <!-- new message form -->
     <div class="row justify-content-center m-0">
         <div class="col-11">
             <hr class="m-1">
@@ -88,5 +94,6 @@
             </form>
         </div>
     </div>
+    <!-- END: new message form -->
 </div>
 

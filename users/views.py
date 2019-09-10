@@ -76,6 +76,7 @@ def add_tenant(request, rental_id):
     new_tenant = get_object_or_404(User, username=username)
     new_tenant.profile.rental = current_rental
     new_tenant.profile.save()
+    messages.success(request, 'Tenant added to your property')
 
     return redirect('maint-home')
 
@@ -89,5 +90,6 @@ def remove_tenant(request, rental_id, id):
 
     tenant_to_remove.profile.rental = None
     tenant_to_remove.save()
+    messages.success(request, 'Tenant removed from your property')
 
     return redirect('maint-home')

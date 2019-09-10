@@ -26,7 +26,7 @@ SECRET_KEY = 'trb@spvwqm3po(v+ik!iew-=q%y=8uo_oy1qxn3iuxa+&&^)g)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -47,6 +47,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'widget_tweaks',
     'storages',
+    'errors',
+    'utils',
+    'django_cleanup',
 ]
 
 MIDDLEWARE = [
@@ -127,39 +130,56 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+# if in development use local settings
+if DEBUG != True:
+    STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'static'),
+    )
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-MEDIA_URL = '/media/'
+    MEDIA_URL = '/media/'
+# else use s3 settings
+else:
+
+    # AWS access settings
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_CUSTOM_DOMAIN= '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+    AWS_S3_FILE_OVERWRITE = False 
+    AWS_DEFAULT_NONE = None
+
+
+    STATICFILES_LOCATION = 'static'
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+
+    MEDIAFILES_LOCATION = 'media'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
 # crispy forms bootstrap setting
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # redirect to home page on login
 LOGIN_REDIRECT_URL = 'maint-home'
+LOGIN_URL = 'login'
 # redirect to login page on logout
 LOGOUT_REDIRECT_URL = 'login'
 
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
 STRIPE_SECRET_KEY =  os.getenv('STRIPE_SECRET_KEY')
 
-# AWS access settings
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
-AWS_S3_CUSTOM_DOMAIN= '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# Passsword reset email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_ADDRESS')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD') 
+DEFAULT_FROM_EMAIL = 'support@tenantshare.com'
+EMAIL_PORT = 587
 
-AWS_S3_FILE_OVERWRITE = False 
-AWS_DEFAULT_NONE = None
-
-
-STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-
-MEDIAFILES_LOCATION = 'media'
-DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
