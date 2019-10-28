@@ -1,3 +1,5 @@
+{% load static %}
+
 <!-- your house share section -->
 <!-- media/maintenance/no_image.jpg -->
 <div class="row your-house justify-content-center">
@@ -23,7 +25,7 @@
                     </div>
                 {% endif %}
             </div>
-            <span><img src="static/imgs/line_shad.png" class="line-shadow d-none d-sm-block" alt=""></span>
+            <span><img src="{% static 'imgs/line_shad.png' %}" class="line-shadow d-none d-sm-block" alt=""></span>
             <!-- details of landlord and tenants -->
             <div class="col-12 col-sm-7 col-md-8 ten-lan-sect mb-3">
                 <div class="float col-12 col-md-11">
