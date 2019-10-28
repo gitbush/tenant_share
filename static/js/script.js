@@ -1,3 +1,6 @@
+/*jshint esversion: 6, sub:true */
+/*global $, keys  */
+
 // collapsing sidebar
 const menuIcon = document.getElementById("menu-icon");
 const sidebar = document.getElementById("sidebar");
@@ -22,7 +25,7 @@ else if(menuIcon && (window.innerWidth < 960)){
             sidebar.classList.remove("show-sidebar");
         }
     });
-};
+}
 
 window.addEventListener("resize", function(){
     if(window.innerWidth >= 960){
@@ -41,14 +44,12 @@ const editBtn = document.getElementById("edit-btn");
             else{
                 editBtn.innerText = "Edit";
             }
-        })
+        });
     }
     
 // maintenance request detail toggle switch
 
 const toggleSwitch = document.getElementById("request-toggle-switch");
-const detailTab = document.getElementById("detail-tab");
-const messagesTab = document.getElementById("messages-tab");
 const toggleSelect = document.getElementsByClassName("request-toggle-item");
 
 const messageView = document.getElementById("message-view");
@@ -64,11 +65,11 @@ for (let i = 0; i < toggleSelect.length; i++){
                 detailView.style.display = "none"; // hides maintenance request detail view
             }
             else if(event.target.id == "detail-tab"){
-                toggleSwitch.classList.remove("toggle-switch") // reverses toggle and displayed view
+                toggleSwitch.classList.remove("toggle-switch"); // reverses toggle and displayed view
                 messageView.style.display = "none";
                 detailView.style.display = "block ";
             }
-    })
+    });
 }
 
 
@@ -85,20 +86,20 @@ priorityBadge.forEach(function(badge){
           break;
         case "High":
             badge.classList.add("badge-danger");
-            break
+            break;
         default:
             badge.classList.add("badge-info");
     }
-})
+});
 
 
 // submit status form on change
-const statusForm = document.getElementById("status-form")
+const statusForm = document.getElementById("status-form");
 
 if(statusForm){
     statusForm.addEventListener("change", function(){
-        this.submit()
-    })
+        this.submit();
+    });
 }
 
 // submit maintenance list sort form on change
@@ -107,8 +108,8 @@ const sortField = document.getElementById("id_ordering");
 
 if(maintSearchForm){
     sortField.addEventListener("change", function(){
-        maintSearchForm.submit()
-    })
+        maintSearchForm.submit();
+    });
 }
 
 //========== chat message functionality
@@ -185,14 +186,13 @@ let recieverListItem = `<li class="row justify-content-end">
 // global chat variables 
 const msgForm = $('#chat-msg-form');
 const maintId = $('#maint-title').text();
-const msgView = $('#message-view');
 const msgList = $('#message-list');
 let msgInput = $('#id_message');
 
 
 // capture message form and send post to chat api             
 msgForm.on('submit', function(e){
-    e.preventDefault()
+    e.preventDefault();
     let msg = msgInput.val();
     // insert csrf token before sending request
     $.ajaxSetup({
@@ -249,15 +249,15 @@ if(maintId){
                                 msgItem = msgItem.replace('{ image_url }', data[i].author.profile['profile_image']);
                                 msgItem = msgItem.replace('{ id }', data[i].id);
                                 msgList.append(msgItem);
-                            };
-                        };
+                            }
+                        }
                 }
-            )
+            );
             }
             
         }, 2000
-    )
-};
+    );
+}
 
     
 // add and remove tenant modals
@@ -269,9 +269,9 @@ function confirmModal(title, message, href){
     const modalMessage = document.getElementById('message');
     const modalConfirm = document.getElementById('delete-confirm');
 
-    modalTitle.innerText = title
-    modalMessage.innerText = message
-    modalConfirm.setAttribute('href', href) 
+    modalTitle.innerText = title;
+    modalMessage.innerText = message;
+    modalConfirm.setAttribute('href', href);
     
     document.getElementById('confirm-modal').style.display = 'block';
 
@@ -283,7 +283,7 @@ if(modalClose){
     modalClose.addEventListener('click', function(){
 
         modalClose.closest('.modal').style.display = 'none';
-    }) 
+    });
 }
 
 
@@ -291,7 +291,7 @@ window.addEventListener('click', function(e){
     if(e.target.className === 'overlay'){
         e.target.closest('.modal').style.display = 'none';
     }
-})
+});
 
 // add tenant functionality
 
@@ -305,7 +305,7 @@ function addTenantModal(){
 if(addTenantBtn){
     addTenantBtn.addEventListener('click', function(){
         addTenantModal();
-    })
+    });
 }
 
 
@@ -319,11 +319,11 @@ const addTenantList = $('#add-user-list');
 // check if suggestion list is empty and display message
 function emptyUserList(list, e, form){
     if(list.is(':empty')){
-        list.append('<p class="md-text text-left m-2">No results found</p>')
+        list.append('<p class="md-text text-left m-2">No results found</p>');
     } 
     else if((e.keyCode == 8 && !form)){
         list.empty();
-        list.append('<p class="md-text text-left m-2">No results found</p>')
+        list.append('<p class="md-text text-left m-2">No results found</p>');
     }
 }
 
@@ -335,18 +335,18 @@ let tenantSuggestion =  `<li class="row m-1 tenant-suggestion">
                             <div class="col-7 text-left pl-1">
                                 <p id="ten-name" class="md-text m-1">{ name }</p>
                             </div>
-                        </li>`
+                        </li>`;
 
 // emptyUserList(addTenantList);
 
 // handling of add tenant form suggestions
 searchTenForm.on('keyup', function(e){
 
-    let formVal = searchTenForm.val()
+    let formVal = searchTenForm.val();
 
     addTenantList.empty();
 
-    keys = [32, 37, 38, 39, 40]
+    keys = [32, 37, 38, 39, 40];
     if(keys.includes(e.keyCode) == false){
         $.ajax({
             type:'GET',
@@ -357,27 +357,27 @@ searchTenForm.on('keyup', function(e){
                     // replace relevant placeholders with incoming values
                     let suggestion = tenantSuggestion.replace('{ img_url }', d.profile['profile_image']);
                     suggestion = suggestion.replace('{ name }', d.username);
-                    addTenantList.append(suggestion)
+                    addTenantList.append(suggestion);
     
                     emptyUserList(addTenantList, e, formVal);
     
-                })
+                });
                 emptyUserList(addTenantList, e, formVal);
     
                 // add tenant form processing 
                 let suggestionEl = $('.tenant-suggestion');
     
                 suggestionEl.on('click', function(e){
-                    let clickUsername = $(this).find('#ten-name').text()
-                    searchTenForm.val(clickUsername)
-                    addTenForm.submit()
-                })
+                    let clickUsername = $(this).find('#ten-name').text();
+                    searchTenForm.val(clickUsername);
+                    addTenForm.submit();
+                });
             }
-        })
+        });
     } else {
         e.preventDefault();
     }
-})    
+});    
 
 // alert modal for user messages
 const alertDiv = document.getElementById('edit-profile-alert');
@@ -386,13 +386,13 @@ if(alertDiv){
     document.addEventListener('DOMContentLoaded', function(e){
         setTimeout(function(){
             if(alertDiv.innerText != false){
-                alertDiv.classList.toggle('show-alert')
+                alertDiv.classList.toggle('show-alert');
                 setTimeout(function(){
-                    alertDiv.classList.toggle('show-alert')
+                    alertDiv.classList.toggle('show-alert');
                 }, 5000);
             } 
-        }, 1000)
-    })
+        }, 1000);
+    });
 }
 
 // handle message tags error/success
@@ -412,19 +412,18 @@ function msgType(){
 
 // delete payment from list
 const deletePaymentBtn= document.getElementById('delete-payment-btn');
-const deleteConfirm = document.getElementById('delete-confirm');
 
 if(deletePaymentBtn){
     deletePaymentBtn.addEventListener('click', function(e){
 
-        const payId = this.getAttribute('data-payId')
+        const payId = this.getAttribute('data-payId');
         const href = `/payments/delete/${payId}`;
-        const message = 'Are you sure you want to delete this payment?'
-        const title = 'Delete payment'
+        const message = 'Are you sure you want to delete this payment?';
+        const title = 'Delete payment';
 
         confirmModal(title, message, href);
     
-    })
+    });
 }
 
 // delete maintenance request
@@ -433,15 +432,15 @@ const deleteRequestBtn= document.querySelectorAll('#delete-request-btn');
 if(deleteRequestBtn){
     deleteRequestBtn.forEach(function(btn){
         btn.addEventListener('click', function(e){
-            const maintId = this.getAttribute('data-maint-id')
+            const maintId = this.getAttribute('data-maint-id');
             const href = `/maintenance/delete/${maintId}`;
-            const message = 'Are you sure you want to delete this maintenance request?'
-            const title = 'Delete maintenance request'
+            const message = 'Are you sure you want to delete this maintenance request?';
+            const title = 'Delete maintenance request';
     
             confirmModal(title, message, href);
         
-        })
-    })
+        });
+    });
 }
 
 // remove tenant from rental property
@@ -454,35 +453,35 @@ if(deleteTenantBtn){
             const firstName = this.parentNode.parentNode.querySelector('#ten-first').innerText;
             const lastName = this.parentNode.parentNode.querySelector('#ten-last').innerText;
 
-            const tenId = this.getAttribute('data-ten-Id')
-            const rentId = this.getAttribute('data-rent-Id')
+            const tenId = this.getAttribute('data-ten-Id');
+            const rentId = this.getAttribute('data-rent-Id');
 
             const href = `/tenant/remove/${rentId}/${tenId}`;
-            const message = `Are you sure you want to remove ${firstName} ${lastName} from this property?`
-            const title = 'Remove tenant'
+            const message = `Are you sure you want to remove ${firstName} ${lastName} from this property?`;
+            const title = 'Remove tenant';
 
             confirmModal(title, message, href);
         
-        })
-    })
+        });
+    });
 }
 
 // loading spinner
 function showLoader(){
     const spinner = document.querySelector('.spinner');
-    spinner.style.visibility = 'visible'
+    spinner.style.visibility = 'visible';
 }
 
 function hideLoader(){
     const spinner = document.querySelector('.spinner');
-    spinner.style.visibility = 'hidden'
+    spinner.style.visibility = 'hidden';
 }
 
 window.addEventListener('DOMContentLoaded', function(){
     showLoader();
-})
+});
 
 window.addEventListener('load', function(){
-    setTimeout(hideLoader, 500) 
-})
+    setTimeout(hideLoader, 500);
+});
 
