@@ -87,7 +87,7 @@ class MaintRequest(models.Model):
             thumb = (size, size)
             method = Image.ANTIALIAS
             center = (0.5, 0.5)
-            extension = "png"
+            extension = "jpeg"
             # if greater than 300px on any side, then resize it to 300x300
             if img.height > size or img.width > size:
                 img.thumbnail((size, size), method)
