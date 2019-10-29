@@ -1,1 +1,1 @@
-web: gunicorn tenant_share.wsgi
+web: gunicorn tenant_share.wsgi:app
