@@ -1,3 +1,5 @@
+import django_heroku
+
 """
 Django settings for tenant_share_project project.
 
@@ -183,3 +185,4 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = 'support@tenantshare.com'
 EMAIL_PORT = 587
 
+django_heroku.settings(locals())
