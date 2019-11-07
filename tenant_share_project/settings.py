@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-# import env
+import env
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -63,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'tenant_share_project.urls'
@@ -152,10 +153,10 @@ else:
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
     AWS_S3_CUSTOM_DOMAIN= '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+    # AWS_DEFAULT_ACL = None
 
     AWS_S3_FILE_OVERWRITE = False 
     AWS_DEFAULT_NONE = None
-
 
     STATICFILES_LOCATION = 'static'
     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
@@ -186,4 +187,4 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = 'support@tenantshare.com'
 EMAIL_PORT = 587
 
-django_heroku.settings(locals())
+django_heroku.settings(locals(), staticfiles=False)
