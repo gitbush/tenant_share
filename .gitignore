@@ -3,4 +3,4 @@ tenant_env/
 __pycache__
 *.json
 .vscode
-env.py
+.env
