@@ -262,7 +262,6 @@ if(maintId){
     
 // add and remove tenant modals
 
-
 function confirmModal(title, message, href){
 
     const modalTitle = document.getElementById('title');
@@ -277,13 +276,16 @@ function confirmModal(title, message, href){
 
 }
 
-let modalClose = document.getElementById('modal-close');
+let modalClose = document.getElementsByClassName('modal-close');
 
-if(modalClose){
-    modalClose.addEventListener('click', function(){
+if(modalClose.length > 0){
 
-        modalClose.closest('.modal').style.display = 'none';
+    for(let i=0; i < modalClose.length; i++){
+        modalClose[i].addEventListener('click', function(){
+
+        modalClose[i].closest('.modal').style.display = 'none';
     });
+    }
 }
 
 

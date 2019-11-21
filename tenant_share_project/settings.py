@@ -30,6 +30,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG')
+from django.conf import settings
+
+print(type(settings.DEBUG))
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -137,7 +141,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 # if in development use local settings
-if DEBUG == True:
+if DEBUG == 'True':
     STATIC_URL = '/static/'
 
     STATICFILES_DIRS = (
