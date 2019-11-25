@@ -34,13 +34,13 @@
         <div class="col-12">
         <hr class="m-1 d-none d-sm-block">
             <div class="row justify-content-center">
-                <div class="col-10">
+                <div class="col-11 col-sm-10">
                     <form action="{% url 'account' id=user.id %}" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="form-group row justify-content-center m-0">
                             <legend class="border-bottom mb-4">Account Update</legend>
-                            <div class="col-6">{{ user_update_form.first_name|as_crispy_field }}</div>
-                            <div class="col-6">{{ user_update_form.last_name|as_crispy_field }}</div>
+                            <div class="col-12 col-sm-6">{{ user_update_form.first_name|as_crispy_field }}</div>
+                            <div class="col-12 col-sm-6">{{ user_update_form.last_name|as_crispy_field }}</div>
                             <div class="col-12">{{ user_update_form.username|as_crispy_field }}</div>
                             <div class="col-12">{{ user_update_form.email|as_crispy_field }}</div>
                             <div class="col-12">{{ profile_img_form|crispy }}</div>

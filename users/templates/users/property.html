@@ -36,34 +36,34 @@
         <div class="col-12 text-right">
             <button id="edit-btn" class="account-edit-btn btn btn-sm btn-info" type="button" data-toggle="collapse" data-target="#edit-property-collapse" aria-expanded="false" aria-controls="edit-property-collapse">Edit</button>
         </div>
-        <!-- END: user property info -->
         {% endif %}
+    </div>
+        <!-- END: user property info -->
 
-        <!-- add/edit property form -->
-        <div id="edit-property-collapse" class="row account-edit-section collapse">
-            <div class="col-12">
-            <hr class="m-1 d-none d-sm-block">
-                <div class="row justify-content-center">
-                    <div class="col-10">
-                        <form action="{% url 'account' id=user.id %}" method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <div class="form-group row justify-content-center m-0">
-                                <legend class="border-bottom mb-4">Property Update</legend>
-                                <div class="col-12">{{ rental_form.address|as_crispy_field }}</div>
-                                <div class="col-6">{{ rental_form.city|as_crispy_field }}</div>
-                                <div class="col-6">{{ rental_form.postcode|as_crispy_field }}</div>
-                                <div class="col-12">{{ rental_form.no_of_tenants|as_crispy_field }}</div>
-                                <div class="col-12">{{ rental_form.image|as_crispy_field }}</div>    
-                            </div>
-                            <div class="row justify-content-end m-2">
-                                <button class="edit-confirm-btn btn btn-sm btn-outline-info" name="rental" type="submit">Submit</button>
-                            </div>
-                        </form>
-                    </div>
+    <!-- add/edit property form -->
+    <div id="edit-property-collapse" class="row account-edit-section collapse">
+        <div class="col-12">
+        <hr class="m-1 d-none d-sm-block">
+            <div class="row justify-content-center">
+                <div class="col-11 col-sm-10">
+                    <form action="{% url 'account' id=user.id %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group row justify-content-center m-0">
+                            <legend class="border-bottom mb-4">Property Update</legend>
+                            <div class="col-12">{{ rental_form.address|as_crispy_field }}</div>
+                            <div class="col-12 col-sm-6">{{ rental_form.city|as_crispy_field }}</div>
+                            <div class="col-12 col-sm-6">{{ rental_form.postcode|as_crispy_field }}</div>
+                            <div class="col-12">{{ rental_form.no_of_tenants|as_crispy_field }}</div>
+                            <div class="col-12">{{ rental_form.image|as_crispy_field }}</div>    
+                        </div>
+                        <div class="row justify-content-end m-2">
+                            <button class="edit-confirm-btn btn btn-sm btn-outline-info" name="rental" type="submit">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <!-- END: property form -->
         </div>
+        <!-- END: property form -->
     </div>
 </div> 
     
