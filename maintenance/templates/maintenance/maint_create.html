@@ -4,19 +4,19 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="card col-11 col-md-9 mt-3 text-center">
+        <div class="card col-11 col-md-9 text-center">
             <div class="row justify-content-center">
                 <div class="col-12 card-header text-left">Add Maintenance Request</div>
 
                 <!-- create a maintenance request form -->
-                <div class="col-10">
+                <div class="col-11 col-sm-10 p-0">
                     <form action="{% url 'maint-create' %}" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="form-group row m-0 text-left">
                             <div class="col-12">{{ request_create_form.title|as_crispy_field }}</div>
                             <div class="col-12">{{ request_create_form.details|as_crispy_field }}</div>
-                            <div class="col-6">{{ request_create_form.priority|as_crispy_field }}</div>
-                            <div class="col-6">{{ request_create_form.image|as_crispy_field }}</div>    
+                            <div class="col-12 col-sm-6">{{ request_create_form.priority|as_crispy_field }}</div>
+                            <div class="col-12 col-sm-6">{{ request_create_form.image|as_crispy_field }}</div>    
                         </div>
                         <hr class="col-12"> 
                         <div class="row justify-content-end m-2">
