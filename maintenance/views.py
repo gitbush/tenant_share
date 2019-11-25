@@ -76,7 +76,6 @@ def MaintRequestCreate(request):
             new_request.author = request.user
             new_request.save()
             messages.add_message(request, messages.INFO, f'New maintenance request created')
-            Thread.objects.create(rental=request_rental, maint_request=new_request) # create a message thread on maint request create
             return redirect('maint-detail', id=new_request.id)
 
     context = {
