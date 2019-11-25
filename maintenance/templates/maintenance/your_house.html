@@ -10,19 +10,25 @@
             <div class="col-12 col-sm-4 col-md-3 mt-3 text-center">
                 <img src="{{ userRental.image.url }}" class="rounded-circle img-fluid house-img" alt="Cinque Terre">
                 <hr class="m-2">
-                <p id="rental-id" hidden>{{ userRental.id }}</p>
-                <p class="md-text">{{ userRental.address.title }}</p>
-                <p class="md-text">{{ userRental.postcode|upper }}, {{ userRental.city.title }}</p>
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <p id="rental-id" hidden>{{ userRental.id }}</p>
+                        <p class="lg-text">{{ userRental.address.title }}</p>
+                        <p class="lg-text">{{ userRental.postcode|upper }}, {{ userRental.city.title }}</p>            
+                    </div>
+                </div>
                 {% if request.user == userLandlord %}
+                <div class="row justify-content-center mb-2">
+                    <div class="col-10 mt-2 mb-1">
+                        <p class="md-text m-0">Occupancy: {{ userTenants.count }}/{{ userRental.no_of_tenants }}</p>
+                    </div>
                     {% if userTenants.count != userRental.no_of_tenants %}
-                    <div class="col-12 mb-2">
+                    <div class="col-10">
                         <button id="add-tenant-btn" class="btn btn-sm btn-success modal-open" data-modal="addModal">+ Add Tenant</button>
                     </div>
                     {% include 'users/add_tenant.html' %}
                     {% endif %}
-                    <div class="col-12 mt-2">
-                        <p class="md-text">Occupancy: {{ userTenants.count }}/{{ userRental.no_of_tenants }}</p>
-                    </div>
+                </div>
                 {% endif %}
             </div>
             <span><img src="{% static 'imgs/line_shad.png' %}" class="line-shadow d-none d-sm-block" alt=""></span>
@@ -31,15 +37,15 @@
                 <div class="float col-12 col-md-11">
                     <div class="row justify-content-center">
                         <div class="col-12 p-1">
-                            <h4 class="sm-heading">Landlord</h4>
+                            <h4 class="sm-heading bold">The Landlord</h4>
                             <hr class="m-2">
                         </div>
                         {% if userLandlord %}
-                        <div class="col-12 col-md-10 text-center text-md-left">
+                        <div class="col-12 col-md-10 text-center text-md-left m-2">
                             <span>
                                 <img src="{{ userLandlord.profile.profile_image.url}}" class="rounded-circle img-fluid landlord-img d-inline" alt="man">
                             </span>
-                            <span class="tenant-name d-inline-block align-middle ml-2">
+                            <span class="tenant-name d-inline-block align-middle ml-2 mt-2">
                                 <p class="d-sm-block m-0 md-text">{{ userLandlord.first_name }}&nbsp;{{ userLandlord.last_name }}</p>
                                 <p class="d-cm-block m-0 md-text">{{ userLandlord.email }}</p>        
                             </span>
@@ -52,7 +58,7 @@
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12 p-1">
-                            <h4 class="sm-heading">Housemates</h4>
+                            <h4 class="sm-heading bold">The Housemates</h4>
                             <hr class="m-2">                    
                         </div>
                         {% if userTenants %}
