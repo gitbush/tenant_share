@@ -12,11 +12,11 @@
                 <hr class="m-1">
                 <!-- maint request search form -->
                 <div class="col-12">
-                    <form id="maint-search-form" class="row mb-2" method="get">
+                    <form id="maint-search-form" class="row mb-2 justify-content-center" method="get">
                         <div class="col-12">{{ maint_filter.form.title__icontains|as_crispy_field }}</div>
                         <div class="col-6 col-sm-3">{{ maint_filter.form.priority|as_crispy_field }}</div>
                         <div class="col-6 col-sm-3">{{ maint_filter.form.status|as_crispy_field }}</div>
-                        <div class="col-6 col-sm-3">{{ maint_filter.form.author|as_crispy_field }}</div>
+                        <!-- <div class="col-6 col-sm-3">{{ maint_filter.form.author|as_crispy_field }}</div> -->
                         <div class="col-6 col-sm-3">{{ maint_filter.form.paid_by|as_crispy_field }}</div>                                         
                         <div class="col-12">
                             <div class="row justify-content-between">

@@ -30,10 +30,6 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG')
-from django.conf import settings
-
-print(type(settings.DEBUG))
-
 
 ALLOWED_HOSTS = ['*']
 
