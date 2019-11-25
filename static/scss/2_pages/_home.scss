@@ -108,7 +108,7 @@
 #home-maint-info{
     grid-area: home-maint-info;
     align-self: center;
-    text-align: left;
+    text-align: center;
     @include all-desktop-devices{
         margin-left: 5px;
     }

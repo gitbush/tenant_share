@@ -20,5 +20,5 @@ class MaintListFilter(django_filters.FilterSet):
         }
 
     def order_by(self, queryset, name, value):
-        expression = 'date_raised' if value == 'newest' else '-date_raised'
+        expression = '-date_raised' if value == 'newest' else 'date_raised'
         return queryset.order_by(expression)

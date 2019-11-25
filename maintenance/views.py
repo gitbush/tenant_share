@@ -46,7 +46,7 @@ def MaintRequestList(request):
         user_rental = request.user.profile.rental
         maintenance_requests = user_rental.maintrequest_set.all()
         total = maintenance_requests.count()
-        maint_filter = MaintListFilter(request.GET, queryset=maintenance_requests)
+        maint_filter = MaintListFilter(request.GET, queryset=maintenance_requests.order_by('-date_raised'))
         paginator = Paginator(maint_filter.qs, 5)
         page = request.GET.get('page')
         requests = paginator.get_page(page)
