@@ -7,20 +7,25 @@
     <!-- add payment form -->
     <div class="row justify-content-center">
         <div class="card max-card col-11 mt-2">
-            <form class="" action="" method="POST">
-                {% csrf_token %}
-                <div class="form-group justify-content-center m-0">
-                    <legend class="label-heading border-bottom mb-1">Add Payment</legend>
-                    <div class="row justify-content-center">
-                        <div class="col-11 col-sm-6 form-m-0">{{ payment_form.maint_request|as_crispy_field }}</div>
-                        <div class="col-5 col-sm-3 form-m-0">{{ payment_form.amount|as_crispy_field }}</div>
-                        <div class="col-4 col-sm-2 p-sm-0 pl-md-2 align-self-end">
-                            <button class="btn btn-md btn-outline-info" type="submit">Submit</button>
+            <div class="row mb-3">
+                <div class="col-12 card-header p-2">
+                    <h3 class="md-heading m-1">Payments List</h3>
+                </div>
+                <form class="col-12" action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group row justify-content-center m-0">
+                        <legend class="label-heading text-center m-2">Add Payment - Select relevant maintenance request and set amount payable</legend>
+                        <hr class="col-11 m-1">
+                        <div class="row justify-content-center">
+                            <div class="col-11 col-sm-6 form-m-0">{{ payment_form.maint_request|as_crispy_field }}</div>
+                            <div class="col-5 col-sm-3 form-m-0">{{ payment_form.amount|as_crispy_field }}</div>
+                            <div class="col-4 col-sm-2 p-sm-0 pl-md-2 align-self-end">
+                                <button class="btn btn-md btn-outline-info" type="submit">Submit</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
-            <hr>
+                </form>
+            </div>
         </div>
     </div>
     <!-- END: add payment -->
