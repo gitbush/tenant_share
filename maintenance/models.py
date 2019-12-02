@@ -59,8 +59,8 @@ class MaintRequest(models.Model):
                         ('med', 'Med'),
                         ('high', 'High')]
 
-    PAID_BY_CHOICES = [('tenant', 'Tenant'),
-                       ('landlord', 'Landlord')]
+    PAID_BY_CHOICES = [('Tenant', 'Tenant'),
+                       ('Landlord', 'Landlord')]
                         
 
     property_ref = models.ForeignKey(Rental, null=True, on_delete=models.SET_NULL ) 

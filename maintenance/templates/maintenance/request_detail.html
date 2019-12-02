@@ -29,7 +29,7 @@
     </div>
     <!-- END: status info row -->
     <hr class="m-2">
-    <!-- detail row -->
+    <!-- maintenance detail -->
     <div class="row justify-content-center">
         <div class="col-12">
             <h4 class="md-heading">Title</h4>
@@ -63,7 +63,7 @@
                         <div class="col-6 col-sm-3">{{ assign_cost_form.cost|as_crispy_field }}</div>
                         <div class="col-6 col-sm-3">{{ assign_cost_form.paid_by|as_crispy_field }}</div>
                         <div class="col-6 col-sm-4">
-                                {{ assign_cost_form.invoice_pdf|as_crispy_field }}
+                            {{ assign_cost_form.invoice_pdf|as_crispy_field }}
                         </div>
                         <div class="col-6 col-sm-2 text-center align-self-center">
                             <button class="btn btn-md btn-primary" type="submit">Submit</button>
@@ -71,7 +71,7 @@
                     </form>
                 </div>
                 {% else %}
-                    {% if maint_request.paid_by == 'Tenant' %}
+                    {% if maint_request.paid_by == 'tenant' %}
                     <div class="col-12 col-sm-6">
                         <div class="row">
                             <div class="col-12">
@@ -79,7 +79,12 @@
                             </div>
                             <div class="col-12">
                                 <p class="md-text">
-                                    Invoice/Quote: <a class="btn btn-sm btn-primary" href="{{ maint_request.invoice_pdf.url }}" download="Invoice {{ maint_request.id}}">Download</a>
+                                    Invoice/Quote: 
+                                    {% if maint_request.invoice_pdf %}
+                                        <a class="btn btn-sm btn-primary" href="{{ maint_request.invoice_pdf.url }}" download="Invoice {{ maint_request.id}}">Download</a>
+                                    {% else %}
+                                        None uploaded
+                                    {% endif %}
                                 </p>
                             </div>
                             <div class="col-12">
@@ -100,5 +105,5 @@
             </div>
         </div>
     </div>
-    <!-- END: detail row -->
+    <!-- END: maintenance detail -->
 </div>
