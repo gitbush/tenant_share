@@ -75,7 +75,7 @@ def MaintRequestCreate(request):
             new_request.property_ref = request_rental
             new_request.author = request.user
             new_request.save()
-            messages.add_message(request, messages.INFO, f'New maintenance request created')
+            messages.success(request, 'New maintenance request created')
             return redirect('maint-detail', id=new_request.id)
 
     context = {
@@ -100,6 +100,7 @@ def MaintRequestDetail(request, id):
                 assign_cost_form = MaintenanceQuoteForm(request.POST, request.FILES, instance=maint_request)
                 if assign_cost_form.is_valid():
                     assign_cost_form.save()
+                    messages.success(request, 'Cost of work updated')
                     return redirect('maint-detail', id=id)
                 else:
                     print(assign_cost_form.errors)
@@ -108,6 +109,7 @@ def MaintRequestDetail(request, id):
                 status_form = StatusUpdateForm(request.POST, instance=maint_request)
                 if status_form.is_valid():
                     status_form.save()
+                    messages.success(request, 'Status of request updated')
                     return redirect('maint-detail', id=id)
                     
         assign_cost_form = MaintenanceQuoteForm(instance=maint_request)
@@ -134,5 +136,4 @@ def MaintRequestDelete(request, id):
     current_request = get_object_or_404(MaintRequest, id=id)
     current_request.delete()
     messages.success(request, 'Maintenance request has been deleted')
-
     return redirect('maint-list')

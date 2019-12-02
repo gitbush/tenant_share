@@ -68,7 +68,7 @@ class MaintRequest(models.Model):
     date_raised = models.DateTimeField(default=timezone.now)
     cost = models.IntegerField(null=True)
     paid_by = models.CharField(max_length=20, null=True, choices=PAID_BY_CHOICES)
-    invoice_pdf = models.FileField(null=True, upload_to='maintenance')
+    invoice_pdf = models.FileField(null=True, upload_to='maintenance', blank=True)
     
 
     def __str__(self):

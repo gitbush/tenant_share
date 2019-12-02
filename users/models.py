@@ -5,9 +5,9 @@ from maintenance.models import Rental, MaintRequest
 from PIL import Image, ImageOps
 from utils.functions import upload_to, resize_image
 
-# # have username in uploaded image path
-# def upload_to(instance, filename):
-#     return "users/%s/%s" % (instance.user.username.lower(), filename)
+# have username in uploaded image path
+def upload_to(instance, filename):
+    return "users/%s/%s" % (instance.user.username.lower(), filename)
 
 class Profile(models.Model):
     """
@@ -25,7 +25,6 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
 
     # resize uploaded profile img
-    # TODO: DRY save method for resize images
     def save(self, *args, **kwargs):
         """
         - installed 'django-cleanup' to auto-remove old image.

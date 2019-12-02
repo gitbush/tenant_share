@@ -27,7 +27,7 @@
             <span class="badge badge-md badge-light">{{ maint_request.date_raised.date }}</span>
         </div>
     </div>
-    <!-- end status info row -->
+    <!-- END: status info row -->
     <hr class="m-2">
     <!-- detail row -->
     <div class="row justify-content-center">
@@ -59,7 +59,7 @@
                 <div class="col-12">
                     <form class="row" action="" method="POST" enctype="multipart/form-data" name='cost'>
                         {% csrf_token %}
-                        <label class="sm-heading col-12">Set cost and upload quote/invoice of work</label>
+                        <label class="sm-heading col-12">As the landlord you can set the cost and upload quote/invoice of repairs</label>
                         <div class="col-6 col-sm-3">{{ assign_cost_form.cost|as_crispy_field }}</div>
                         <div class="col-6 col-sm-3">{{ assign_cost_form.paid_by|as_crispy_field }}</div>
                         <div class="col-6 col-sm-4">
@@ -100,18 +100,5 @@
             </div>
         </div>
     </div>
-    <!-- end detail row -->
-</div>
-
-
-<!-- alert modal for messages -->
-<div id="edit-profile-alert">
-    {% if messages %}
-    <h3 class="alert-header md-heading m-2">SUCCESS!</h3>
-    <ul class="alert-list mb-1 pl-3">
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+    <!-- END: detail row -->
 </div>
