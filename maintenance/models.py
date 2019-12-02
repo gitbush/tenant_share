@@ -5,13 +5,18 @@ from django.core.files.storage import default_storage as storage
 from PIL import Image, ImageOps
 from utils.functions import resize_image
 
+# have address in uploaded image path
+def upload_to(instance, filename):
+    return "maintenance/%s/%s" % (instance.address.lower(), filename)
+
+
 # rental model for instances of rental properties
 class Rental(models.Model):
     address = models.CharField(max_length=30)
     postcode = models.CharField(max_length=8)
     city = models.CharField(max_length=15)
     no_of_tenants = models.IntegerField()
-    image = models.ImageField(default='maintenance/no_image.jpg', upload_to='maintenance')
+    image = models.ImageField(default='maintenance/no_image.jpg', upload_to=upload_to)
     landlord = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
@@ -74,7 +79,6 @@ class MaintRequest(models.Model):
     def __str__(self):
         return f"#{self.id}  {self.title} "
 
-    # TODO: DRY save method for resize images
     def save(self, *args, **kwargs):
         """
         - installed 'django-cleanup' to auto-remove old image.
@@ -87,7 +91,7 @@ class MaintRequest(models.Model):
             thumb = (size, size)
             method = Image.ANTIALIAS
             center = (0.5, 0.5)
-            extension = "jpeg"
+            extension = "png"
             # if greater than 300px on any side, then resize it to 300x300
             if img.height > size or img.width > size:
                 img.thumbnail((size, size), method)
@@ -96,6 +100,7 @@ class MaintRequest(models.Model):
                 center_img.save(temp, extension)
                 temp.close()
                 super(MaintRequest, self).save(*args, **kwargs) 
+
 
 
 
