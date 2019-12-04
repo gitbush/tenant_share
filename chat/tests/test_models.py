@@ -17,3 +17,8 @@ class TestViews(TestCase):
         
         self.assertEquals(self.chat_message.maint_request.id, self.maint_request.id)
         self.assertEquals(self.chat_message.message, 'A test message')
+
+    def test_str_is_equal_to_message(self):
+        """ Test a chat message string rep is message """
+
+        self.assertEqual(str(self.chat_message), self.chat_message.message)
