@@ -3,7 +3,7 @@ from django.urls import reverse
 from chat.models import ChatMessage
 from maintenance.models import MaintRequest, Rental
 
-class TestViews(TestCase):
+class TestModels(TestCase):
 
     def setUp(self):
         """ Create necessary instances before tests """

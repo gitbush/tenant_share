@@ -8,7 +8,7 @@ class TestModels(TestCase):
     def setUp(self):
         """ Create necessary instances before tests """
 
-        self.rental = Rental(address='11 Test Street)
+        self.rental = Rental(address='11 Test Street')
         self.maint_request = MaintRequest(id=1, title='Test request', property_ref=self.rental)
 
     def test_rental_str(self):
