@@ -102,8 +102,6 @@ def MaintRequestDetail(request, id):
                     assign_cost_form.save()
                     messages.success(request, 'Cost of work updated')
                     return redirect('maint-detail', id=id)
-                else:
-                    print(assign_cost_form.errors)
             
             elif 'status' in request.POST:
                 status_form = StatusUpdateForm(request.POST, instance=maint_request)
