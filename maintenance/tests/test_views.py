@@ -63,7 +63,7 @@ class TestViews(TestCase):
 
         # test POST request
         response = self.client.post(url, {'request_create_form': 'True', 'title': 'A test request', 'details': 'test request', 'priority': 'high', 'image': 'test_image.png'})
-
+    
         req = MaintRequest.objects.filter(title='A test request')
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, '/maintenance/request/1/')
