@@ -11,8 +11,6 @@ Currently in development.
 [![Build Status](https://travis-ci.org/gitbush/tenant_share.svg?branch=master)](https://travis-ci.org/gitbush/tenant_share)
 
 
-Introduction to purpose of project here.
-
 ## Table of Contents
 1. [UX](#ux)
     - [Goals](#goals)
@@ -103,15 +101,9 @@ Tenant Share was designed with a dashboard theme is mind. This provides a feelin
 - The primary font 'Proxima Nova' is especially useful for its high legibility, which makes it a good pick for easy-to-read text with a friendly tone.
 
 ### Icons
-<!-- Insert images of icons -->
 
 - Icons were used for navigation to keep the site clean and less cluttered.
 - The icons were chosen as they clearly represent the related pages. 
-
-### Colours
-<div align="center">
-    <img src="" alt="Tenant Share Colours" aria-label="Tenant Share colours" />
-</div>
 
 ## Wireframes
 
@@ -369,7 +361,6 @@ All image fields are resized using PILLOW on upload by modifying the `def save()
 - [Git](https://gist.github.com/derhuerst/1b15ff4652a867391f03) to handle version control.
 - [GitHub](https://github.com/) to store and share all project code remotely. 
 - [Browserstack](https://www.browserstack.com/) to test functionality on all browsers and devices.
-- [Am I Responsive](http://ami.responsivedesign.is/) to create the images in this readme file of each page displayed on different screen sizes.
 
 ### Databases
 - [PostgreSQL](https://www.postgresql.org/) for production database, provided by heroku.
