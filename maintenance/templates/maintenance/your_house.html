@@ -1,12 +1,10 @@
 {% load static %}
 
-<!-- your house share section -->
-<!-- media/maintenance/no_image.jpg -->
 <div class="row your-house justify-content-center">
     <div class="card col-11 p-0 max-card">
         <div class=" card-top-color"></div>
         <div class="row m-0">
-            <!-- image of house and address -->
+            <!-- details of rental -->
             <div class="col-12 col-sm-4 col-md-3 mt-3 text-center">
                 <img src="{{ userRental.image.url }}" class="rounded-circle img-fluid house-img" alt="Cinque Terre">
                 <hr class="m-2">
@@ -31,7 +29,11 @@
                 </div>
                 {% endif %}
             </div>
+
+            <!-- END: details of rental -->
+
             <span><img src="{% static 'imgs/line_shad.png' %}" class="line-shadow d-none d-sm-block" alt=""></span>
+
             <!-- details of landlord and tenants -->
             <div class="col-12 col-sm-7 col-md-8 ten-lan-sect mb-3">
                 <div class="float col-12 col-md-11">
@@ -42,13 +44,13 @@
                         </div>
                         {% if userLandlord %}
                         <div class="col-12 col-md-10 text-center text-md-left m-2">
-                            <span>
+                            <div class="d-inline-block">
                                 <img src="{{ userLandlord.profile.profile_image.url}}" class="rounded-circle img-fluid landlord-img d-inline" alt="man">
-                            </span>
-                            <span class="tenant-name d-inline-block align-middle ml-2 mt-2">
+                            </div>
+                            <div class="tenant-name d-inline-block align-middle ml-2 mt-2">
                                 <p class="d-sm-block m-0 md-text">{{ userLandlord.first_name }}&nbsp;{{ userLandlord.last_name }}</p>
                                 <p class="d-cm-block m-0 md-text">{{ userLandlord.email }}</p>        
-                            </span>
+                            </div>
                         </div>
                         {% else %}
                             <div class="col-5 col-sm-5 text-center">
@@ -65,19 +67,17 @@
                             {% for tenant in userTenants %}
                             <div class="col-5 col-sm-3 col-lg-2 text-center p-2">
                                 <div id="tenant-img">
-                                    <span>
+                                    <div class="d-inline-block">
                                         <img src="{{ tenant.profile_image.url }}" class="rounded-circle img-fluid landlord-img d-inline" alt="man">
                                         {% if request.user == userLandlord %}
                                         <i id="delete-tenant-btn" class="fas fa-times-circle modal-open" data-rent-id="{{ userRental.id }}" data-ten-id="{{ tenant.user.id }}">
                                         </i>
-                                        {% endif %}
-                                        
-                                       
-                                    </span>
-                                    <span id="tenant-name" class="tenant-name d-inline-block align-middle m-2">
+                                        {% endif %}                                       
+                                    </div>
+                                    <div id="tenant-name" class="tenant-name d-inline-block align-middle m-2">
                                         <p id="ten-first" class="m-0 md-text">{{ tenant.user.first_name }}</p>
                                         <p id="ten-last" class="m-0 md-text">{{ tenant.user.last_name }}</p>
-                                    </span>
+                                    </div>
                                 </div>
                             </div>
                             {% endfor %}
@@ -92,6 +92,7 @@
                     </div>
                 </div>
             </div>
+            <!-- END: details of landlord and tenants -->
         </div>
     </div>
 </div>
