@@ -32,14 +32,14 @@
                             </div>
                             <div class="col-7 p-0 position-relative">
                                 <div class="col-12">
-                                    <p id="message-chat" class="md-text mb-2 mt-2">
+                                    <p class="md-text mb-2 mt-2">
                                         {{ msg }}
                                     </p>
                                     <p class="msg-id" hidden>{{ msg.id }}</p>
                                 </div>
                                 <div class="col-12 date-posted">
                                     <hr class="m-1">
-                                    <p id="message-date" class="sm-text mb-1 mt-1">
+                                    <p class="sm-text mb-1 mt-1">
                                         {{ msg.date_posted }}
                                     </p>
                                 </div>
@@ -54,14 +54,14 @@
                         <div class="row receivers-bg justify-content-end">
                             <div class="col-7 p-0 text-right position-relative">
                                 <div class="col-12">
-                                    <p id="message-chat" class="md-text mt-2 mb-2">
+                                    <p class="md-text mt-2 mb-2">
                                         {{ msg }}
                                     </p>
                                     <p class="msg-id" hidden>{{ msg.id }}</p>
                                 </div>
                                 <div class="col-12 text-right date-posted">
                                     <hr class="m-1">
-                                    <p id="message-date" class="sm-text mb-1">
+                                    <p class="sm-text mb-1">
                                         {{ msg.date_posted }}
                                     </p>
                                 </div>
@@ -83,7 +83,7 @@
     <div class="row justify-content-center m-0">
         <div class="col-11">
             <hr class="m-1">
-            <form action="" method="POST" id="chat-msg-form">
+            <form method="POST" id="chat-msg-form">
                 {% csrf_token %}
                 <div class="form-group col-12 m-0 text-left">
                     {{ message_form|crispy }}

@@ -377,10 +377,153 @@ All image fields are resized using PILLOW on upload by modifying the `def save()
 ### Languages
 - This project uses HTML, CSS, JavaScript and Python programming languages.
 
+## Testing
 
-# Testing 
+A thorough mix of automated and manual testing have gone into building the project. In addition to tests, I have validated all files against online validation sites, and checked compatibilities across various modern browsers and devices.
 
-Testing information can be found in separate [testing.md](testing.md) file
+### Validators
+
+**HTML**
+- [W3C HTML Validator](https://validator.w3.org)
+    - The remaining validation issues are all attributed to Django Templating not being recognized by W3C:
+        - **Warning**: Consider adding a `lang` attribute to the `html` start tag to declare the language of this document.
+        - **Error**: Non-space characters found without seeing a doctype first. Expected `<!DOCTYPE html>`.
+        - **Error**: Element `head` is missing a required instance of child element `title`.
+        - **Error**: Text not allowed in element ul in this context `{% for msg in chat_messages %}`
+        - **Error**: Bad value `{{ msg.author.profile.profile_image.url }}` for attribute src on element img: Illegal character in path segment: `{` is not allowed.
+
+**CSS**
+- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+    - The W3C Jigsaw validator does not yet recognize root variables, and therefore passes 2 **Parse Errors**. These are used to set global CSS variables, similar to most other programming languages. The two Parse Errors I've received are:
+        - `:root`
+        - `var(--foo)`
+    - I also received 6 **Warnings**:
+        - Imported style sheets are not checked in direct input and file upload modes.
+        - `-webkit-text-fill-color` is an unknown vendor extension.
+        - `-webkit-background-clip` is an unknown vendor extension.
+        - `::-webkit-slider-thumb` is an unknown vendor extended pseudo-element.
+        - `::-webkit-slider-runnable-track` is an unknown vendor extended pseudo-element.
+        - `-webkit-transition` is an unknown vendor extension.
+
+**JavaScript**
+- [JShint](https://jshint.com/)
+    - **stripe.js** [file](project/static/js/stripe.js):
+        - METRICS:
+            - There are **4** functions in this file. Function with the largest signature take **1** arguments, while the median is **1**. Largest function has **7** statements in it, while the median is **4**. The most complex function has a cyclomatic complexity value of **2** while the median is **1.5**.
+        - UNDEFINED VARIABLES:
+            - `Stripe` (used for Stripe API)
+    - **scripts.js** [file](project/static/js/scripts.js):
+        - METRICS:
+            - There are **4** functions in this file. Function with the largest signature take **0** arguments, while the median is **0**. Largest function has **5** statements in it, while the median is **3.5**. The most complex function has a cyclomatic complexity value of **1** while the median is **1**.
+        - UNDEFINED VARIABLES:
+            - `$` (used for jQuery)
+- [Beautify Tools](http://beautifytools.com/javascript-validator.php)
+    - **stripe.js** [file](project/static/js/stripe.js):
+        - *`Stripe` is not defined.*
+    - **scripts.js** [file](project/static/js/scripts.js):
+        - *No syntax errors!*
+
+**Python**
+- [PEP8 Online](http://pep8online.com/)
+    - All **32 .py** files checked.
+    - Entirely **PEP8 compliant** with one exception:
+        - `settings.py` [file](project/main/settings.py) (the built-in Django settings file has a known issue, but is acceptable to not force a line break)
+        - *line too long (>79 characters)* -  `AUTH_PASSWORD_VALIDATORS = [{}]` x4
+            
+
+### Compatibility
+
+Full details about compatibility tests can be found in my [testing folder](testing/?raw=true), which includes results from Chrome's DevTools Audit report as well.
+
+To ensure a broad range of users can successfully use the site, I tested it across the 6 major browsers in both desktop and mobile configuration.
+
+- **Chrome** (*v.75.0.3770.142*)
+- **Edge** (*v.42.17134.1.0*)
+- **Firefox** (*v.68.0.1*)
+- **Safari** (*v.12.1.2*)
+- **Opera** (*v.62.0.3331.99*)
+- **Internet Explorer** (*v.11.885.17134.0*)
+
+I have also created a testing matrix ([raw Excel file here](testing/testing-ci-milestone05-fsfw.xlsx?raw=true)).
+
+**Testing Matrix**
+![Testing Matrix](testing/testing-matrix.png "Testing Matrix")
+
+**Chrome's DevTools Audit Report**
+
+| Performance | Accessibility | Best Practices | SEO |
+| :---: | :---: | :---: | :---: |
+| 100% | 84% | 79% | 85% |
+
+![Chrome DevTools Audit Report](testing/devtools-audit.png?raw=true "Chrome Audit Report")
+
+### Known Issues
+
+During development, I encountered one semi-urgent issue after making one of my GitHub commits. I quickly opened an *Issue* on GitHub so I would remember to revisit this problem and resolve it.
+
+- [Reset Password functionality [broken]](https://github.com/TravelTimN/ci-milestone05-fsfw/issues/6)
+    - This was fixed and pushed with [commit 39749a2](https://github.com/TravelTimN/ci-milestone05-fsfw/commit/39749a2915272ab21aae0b9f82c9d75724f7dc3e).
+    - ![GitHub closed issues](https://img.shields.io/github/issues-closed/traveltimn/ci-milestone05-fsfw)
+
+Upon upgrading to Django 2.2.9 in January 2020, I encountered an additional problem running Automated Tests. This issue still needs to be resolved.
+
+- [Automated Tests (TravisCI) fail with Django upgrade](https://github.com/TravelTimN/ci-milestone05-fsfw/issues/87)
+    - To be fixed [commit pending]().
+    - ![GitHub issue open](https://img.shields.io/github/issues-raw/traveltimn/ci-milestone05-fsfw)
+
+### Automated Testing
+
+With Django's built-in `unittest` library module and `TestCase` subclass, I built **27** different tests to encompass most of my python *views*, *forms*, and *models*. Using the [coverage.py](https://coverage.readthedocs.io/en/v4.5.x/) test package, those 27 tests have provided an overall result of **75% test coverage**, which is within the approved minimum requirement for testing. All tests pass as '*OK*'! Most of the remaining Python that I didn't manually build tests for, are built-in Django boilerplates and core functionality. Below is a full table with the entire breakdown of the **Coverage Report** - click to expand the dropdown menu.
+
+<details>
+<summary>CLICK HERE to expand the full <b>Coverage Report</b></summary>
+
+| **Name** | **Stmts** | **Miss** | **Branch** | **BrPart** | **Cover** |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| *accounts/__ init __* | 0 | 0 | 0 | 0 | **100%** |
+| *accounts/admin* | 3 | 0 | 0 | 0 | **100%** |
+| *accounts/apps* | 3 | 3 | 0 | 0 | **0%** |
+| *accounts/backends* | 18 | 14 | 4 | 0 | **18%** |
+| *accounts/forms* | 45 | 2 | 6 | 2 | **92%** |
+| *accounts/models* | 34 | 8 | 8 | 3 | **74%** |
+| *accounts/tests* | 61 | 0 | 0 | 0 | **100%** |
+| *accounts/urls* | 4 | 0 | 0 | 0 | **100%** |
+| *accounts/urls_reset* | 4 | 0 | 0 | 0 | **100%** |
+| *accounts/views* | 59 | 27 | 22 | 5 | **51%** |
+| *custom_storages* | 6 | 0 | 0 | 0 | **100%** |
+| *main/__ init __* | 0 | 0 | 0 | 0 | **100%** |
+| *main/settings* | 55 | 4 | 6 | 3 | **89%** |
+| *main/urls* | 11 | 1 | 2 | 1 | **85%** |
+| *main/wsgi* | 4 | 4 | 0 | 0 | **0%** |
+| *manage* | 13 | 6 | 2 | 1 | **53%** |
+| *stats/__ init __* | 0 | 0 | 0 | 0 | **100%** |
+| *stats/admin* | 1 | 0 | 0 | 0 | **100%** |
+| *stats/apps* | 3 | 3 | 0 | 0 | **0%** |
+| *stats/models* | 1 | 0 | 0 | 0 | **100%** |
+| *stats/tests* | 6 | 0 | 0 | 0 | **100%** |
+| *stats/urls* | 3 | 0 | 0 | 0 | **100%** |
+| *stats/views* | 35 | 0 | 20 | 0 | **100%** |
+| *tickets/__ init __* | 0 | 0 | 0 | 0 | **100%** |
+| *tickets/admin* | 7 | 0 | 0 | 0 | **100%** |
+| *tickets/apps* | 3 | 3 | 0 | 0 | **0%** |
+| *tickets/context_processors* | 13 | 1 | 2 | 1 | **87%** |
+| *tickets/forms* | 17 | 0 | 0 | 0 | **100%** |
+| *tickets/models* | 46 | 3 | 0 | 0 | **93%** |
+| *tickets/tests* | 83 | 0 | 0 | 0 | **100%** |
+| *tickets/urls* | 3 | 0 | 0 | 0 | **100%** |
+| *tickets/views* | 173 | 77 | 32 | 5 | **51%** |
+| --- | --- | --- | --- | --- | --- |
+| **TOTAL** | **714** | **156** | **104** | **21** | **75%** |
+
+</details>
+
+In addition to the `TestCase` and **coverage.py** tests, I have used [Travis-CI](https://travis-ci.org/) to test Continuous Integration. I had quite the problem initially due to the fact that my primary project sits in a sub-directory called *project* and not at the top-level, which is why there were quite a few various commits on 26th July, but ultimately got it sorted with a successful *passing build* badge.
+- [![Build Status](https://travis-ci.org/TravelTimN/ci-milestone05-fsfw.svg?branch=master)](https://travis-ci.org/TravelTimN/ci-milestone05-fsfw)
+- *NOTE: this is a live/active badge, showing 'passing' at time of project submission!*
+
+##### back to [top](#table-of-contents)
+
+---
 
 # Deployment
 

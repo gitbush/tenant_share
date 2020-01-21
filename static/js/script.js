@@ -149,12 +149,12 @@ let authorListItem =    `<li class="row">
                                     </div> 
                                     <div class="col-7 p-0 position-relative"> 
                                         <div class="col-12"> 
-                                            <p id="message-chat" class="md-text mb-2 mt-2">{ message }</p> 
+                                            <p class="md-text mb-2 mt-2">{ message }</p> 
                                             <p class="msg-id" hidden>{ id }</p>
                                         </div>
                                         <div class="col-12 date-posted">
                                             <hr class="m-1"> 
-                                            <p id="message-date" class="sm-text mb-1 mt-1">{ date_posted }</p> 
+                                            <p class="sm-text mb-1 mt-1">{ date_posted }</p> 
                                         </div>
                                     </div>
                                 </div> 
@@ -167,12 +167,12 @@ let recieverListItem = `<li class="row justify-content-end">
                                 <div class="row receivers-bg justify-content-end">
                                     <div class="col-7 p-0 text-right position-relative">
                                         <div class="col-12">
-                                            <p id="message-chat" class="md-text mt-2 mb-2">{ message }</p> 
+                                            <p class="md-text mt-2 mb-2">{ message }</p> 
                                             <p class="msg-id" hidden>{ id }</p>
                                         </div>
                                         <div class="col-12 text-right date-posted">
                                             <hr class="m-1">
-                                            <p id="message-date" class="sm-text mb-1">{ date_posted }</p>
+                                            <p class="sm-text mb-1">{ date_posted }</p>
                                         </div>
                                     </div>
                                     <div class="col-3 col-sm-2 p-0 text-center">
