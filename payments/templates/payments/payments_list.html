@@ -11,9 +11,9 @@
                 <div class="col-12 card-header p-2">
                     <h3 class="md-heading m-1">Payments List</h3>
                 </div>
-                <form class="col-12" action="" method="POST">
+                <form class="col-12" method="POST">
                     {% csrf_token %}
-                    <div class="form-group row justify-content-center m-0">
+                    <fieldset class="form-group row justify-content-center m-0">
                         <legend class="label-heading text-center m-2">Add Payment - Select relevant maintenance request and set amount payable</legend>
                         <hr class="col-11 m-1">
                         <div class="row justify-content-center">
@@ -23,7 +23,7 @@
                                 <button class="btn btn-md btn-outline-info" type="submit">Submit</button>
                             </div>
                         </div>
-                    </div>
+                    </fieldset>
                 </form>
             </div>
         </div>
@@ -44,25 +44,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for payment in payments %}
-                        <tr>
-                        <td>#{{ payment.maint_request.id }}</td>
-                        <td>{{ payment.payment_date.date }}</td>
-                        <td>£{{ payment.amount }}</td>
-                        {% if payment.is_paid %}
-                            <td class="text-center">
-                                <span class="badge-lg badge-success">Paid</span>
-                            </td>
-                        {% else %}
-                            <td class="text-center">
-                                <a href="{% url 'checkout' payment_id=payment.id %}" class="btn btn-sm btn-success mr-sm-1">Pay</a>
-                                <button id="delete-payment-btn" class="btn btn-sm btn-danger ml-sm-1 modal-open delete-btn" data-payID="{{ payment.id }}">X</button>
-                            </td>
-                        {% endif %}
-                        </tr>
-                    {% endfor %}
+                {% for payment in payments %}
+                    <tr>
+                    <td>#{{ payment.maint_request.id }}</td>
+                    <td>{{ payment.payment_date.date }}</td>
+                    <td>£{{ payment.amount }}</td>
+                    {% if payment.is_paid %}
+                        <td class="text-center">
+                            <span class="badge-lg badge-success">Paid</span>
+                        </td>
+                    {% else %}
+                        <td class="text-center">
+                            <a href="{% url 'checkout' payment_id=payment.id %}" class="btn btn-sm btn-success mr-sm-1">Pay</a>
+                            <button id="delete-payment-btn" class="btn btn-sm btn-danger ml-sm-1 modal-open delete-btn" data-payID="{{ payment.id }}">X</button>
+                        </td>
+                    {% endif %}
+                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
+
             <!-- pagination -->
             <div class="row justify-content-center m-0 pagination-row">
                 <span class="step-links m-2">
@@ -82,6 +83,7 @@
                 </span>
             </div>
             <!-- END: pagination -->
+
             {% else %}
             <div class="row justify-content-center">
                 <div class="card col-10 col-md-9 mt-3 mb-3">
@@ -94,6 +96,7 @@
         </div>
     </div>
     <!-- END: payment history list -->
+    
 </div>
 
 
