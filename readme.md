@@ -406,28 +406,17 @@ A thorough mix of automated and manual testing have gone into building the proje
 
 **JavaScript**
 - [JShint](https://jshint.com/)
-    - **stripe.js** [file](project/static/js/stripe.js):
-        - METRICS:
-            - There are **4** functions in this file. Function with the largest signature take **1** arguments, while the median is **1**. Largest function has **7** statements in it, while the median is **4**. The most complex function has a cyclomatic complexity value of **2** while the median is **1.5**.
+    - **checkout.js**:
         - UNDEFINED VARIABLES:
-            - `Stripe` (used for Stripe API)
-    - **scripts.js** [file](project/static/js/scripts.js):
-        - METRICS:
-            - There are **4** functions in this file. Function with the largest signature take **0** arguments, while the median is **0**. Largest function has **5** statements in it, while the median is **3.5**. The most complex function has a cyclomatic complexity value of **1** while the median is **1**.
-        - UNDEFINED VARIABLES:
-            - `$` (used for jQuery)
-- [Beautify Tools](http://beautifytools.com/javascript-validator.php)
-    - **stripe.js** [file](project/static/js/stripe.js):
-        - *`Stripe` is not defined.*
-    - **scripts.js** [file](project/static/js/scripts.js):
-        - *No syntax errors!*
+            - `Stripe` (Stripe API)
+            - `$` (jQuery)
 
 **Python**
 - [PEP8 Online](http://pep8online.com/)
     - All **32 .py** files checked.
     - Entirely **PEP8 compliant** with one exception:
         - `settings.py` [file](project/main/settings.py) (the built-in Django settings file has a known issue, but is acceptable to not force a line break)
-        - *line too long (>79 characters)* -  `AUTH_PASSWORD_VALIDATORS = [{}]` x4
+        - *line too long (> 79 characters)* - eg. `payment_to_pay.payment_token = payment_form.cleaned_data['stripe_id']`
             
 
 ### Compatibility

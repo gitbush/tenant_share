@@ -8,6 +8,7 @@ import stripe
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+
 @login_required
 def checkout(request, payment_id):
     """
@@ -21,10 +22,10 @@ def checkout(request, payment_id):
             # stripe processing
             try:
                 customer = stripe.Charge.create(
-                    amount = int(payment_to_pay.amount * 100),
-                    currency = 'GBP',
-                    description = request.user.email,
-                    card = payment_form.cleaned_data['stripe_id'],
+                    amount=int(payment_to_pay.amount * 100),
+                    currency='GBP',
+                    description=request.user.email,
+                    card=payment_form.cleaned_data['stripe_id'],
                 )
                 if customer.paid:
                     payment_to_pay.is_paid = True
@@ -46,6 +47,6 @@ def checkout(request, payment_id):
     context = {
         'payment_to_pay': payment_to_pay,
         'payment_form': payment_form,
-        'publishable' : settings.STRIPE_PUBLISHABLE,
+        'publishable': settings.STRIPE_PUBLISHABLE,
     }
     return render(request, 'checkout/checkout.html', context)

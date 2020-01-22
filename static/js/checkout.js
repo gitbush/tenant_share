@@ -21,8 +21,8 @@ $(function() {
             
             form.submit();
         } else {
-            console.log(response.error.message)
-            console.log($("#stripe-error-message").text(response.error.message))
+            console.log(response.error.message);
+            console.log($("#stripe-error-message").text(response.error.message));
             $("#stripe-error-message").text(response.error.message);
             $("#credit-card-errors").show();
         }
