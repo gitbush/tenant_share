@@ -391,19 +391,18 @@ A thorough mix of automated and manual testing have gone into building the proje
         - **Error**: Element `head` is missing a required instance of child element `title`.
         - **Error**: Text not allowed in element ul in this context `{% for msg in chat_messages %}`
         - **Error**: Bad value `{{ msg.author.profile.profile_image.url }}` for attribute src on element img: Illegal character in path segment: `{` is not allowed.
+        - **Error**: Duplicate attribute `%}`.
 
 **CSS**
 - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
-    - The W3C Jigsaw validator does not yet recognize root variables, and therefore passes 2 **Parse Errors**. These are used to set global CSS variables, similar to most other programming languages. The two Parse Errors I've received are:
-        - `:root`
-        - `var(--foo)`
-    - I also received 6 **Warnings**:
-        - Imported style sheets are not checked in direct input and file upload modes.
-        - `-webkit-text-fill-color` is an unknown vendor extension.
-        - `-webkit-background-clip` is an unknown vendor extension.
-        - `::-webkit-slider-thumb` is an unknown vendor extended pseudo-element.
-        - `::-webkit-slider-runnable-track` is an unknown vendor extended pseudo-element.
-        - `-webkit-transition` is an unknown vendor extension.
+    - The compiled `.css` was checked and the below warnings remain:
+      - `-webkit-box-shadow` is an unknown vendor extension 
+      - `-webkit-transition` is an unknown vendor extension
+      - `-webkit-box` is an unknown vendor extension
+      - `-ms-grid` is an unknown vendor extension
+      - `-ms-grid-columns` is an unknown vendor extension 
+      - `-ms-flex-pack` is an unknown vendor extension
+    
 
 **JavaScript**
 - [JShint](https://jshint.com/)

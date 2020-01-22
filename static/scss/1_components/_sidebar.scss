@@ -1,3 +1,5 @@
+/* styles for sidebar */
+
 #sidebar {
     position: fixed;;
     display: block;
@@ -19,7 +21,6 @@
 
 #sidebar.show-sidebar {
 	left: 0px;
-	/* transition: all .3s; */
 }
 
 .sidebar-menu{
