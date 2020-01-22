@@ -5,16 +5,17 @@ def error_404_view(request, exception):
     """
     Page does not exist error
     """
-    return render(request,'errors/404.html')
+    return render(request, 'errors/404.html')
 
 def error_500_view(request):
     """
-    Server error 
+    Server error
     """
-    return render(request,'errors/500.html')
+    return render(request, 'errors/500.html')
+
 
 def error_403_view(request, exception):
     """
-    Permission denied error 
+    Permission denied error
     """
-    return render(request,'errors/403.html')
+    return render(request, 'errors/403.html')
