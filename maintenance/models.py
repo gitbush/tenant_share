@@ -3,7 +3,6 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.core.files.storage import default_storage as storage
 from PIL import Image, ImageOps
-from utils.functions import resize_image
 
 
 # have address in uploaded image path

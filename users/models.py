@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.core.files.storage import default_storage as storage
 from maintenance.models import Rental, MaintRequest
 from PIL import Image, ImageOps
-from utils.functions import upload_to, resize_image
+from utils.functions import upload_to
 
 # have username in uploaded image path
 def upload_to(instance, filename):

@@ -1,8 +1,20 @@
+# virtual env
 tenant_env/
+
+# databases
 *.sqlite3
+
+# python
 __pycache__
-*.json
+
+# vscode
 .vscode
+*.json
+
+# evironment variables
 .env
+
+# coverage test files
 htmlcov
 .coverage
+.coveragerc

@@ -414,9 +414,8 @@ A thorough mix of automated and manual testing have gone into building the proje
 **Python**
 - [PEP8 Online](http://pep8online.com/)
     - All **32 .py** files checked.
-    - Entirely **PEP8 compliant** with one exception:
-        - `settings.py` [file](project/main/settings.py) (the built-in Django settings file has a known issue, but is acceptable to not force a line break)
-        - *line too long (> 79 characters)* - eg. `payment_to_pay.payment_token = payment_form.cleaned_data['stripe_id']`
+    - Entirely **PEP8 compliant** with `*line too long (> 79 characters)*` exceptions:
+        - eg. `payment_to_pay.payment_token = payment_form.cleaned_data['stripe_id']`
             
 
 ### Compatibility
@@ -437,76 +436,88 @@ I have also created a testing matrix ([raw Excel file here](testing/testing-ci-m
 **Testing Matrix**
 ![Testing Matrix](testing/testing-matrix.png "Testing Matrix")
 
-**Chrome's DevTools Audit Report**
-
-| Performance | Accessibility | Best Practices | SEO |
-| :---: | :---: | :---: | :---: |
-| 100% | 84% | 79% | 85% |
-
-![Chrome DevTools Audit Report](testing/devtools-audit.png?raw=true "Chrome Audit Report")
-
 ### Known Issues
-
-During development, I encountered one semi-urgent issue after making one of my GitHub commits. I quickly opened an *Issue* on GitHub so I would remember to revisit this problem and resolve it.
-
-- [Reset Password functionality [broken]](https://github.com/TravelTimN/ci-milestone05-fsfw/issues/6)
-    - This was fixed and pushed with [commit 39749a2](https://github.com/TravelTimN/ci-milestone05-fsfw/commit/39749a2915272ab21aae0b9f82c9d75724f7dc3e).
-    - ![GitHub closed issues](https://img.shields.io/github/issues-closed/traveltimn/ci-milestone05-fsfw)
-
-Upon upgrading to Django 2.2.9 in January 2020, I encountered an additional problem running Automated Tests. This issue still needs to be resolved.
-
-- [Automated Tests (TravisCI) fail with Django upgrade](https://github.com/TravelTimN/ci-milestone05-fsfw/issues/87)
-    - To be fixed [commit pending]().
-    - ![GitHub issue open](https://img.shields.io/github/issues-raw/traveltimn/ci-milestone05-fsfw)
 
 ### Automated Testing
 
-With Django's built-in `unittest` library module and `TestCase` subclass, I built **27** different tests to encompass most of my python *views*, *forms*, and *models*. Using the [coverage.py](https://coverage.readthedocs.io/en/v4.5.x/) test package, those 27 tests have provided an overall result of **75% test coverage**, which is within the approved minimum requirement for testing. All tests pass as '*OK*'! Most of the remaining Python that I didn't manually build tests for, are built-in Django boilerplates and core functionality. Below is a full table with the entire breakdown of the **Coverage Report** - click to expand the dropdown menu.
+With Django's built-in `unittest`, I built **29** tests to run against each app *views*, *urls*, *forms*, and *models*. Using the [coverage.py](https://coverage.readthedocs.io/en/v4.5.x/) test package, those 29 tests have provided an overall result of **79% test coverage**, which is within the approved minimum requirement for testing. All tests pass as '*OK*'! Most of the remaining Python that I didn't manually build tests for, are either built-in Django functionality or beyond my current python skill level. Below is a table detailing the **Coverage Report** - click to expand the dropdown menu.
 
 <details>
 <summary>CLICK HERE to expand the full <b>Coverage Report</b></summary>
 
-| **Name** | **Stmts** | **Miss** | **Branch** | **BrPart** | **Cover** |
-| :--- | ---: | ---: | ---: | ---: | ---: |
-| *accounts/__ init __* | 0 | 0 | 0 | 0 | **100%** |
-| *accounts/admin* | 3 | 0 | 0 | 0 | **100%** |
-| *accounts/apps* | 3 | 3 | 0 | 0 | **0%** |
-| *accounts/backends* | 18 | 14 | 4 | 0 | **18%** |
-| *accounts/forms* | 45 | 2 | 6 | 2 | **92%** |
-| *accounts/models* | 34 | 8 | 8 | 3 | **74%** |
-| *accounts/tests* | 61 | 0 | 0 | 0 | **100%** |
-| *accounts/urls* | 4 | 0 | 0 | 0 | **100%** |
-| *accounts/urls_reset* | 4 | 0 | 0 | 0 | **100%** |
-| *accounts/views* | 59 | 27 | 22 | 5 | **51%** |
-| *custom_storages* | 6 | 0 | 0 | 0 | **100%** |
-| *main/__ init __* | 0 | 0 | 0 | 0 | **100%** |
-| *main/settings* | 55 | 4 | 6 | 3 | **89%** |
-| *main/urls* | 11 | 1 | 2 | 1 | **85%** |
-| *main/wsgi* | 4 | 4 | 0 | 0 | **0%** |
-| *manage* | 13 | 6 | 2 | 1 | **53%** |
-| *stats/__ init __* | 0 | 0 | 0 | 0 | **100%** |
-| *stats/admin* | 1 | 0 | 0 | 0 | **100%** |
-| *stats/apps* | 3 | 3 | 0 | 0 | **0%** |
-| *stats/models* | 1 | 0 | 0 | 0 | **100%** |
-| *stats/tests* | 6 | 0 | 0 | 0 | **100%** |
-| *stats/urls* | 3 | 0 | 0 | 0 | **100%** |
-| *stats/views* | 35 | 0 | 20 | 0 | **100%** |
-| *tickets/__ init __* | 0 | 0 | 0 | 0 | **100%** |
-| *tickets/admin* | 7 | 0 | 0 | 0 | **100%** |
-| *tickets/apps* | 3 | 3 | 0 | 0 | **0%** |
-| *tickets/context_processors* | 13 | 1 | 2 | 1 | **87%** |
-| *tickets/forms* | 17 | 0 | 0 | 0 | **100%** |
-| *tickets/models* | 46 | 3 | 0 | 0 | **93%** |
-| *tickets/tests* | 83 | 0 | 0 | 0 | **100%** |
-| *tickets/urls* | 3 | 0 | 0 | 0 | **100%** |
-| *tickets/views* | 173 | 77 | 32 | 5 | **51%** |
-| --- | --- | --- | --- | --- | --- |
-| **TOTAL** | **714** | **156** | **104** | **21** | **75%** |
+| Name                                                   | Stmts | Miss | Cover |
+|--------------------------------------------------------|-------|------|-------|
+| ------------------------------------------------------ |       |      |       |
+| chat\__init__.py                                       | 0     | 0    | 100%  |
+| chat\admin.py                                          | 3     | 0    | 100%  |
+| chat\api\__init__.py                                   | 0     | 0    | 100%  |
+| chat\api\serializers.py                                | 9     | 0    | 100%  |
+| chat\api\urls.py                                       | 6     | 0    | 100%  |
+| chat\api\views.py                                      | 17    | 7    | 59%   |
+| chat\apps.py                                           | 3     | 0    | 100%  |
+| chat\forms.py                                          | 7     | 0    | 100%  |
+| chat\models.py                                         | 11    | 0    | 100%  |
+| checkout\__init__.py                                   | 0     | 0    | 100%  |
+| checkout\admin.py                                      | 1     | 0    | 100%  |
+| checkout\apps.py                                       | 3     | 0    | 100%  |
+| checkout\forms.py                                      | 9     | 0    | 100%  |
+| checkout\models.py                                     | 1     | 0    | 100%  |
+| checkout\urls.py                                       | 3     | 0    | 100%  |
+| checkout\views.py                                      | 29    | 20   | 31%   |
+| errors\__init__.py                                     | 0     | 0    | 100%  |
+| errors\admin.py                                        | 1     | 0    | 100%  |
+| errors\models.py                                       | 1     | 0    | 100%  |
+| errors\tests.py                                        | 1     | 0    | 100%  |
+| errors\views.py                                        | 7     | 3    | 57%   |
+| maintenance\__init__.py                                | 0     | 0    | 100%  |
+| maintenance\admin.py                                   | 4     | 0    | 100%  |
+| maintenance\api\__init__.py                            | 0     | 0    | 100%  |
+| maintenance\api\serializers.py                         | 6     | 0    | 100%  |
+| maintenance\api\urls.py                                | 6     | 0    | 100%  |
+| maintenance\api\views.py                               | 7     | 0    | 100%  |
+| maintenance\apps.py                                    | 3     | 0    | 100%  |
+| maintenance\filters.py                                 | 11    | 2    | 82%   |
+| maintenance\forms.py                                   | 41    | 2    | 95%   |
+| maintenance\models.py                                  | 65    | 13   | 80%   |
+| maintenance\urls.py                                    | 3     | 0    | 100%  |
+| maintenance\views.py                                   | 74    | 7    | 91%   |
+| manage.py                                              | 12    | 2    | 83%   |
+| payments\__init__.py                                   | 0     | 0    | 100%  |
+| payments\admin.py                                      | 3     | 0    | 100%  |
+| payments\apps.py                                       | 3     | 0    | 100%  |
+| payments\forms.py                                      | 12    | 0    | 100%  |
+| payments\models.py                                     | 15    | 2    | 87%   |
+| payments\urls.py                                       | 3     | 0    | 100%  |
+| payments\views.py                                      | 27    | 5    | 81%   |
+| tenant_share_project\__init__.py                       | 0     | 0    | 100%  |
+| tenant_share_project\settings.py                       | 51    | 12   | 76%   |
+| tenant_share_project\urls.py                           | 11    | 1    | 91%   |
+| users\__init__.py                                      | 0     | 0    | 100%  |
+| users\admin.py                                         | 3     | 0    | 100%  |
+| users\api\__init__.py                                  | 0     | 0    | 100%  |
+| users\api\serializers.py                               | 11    | 0    | 100%  |
+| users\api\urls.py                                      | 6     | 0    | 100%  |
+| users\api\views.py                                     | 17    | 8    | 53%   |
+| users\apps.py                                          | 5     | 0    | 100%  |
+| users\forms.py                                         | 25    | 0    | 100%  |
+| users\models.py                                        | 31    | 8    | 74%   |
+| users\signals.py                                       | 9     | 0    | 100%  |
+| users\urls.py                                          | 4     | 0    | 100%  |
+| users\views.py                                         | 61    | 42   | 31%   |
+| utils\__init__.py                                      | 0     | 0    | 100%  |
+| utils\admin.py                                         | 1     | 0    | 100%  |
+| utils\functions.py                                     | 5     | 1    | 80%   |
+| utils\models.py                                        | 1     | 0    | 100%  |
+| utils\tests.py                                         | 1     | 0    | 100%  |
+| ------------------------------------------------------ |       |      |       |
+| TOTAL                                                  | 649   | 135  | 79%   |
+
+
 
 </details>
 
-In addition to the `TestCase` and **coverage.py** tests, I have used [Travis-CI](https://travis-ci.org/) to test Continuous Integration. I had quite the problem initially due to the fact that my primary project sits in a sub-directory called *project* and not at the top-level, which is why there were quite a few various commits on 26th July, but ultimately got it sorted with a successful *passing build* badge.
-- [![Build Status](https://travis-ci.org/TravelTimN/ci-milestone05-fsfw.svg?branch=master)](https://travis-ci.org/TravelTimN/ci-milestone05-fsfw)
+In addition to the `Unittest`, I have used [Travis-CI](https://travis-ci.org/) to test Continuous Integration. but ultimately got it sorted with a successful *passing build* badge.
+- insert badge
 - *NOTE: this is a live/active badge, showing 'passing' at time of project submission!*
 
 ##### back to [top](#table-of-contents)
