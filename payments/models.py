@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from maintenance.models import MaintRequest, User
 
+
 # maint request payments model
 class Payment(models.Model):
     """

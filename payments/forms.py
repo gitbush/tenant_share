@@ -3,6 +3,7 @@ from django.db.models import Q
 from .models import Payment
 from maintenance.models import MaintRequest
 
+
 class PaymentForm(forms.ModelForm):
     """
     New payment form
@@ -12,7 +13,7 @@ class PaymentForm(forms.ModelForm):
         fields = ['maint_request', 'amount']
         widgets = {
           'maint_request': forms.Select(attrs={'class': 'form-height'}),
-                                              
+
         }
 
     # set maint_request choices to get from current user rental

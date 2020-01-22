@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 from .forms import PaymentForm
 from .models import Payment
 
+
 @login_required
 def payments_list(request):
     """
@@ -25,13 +26,14 @@ def payments_list(request):
             messages.success(request, 'New pending payment added')
             return redirect('payments-list')
     else:
-        payment_form = PaymentForm(request.user.profile.rental, initial = {'maint_request': 'Please select'})
+        payment_form = PaymentForm(request.user.profile.rental, initial={'maint_request': 'Please select'})
 
     context = {
         'payment_form': payment_form,
         'payments': payments
     }
     return render(request, 'payments/payments_list.html', context)
+
 
 @login_required
 def delete_payment(request, id):
