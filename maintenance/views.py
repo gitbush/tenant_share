@@ -10,21 +10,22 @@ from.filters import MaintListFilter
 from chat.models import ChatMessage
 from chat.forms import MessageForm
 
+
 @login_required
 def Home(request):
     """
-    If user has a rental assigned, show rental details and tenants. 
+    If user has a rental assigned, show rental details and tenants.
     Else show only user profile details
     """
     currentUser = request.user
-    if currentUser.profile.rental: 
+    if currentUser.profile.rental:
         userRental = currentUser.profile.rental
         userLandlord = userRental.landlord
         userTenants = userRental.profile_set.filter(register_as='Tenant').all()
 
         context = {
             'userProfile': currentUser.profile,
-            'userRental': userRental, 
+            'userRental': userRental,
             'userLandlord': userLandlord,
             'userTenants': userTenants
         }
@@ -32,8 +33,9 @@ def Home(request):
         context = {
             'userProfile': currentUser.profile,
         }
-            
+
     return render(request, 'maintenance/home.html', context)
+
 
 @login_required
 def MaintRequestList(request):
@@ -60,6 +62,7 @@ def MaintRequestList(request):
     else:
         return render(request, 'maintenance/maint_requests.html')
 
+
 @login_required
 def MaintRequestCreate(request):
     """
@@ -81,7 +84,8 @@ def MaintRequestCreate(request):
     context = {
         'request_create_form': request_create_form,
     }
-    return render(request, 'maintenance/maint_create.html', context )
+    return render(request, 'maintenance/maint_create.html', context)
+
 
 @login_required
 def MaintRequestDetail(request, id):
@@ -90,8 +94,8 @@ def MaintRequestDetail(request, id):
     Display detail view of particular maintenance request.
     Allow for landlord to assign cost to tenant/landlord
     """
-    maint_request = get_object_or_404(MaintRequest, id=id) 
-    chat_messages = ChatMessage.objects.filter(maint_request=maint_request) # get chat messages
+    maint_request = get_object_or_404(MaintRequest, id=id)
+    chat_messages = ChatMessage.objects.filter(maint_request=maint_request)  # get chat messages
 
     if request.user.profile.rental == maint_request.property_ref:
         message_form = MessageForm()
@@ -102,14 +106,14 @@ def MaintRequestDetail(request, id):
                     assign_cost_form.save()
                     messages.success(request, 'Cost of work updated')
                     return redirect('maint-detail', id=id)
-            
+
             elif 'status' in request.POST:
                 status_form = StatusUpdateForm(request.POST, instance=maint_request)
                 if status_form.is_valid():
                     status_form.save()
                     messages.success(request, 'Status of request updated')
                     return redirect('maint-detail', id=id)
-                    
+
         assign_cost_form = MaintenanceQuoteForm(instance=maint_request)
         status_form = StatusUpdateForm(instance=maint_request)
 
@@ -124,6 +128,7 @@ def MaintRequestDetail(request, id):
         return render(request, 'maintenance/maint_detail.html', context)
     else:
         raise PermissionDenied()
+
 
 @login_required
 def MaintRequestDelete(request, id):

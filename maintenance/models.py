@@ -5,6 +5,7 @@ from django.core.files.storage import default_storage as storage
 from PIL import Image, ImageOps
 from utils.functions import resize_image
 
+
 # have address in uploaded image path
 def upload_to(instance, filename):
     return "maintenance/%s/%s" % (instance.address.lower(), filename)
@@ -22,7 +23,6 @@ class Rental(models.Model):
     def __str__(self):
         return self.address
 
-     # TODO: DRY save method for resize images
     def save(self, *args, **kwargs):
         """
         - installed 'django-cleanup' to auto-remove old image.
@@ -43,17 +43,16 @@ class Rental(models.Model):
                 temp = storage.open(self.image.name, "w")
                 center_img.save(temp, extension)
                 temp.close()
-                super(Rental, self).save(*args, **kwargs) 
+                super(Rental, self).save(*args, **kwargs)
 
 
-# maintenance request 
+# maintenance request
 class MaintRequest(models.Model):
 
-    STATUS_CHOICES = [('new', 'New'), 
-                      ('in-progress', 'In Progress'), 
-                      ('awaiting-payment', 'Awaiting Payment'), 
+    STATUS_CHOICES = [('new', 'New'),
+                      ('in-progress', 'In Progress'),
+                      ('awaiting-payment', 'Awaiting Payment'),
                       ('resolved', 'Resolved')]
-                      
 
     PRIORITY_CHOICES = [('low', 'Low'),
                         ('med', 'Med'),
@@ -61,9 +60,8 @@ class MaintRequest(models.Model):
 
     PAID_BY_CHOICES = [('Tenant', 'Tenant'),
                        ('Landlord', 'Landlord')]
-                        
 
-    property_ref = models.ForeignKey(Rental, null=True, on_delete=models.SET_NULL ) 
+    property_ref = models.ForeignKey(Rental, null=True, on_delete=models.SET_NULL)
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=40)
     details = models.TextField()
@@ -74,7 +72,6 @@ class MaintRequest(models.Model):
     cost = models.IntegerField(null=True)
     paid_by = models.CharField(max_length=20, null=True, choices=PAID_BY_CHOICES)
     invoice_pdf = models.FileField(null=True, upload_to='maintenance', blank=True)
-    
 
     def __str__(self):
         return f"#{self.id}  {self.title} "
@@ -99,8 +96,4 @@ class MaintRequest(models.Model):
                 temp = storage.open(self.image.name, "w")
                 center_img.save(temp, extension)
                 temp.close()
-                super(MaintRequest, self).save(*args, **kwargs) 
-
-
-
-
+                super(MaintRequest, self).save(*args, **kwargs)
