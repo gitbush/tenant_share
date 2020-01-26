@@ -53,7 +53,7 @@ The main target audience of Tenant Share is:
 
 The main goals of the target audience are:
 - Tenants:
-  - Have a common place to communicate any maintenance issues to my landlord/property manager.
+  - Have a common place to communicate any maintenance issues to my landlord/property manager. :white_check_mark:
   - Track progress of an existing maintenance issue.
   - Able to pay towards any maintenance issues.
 - Landlords/Property managers:
@@ -420,7 +420,6 @@ A thorough mix of automated and manual testing have gone into building the proje
 
 ### Compatibility
 
-Full details about compatibility tests can be found in my [testing folder](testing/?raw=true), which includes results from Chrome's DevTools Audit report as well.
 
 To ensure a broad range of users can successfully use the site, I tested it across the 6 major browsers in both desktop and mobile configuration.
 
@@ -430,11 +429,6 @@ To ensure a broad range of users can successfully use the site, I tested it acro
 - **Safari** (*v.12.1.2*)
 - **Opera** (*v.62.0.3331.99*)
 - **Internet Explorer** (*v.11.885.17134.0*)
-
-I have also created a testing matrix ([raw Excel file here](testing/testing-ci-milestone05-fsfw.xlsx?raw=true)).
-
-**Testing Matrix**
-![Testing Matrix](testing/testing-matrix.png "Testing Matrix")
 
 ### Known Issues
 
