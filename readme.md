@@ -53,7 +53,7 @@ The main target audience of Tenant Share is:
 
 The main goals of the target audience are:
 - Tenants:
-  - Have a common place to communicate any maintenance issues to my landlord/property manager. :white_check_mark:
+  - Have a common place to communicate any maintenance issues to my landlord/property manager. 
   - Track progress of an existing maintenance issue.
   - Able to pay towards any maintenance issues.
 - Landlords/Property managers:
@@ -73,24 +73,26 @@ The business goals of Tenant Share are:
 
 As a visitor to Tenant Share I want:
 - General:
-1. The website to be easy to navigate and not get in the way of the intended use.
-2. To be able to view the website on mobile, tablet and desktop devices with a seamless transition.
-3. All information to be laid out in a clean and easy to read way.
+1. The website to be easy to navigate and not get in the way of the intended use. :heavy_check_mark:
+2. To be able to view the website on mobile, tablet and desktop devices with a seamless transition. :heavy_check_mark:
+3. All information to be laid out in a clean and easy to read way. :heavy_check_mark:
 
 All users:
 
-1. To create an account and be taken through the process step by step.
-2. See details of my house including other tenants and the landlord/property manager.
-3. To raise any maintenance issues that I may discover around the property.
-4. To be able to discuss any maintenance issues with my fellow housemates and landlord/propety manager.
-5. To pay for my share of any maintenance issues securely.
-6. To see all previous history of maintenance issues and payments related to me.
+1. To create an account and be taken through the process step by step. :heavy_check_mark:
+2. See details of my house including other tenants and the landlord/property manager. :heavy_check_mark:
+3. To raise any maintenance issues that I may discover around the property. :heavy_check_mark:
+4. To be able to discuss any maintenance issues with my fellow housemates and landlord/propety manager. :heavy_check_mark:
+5. To pay for my share of any maintenance issues securely. :heavy_check_mark:
+6. To see all previous history of maintenance issues and payments related to me. :heavy_check_mark:
 
 Lanlord/Property manager:
-1. To add/remove tenants to my property.
-2. To set the cost and provide evidence of any maintenance issues.
-3. To recieve payment from tenants for any work performed if responsibility lies with the tenant.
-4. To update progress of a maintenance issue.
+1. To add/remove tenants to my property. :heavy_check_mark:
+2. To set the cost and provide evidence of any maintenance issues. :heavy_check_mark:
+3. To recieve payment from tenants for any work performed if responsibility lies with the tenant. :heavy_check_mark:
+4. To update progress of a maintenance issue. :heavy_check_mark:
+
+:heavy_check_mark: *Indicates implemented succesfully*
 
 ## Design Choices
 
