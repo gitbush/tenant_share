@@ -260,7 +260,7 @@ if(maintId){
 }
 
     
-// add and remove tenant modals
+// confirm modals
 
 function confirmModal(title, message, href){
 
