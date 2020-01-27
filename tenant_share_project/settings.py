@@ -188,4 +188,4 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = 'support@tenantshare.com'
 EMAIL_PORT = 587
 
-django_heroku.settings(locals(), staticfiles=False)
+django_heroku.settings(locals(), staticfiles=False, test_runner=False)
