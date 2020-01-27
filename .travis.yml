@@ -4,5 +4,5 @@ python:
   - "3.7.2"
 install: "pip install -r requirements.txt"
 script:
-  - export SECRET_KEY=$SECRET_KEY 
+  - SECRET_KEY='travissecret'
   - python manage.py test
