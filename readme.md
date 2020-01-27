@@ -4,9 +4,12 @@
     <img src="https://i.ibb.co/nPVS5nW/tenant-share-dark.png" alt="tenant-share-dark" href="https://tenantshare.herokuapp.com/" target="_blank" rel="noopener" alt="Tenant Share" aria-label="Tenant Share" border="0">
 </div>
 
-After living in various share houses throughout my early twenties in London, it's not always easy to raise maintenance issues with the landlord/property manager. Tenant Share provides a great, collective way to communicate any issues around the house share property that need addressing to the landlord. 
+After living in various share houses throughout my early twenties in London, it's not always easy to raise maintenance issues with the landlord/property manager. Tenant Share provides a simple, collective way to communicate any issues to the landlord/property manaager. 
 
-Currently in development.
+## Instructions
+
+To test the functionality of this application, you will need to create both a Landlord and a Tenant account and follow the prompts to get set up.
+
 
 [![Build Status](https://travis-ci.org/gitbush/tenant_share.svg?branch=master)](https://travis-ci.org/gitbush/tenant_share)
 
@@ -31,6 +34,9 @@ Currently in development.
 4. [Technologies Used](#technologies-used)
 
 5. [Testing](#testing)
+    - [Validators](#validators)
+    - [Compatability](#compatibility)
+    - [Automated testing](#automated-testing)  
 
 6. [Deployment](#deployment)
     - [Heroku Deployment](#heroku-deployment)
