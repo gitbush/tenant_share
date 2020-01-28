@@ -414,6 +414,7 @@ A thorough mix of automated and manual testing have gone into building the proje
 
 **JavaScript**
 - [JShint](https://jshint.com/)
+    - **script.js** and **checkout.js** were put through JSHint check with the below warnings:
     - **checkout.js**:
         - UNDEFINED VARIABLES:
             - `Stripe` (Stripe API)
@@ -547,9 +548,9 @@ To allow you to access all functionality on the site locally, ensure you have cr
 ### Instructions
 1.  If you have Git installed on your system, you can clone the repository with the following command.
     ```
-    git clone https://github.com/AJGreaves/thehouseofmouse
+    git clone https://github.com/gitbush/tenant_share.git
     ```
-    Alternatively save a copy of the github repository located at https://github.com/gitbush/tenant_share.git by clicking the "download zip" button at the top of the page and extracting the zip file to your chosen folder.
+    Alternatively save a copy of the github repository located at https://github.com/gitbush/tenant_share by clicking the "download zip" button at the top of the page and extracting the zip file to your chosen folder.
 
 2. Open your preferred IDE, open a terminal session and cd into the correct location.
 
