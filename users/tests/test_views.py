@@ -10,8 +10,6 @@ class TestViews(TestCase):
 
         self.user = User.objects.create_user(username='my_username', password='my_password')
         self.user.save()
-        self.user.profile.profile_image = 'users/man.jpg'
-        self.user.profile.save()
         self.login = self.client.login(username='my_username', password='my_password')
 
     def test_register_view(self):
