@@ -31,7 +31,7 @@ class Profile(models.Model):
         - installed 'pillow' to resize larger images.
         """
         super(Profile, self).save(*args, **kwargs)
-        if self.profile_image:
+        if self.profile_image != 'users/default_profile.jpg':
             img = Image.open(self.profile_image)
             size = 300
             thumb = (size, size)
