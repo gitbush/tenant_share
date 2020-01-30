@@ -81,7 +81,7 @@ class MaintRequest(models.Model):
         - installed 'pillow' to resize larger images.
         """
         super(MaintRequest, self).save(*args, **kwargs)
-        if self.image:
+        if self.image != 'maintenance/no_image.jpg':
             img = Image.open(self.image)
             size = 300
             thumb = (size, size)
