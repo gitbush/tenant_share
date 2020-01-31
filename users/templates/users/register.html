@@ -1,8 +1,9 @@
 {% extends 'base_registration.html' %}
 {% load crispy_forms_tags %}
+
 {% block form %}
 <section class="row justify-content-center">
-    <div class="card col-10 col-sm-8 user-form">
+    <div class="card col-10 col-sm-6 user-form">
         <form action="" method="POST">
             {% csrf_token %}
             <div class="form-group row justify-content-center m-sm-2">

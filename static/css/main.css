@@ -1,3 +1,5 @@
+/* styles for media querries */
+/* style for utilities */
 .html, body {
   font-family: proxima-nova,  Helvetica, sans-serif;
   font-style: normal;
@@ -150,6 +152,7 @@ option {
   margin-bottom: 0;
 }
 
+/* styles for navbar */
 .navbar {
   height: 60px;
   background-color: #343347;
@@ -210,6 +213,7 @@ option {
   border-radius: 10px;
 }
 
+/* styles for sidebar */
 #sidebar {
   position: fixed;
   display: block;
@@ -233,7 +237,6 @@ option {
 
 #sidebar.show-sidebar {
   left: 0px;
-  /* transition: all .3s; */
 }
 
 .sidebar-menu {
@@ -267,10 +270,12 @@ option {
           box-shadow: 1px 2px 2px #636363;
 }
 
+/* styles for pagination */
 .pagination-row {
   border-top: 1px solid #dee2e6;
 }
 
+/* styles for base modal */
 .modal {
   position: fixed;
   left: 0;
@@ -333,6 +338,7 @@ option {
   }
 }
 
+/* styles for add/remove modal */
 .add-modal-content {
   top: 50%;
   min-height: 350px;
@@ -365,6 +371,7 @@ option {
   overflow-x: hidden;
 }
 
+/* styles for alert slider */
 #edit-profile-alert {
   position: fixed;
   top: -120px;
@@ -395,6 +402,7 @@ option {
   font-size: 1rem;
 }
 
+/* styles for loading spinner */
 .spinner {
   position: fixed;
   z-index: 99;
@@ -435,6 +443,7 @@ option {
   }
 }
 
+/* styles for maintenance home page */
 .house-img {
   width: 8rem;
   height: 8rem;
@@ -596,6 +605,7 @@ option {
   color: white;
 }
 
+/* styles for account page */
 .account-top-color {
   left: 0;
   height: 10rem;
@@ -649,6 +659,7 @@ option {
   margin: .4rem;
 }
 
+/* styles for maintenance request detail page */
 .max-card {
   max-width: 950px;
 }
@@ -698,6 +709,7 @@ option {
   display: none;
 }
 
+/* styles for checkout page */
 .check-img {
   width: 7rem;
   margin: 10px;
@@ -722,6 +734,7 @@ option {
   background-color: rgba(242, 38, 19, 0.2);
 }
 
+/* styles for chat page */
 .author-bg {
   background-color: #d8efd8;
   margin: 5px 0px 5px 0px;
@@ -745,6 +758,7 @@ option {
   bottom: 0;
 }
 
+/* styles for register page */
 .register-bg {
   position: relative;
   background-color: #2c4024;
@@ -772,6 +786,11 @@ option {
   font-size: 2rem;
 }
 
+.intro {
+  color: white;
+  font-style: italic;
+}
+
 .company-img {
   height: 12rem;
 }
@@ -792,6 +811,7 @@ option {
   font-size: .7rem;
 }
 
+/* styles for error pages */
 .error-bg {
   background: linear-gradient(135deg, #32bdba 0%, #7fcd7f 100%);
   height: 100vh;
