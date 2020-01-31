@@ -439,8 +439,6 @@ To ensure a broad range of users can successfully use the site, I tested it acro
 - **Opera** (*v.62.0.3331.99*)
 - **Internet Explorer** (*v.11.885.17134.0*)
 
-### Known Issues
-
 ### Automated Testing
 
 With Django's built-in `unittest`, I built **29** tests to run against each app *views*, *urls*, *forms*, and *models*. Using the [coverage.py](https://coverage.readthedocs.io/en/v4.5.x/) test package, those 29 tests have provided an overall result of **79% test coverage**, which is within the approved minimum requirement for testing. All tests pass as '*OK*'! Most of the remaining Python that I didn't manually build tests for, are either built-in Django functionality or beyond my current python skill level. Below is a table detailing the **Coverage Report** - click to expand the dropdown menu.
@@ -519,9 +517,13 @@ With Django's built-in `unittest`, I built **29** tests to run against each app 
 
 </details>
 
-In addition to the `Unittest`, I have used [Travis-CI](https://travis-ci.org/) to test Continuous Integration. but ultimately got it sorted with a successful *passing build* badge.
-- insert badge
-- *NOTE: this is a live/active badge, showing 'passing' at time of project submission!*
+In addition to the `Unittest`, I have used [Travis-CI](https://travis-ci.org/) to test Continuous Integration. 
+- [![Build Status](https://travis-ci.org/gitbush/tenant_share.svg?branch=master)](https://travis-ci.org/gitbush/tenant_share)
+
+### Bugs found during testing
+#### Resolved bugs
+- On final deployment, Travis build was failing. This was due to Travis trying to run the custom `def save()` on the user and maintenance models.  When creating new instances of these models, the uploaded `ImageField` is resized using PILLOW and saved into the AWS S3 bucket which Travis does not have access to. Adding a conditional to only attempt image resize if an image is uploaded stops Travis failing:
+  - `if self.image != 'maintenance/no_image.jpg':`
 
 ##### back to [top](#table-of-contents)
 
