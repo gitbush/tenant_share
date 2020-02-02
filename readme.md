@@ -27,7 +27,7 @@ To test the functionality of this application, you will need to create both a La
     - [Existing Features](#existing-features)
     - [Features Left to Implement](#features-left-to-implement)
 
-3. [Information Architecture](#information-architecture)
+3. [Databases](#databases)
     - [Database choice](#database-choice)
     - [Data Storage Types](#data-storage-types)
 
@@ -36,7 +36,8 @@ To test the functionality of this application, you will need to create both a La
 5. [Testing](#testing)
     - [Validators](#validators)
     - [Compatability](#compatibility)
-    - [Automated testing](#automated-testing)  
+    - [Automated testing](#automated-testing) 
+    - [Bugs found during testing](#Bugs-found-during-testing)  
 
 6. [Deployment](#deployment)
     - [Heroku Deployment](#heroku-deployment)
@@ -259,7 +260,7 @@ The user can switch between the 'Detail' and 'Messages' view of the maintenance 
 5. **Web sockets**
     - Currently the maintenance request chat functionality is done via AJAX and Django Rest Framework, making a call every 2 seconds to retreive new messages from the API. Although this method works for a small scale project, web sockets will provide a more efficient chat app.
 
-# Information Architecture
+# Databases
 
 ## Database Choice
 

@@ -34,16 +34,22 @@ window.addEventListener("resize", function(){
     }
 });
 
+
 // edit account button
-const editBtn = document.getElementById("edit-btn");
+let editBtn = document.querySelectorAll(".account-edit-btn");
     if(editBtn){
-        editBtn.addEventListener("click", function(){
-            if(editBtn.innerText == "Edit"){
-                editBtn.innerText = "Close";
-            }
-            else{
-                editBtn.innerText = "Edit";
-            }
+
+        editBtn.forEach(function(btn){
+            btn.addEventListener("click", function(){
+                
+                if(btn.innerText == "Edit"){
+                    btn.innerText = "Close";                
+                }
+                else{
+                    btn.innerText = "Edit";
+                }
+
+            });
         });
     }
     
