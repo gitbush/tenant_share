@@ -6,9 +6,11 @@
 
 After living in various share houses throughout my early twenties in London, it's not always easy to raise maintenance issues with the landlord/property manager. Tenant Share provides a simple, collective way to communicate any issues to the landlord/property manaager. 
 
-## Instructions
+## Note to testers of this site
 
-To test the functionality of this application, you will need to create both a Landlord and a Tenant account and follow the prompts to get set up.
+To test the functionality of this application, you will need to create both a Landlord and a Tenant account. Put yourself in the shoes of both types of users to simulate the intended use case for both the Landlord and Tenant.
+
+Easiest way to achieve this is to open a standard browser window for one type of user and an ingognito window for the other.
 
 
 [![Build Status](https://travis-ci.org/gitbush/tenant_share.svg?branch=master)](https://travis-ci.org/gitbush/tenant_share)
