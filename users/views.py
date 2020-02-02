@@ -50,7 +50,7 @@ def account(request, id):
                 user_profile.rental = new_rental
                 user_profile.save()
                 messages.add_message(request, messages.INFO, f'Property updated')
-                return redirect('account', id=request.user.id)
+                return redirect('maint-home')
     # populate boths forms on GET
     else:
         user_update_form = UserUpdateForm(instance=request.user)
