@@ -8,9 +8,9 @@ After living in various share houses throughout my early twenties in London, it'
 
 ## Note to testers of this site
 
-To test the functionality of this application, you will need to create both a Landlord and a Tenant account. Put yourself in the shoes of both types of users to simulate the intended use case for both the Landlord and Tenant.
+Testing the functionality of this site can be a little complicated at first. For testing you need to put yourself in the shoes of both types of users to simulate the intended use case for both the Landlord and Tenant. 
 
-Easiest way to achieve this is to open a standard browser window for one type of user and an ingognito window for the other.
+You will need to create both a Landlord and a Tenant account. The best way to achieve this is to open a standard browser window for one type of user and an ingognito window for the other. The easiest approach is to first add a 'Tenant' account in the first followed by a 'Landlord' account in the ingognito window and follow the prompts.
 
 
 [![Build Status](https://travis-ci.org/gitbush/tenant_share.svg?branch=master)](https://travis-ci.org/gitbush/tenant_share)
@@ -527,6 +527,9 @@ In addition to the `Unittest`, I have used [Travis-CI](https://travis-ci.org/) t
 #### Resolved bugs
 - On final deployment, Travis build was failing. This was due to Travis trying to run the custom `def save()` on the user and maintenance models.  When creating new instances of these models, the uploaded `ImageField` is resized using PILLOW and saved into the AWS S3 bucket which Travis does not have access to. Adding a conditional to only attempt image resize if an image is uploaded stops Travis failing:
   - `if self.image != 'maintenance/no_image.jpg':`
+
+#### Unresolved bugs
+- **Add tenant modal** - Duplicate values are returned when typing a username in the add tenant search form. Due to time constraints I am yet to address this issue. The duplicates are only present when testing the deployed site and not locally...
 
 ##### back to [top](#table-of-contents)
 
