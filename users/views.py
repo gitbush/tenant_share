@@ -1,17 +1,21 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
 from .forms import UserRegisterForm, RegisterAsForm, UserUpdateForm, ProfileUpdateForm
 from .models import *
 from maintenance.forms import RentalCreationForm
 
 def register(request):
     """
-        Create a user through registration form. Get type of user from 
-        RegisterAsForm and save to previously created user.
+        Create new user and associated profile and login
     """
+
+    # POST request, populate form and send
     if request.method == 'POST':
-        registerForm = UserRegisterForm(request.POST)
-        asForm = RegisterAsForm(request.POST)
+        registerForm = UserRegisterForm(request.POST) # base register form
+        asForm = RegisterAsForm(request.POST) # register as field 
+
+        # when both forms are valid, create a new user and associated profile
         if registerForm.is_valid():
             registerForm.save()
             if asForm.is_valid():
@@ -19,28 +23,41 @@ def register(request):
                 register_as = asForm.cleaned_data['register_as']
                 profile.register_as = register_as
                 profile.save()
-            return redirect('login')
+
+                # log the new user in and redirect to home page
+                messages.success(request, "You've succesfully registered")
+                new_user = authenticate(username=registerForm.cleaned_data['username'],
+                                    password=registerForm.cleaned_data['password1'],
+                                    )
+                login(request, new_user)
+                return redirect("maint-home")
+    
+    # GET request display empty form 
     else:
         registerForm = UserRegisterForm()
         asForm = RegisterAsForm()
+        
     return render(request, 'users/register.html', {'registerForm': registerForm, 'asForm': asForm})
 
 def account(request, id):
     """
-    User account page with profile editor and rental property editor
+    Display user account profile and property information
     """
     if request.method == 'POST':
+        # forms for updating user and rental information
         user_update_form = UserUpdateForm(request.POST, instance=request.user)
         profile_img_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
         rental_form = RentalCreationForm(request.POST, request.FILES, instance=request.user.profile.rental)
 
-    # check which form is submitted 
+        # check which form is in request and update user information. Redirect back to account page
         if 'profile' in request.POST:
             if user_update_form.is_valid() and profile_img_form.is_valid():
                 user_update_form.save()
                 profile_img_form.save()
                 messages.add_message(request, messages.INFO, f'Profile updated')
                 return redirect('account', id=request.user.id)
+
+        # get relevant user profile and update rental information. Redirect back to account page
         elif 'rental' in request.POST:
             user_profile = get_object_or_404(Profile, user=request.user)
             if rental_form.is_valid():
@@ -51,12 +68,14 @@ def account(request, id):
                 user_profile.save()
                 messages.add_message(request, messages.INFO, f'Property updated')
                 return redirect('maint-home')
-    # populate boths forms on GET
+
+    # populate boths forms with current information on GET request
     else:
         user_update_form = UserUpdateForm(instance=request.user)
         profile_img_form = ProfileUpdateForm(instance=request.user.profile)
         rental_form = RentalCreationForm(instance=request.user.profile.rental)
 
+    # all forms to be displayed on account page
     context = {
         'user_update_form': user_update_form,
         'profile_img_form': profile_img_form,
