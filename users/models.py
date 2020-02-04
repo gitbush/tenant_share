@@ -13,7 +13,9 @@ class Profile(models.Model):
     """
     Extend django user model and add custom fields
     """
-    user = models.OneToOneField(User, on_delete=models.CASCADE) #creates relationship to user model
+
+    # Creates relationship to user model
+    user = models.OneToOneField(User, on_delete=models.CASCADE) 
 
     # custom fields
     rental = models.ForeignKey(Rental, null=True, on_delete=models.SET_NULL)
