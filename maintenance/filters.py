@@ -3,7 +3,11 @@ import django_filters
 
 
 class MaintListFilter(django_filters.FilterSet):
+    """
+    Search form for maintenance request list
+    """
 
+    # choices for maintenance list ordering
     CHOICES = [('newest', 'Newest'),
                ('oldest', 'Oldest')]
 
@@ -19,6 +23,7 @@ class MaintListFilter(django_filters.FilterSet):
             'paid_by': ['exact', ]
         }
 
+    # method for sort form
     def order_by(self, queryset, name, value):
         expression = '-date_raised' if value == 'newest' else 'date_raised'
         return queryset.order_by(expression)

@@ -9,9 +9,10 @@ from PIL import Image, ImageOps
 def upload_to(instance, filename):
     return "maintenance/%s/%s" % (instance.address.lower(), filename)
 
-
-# rental model for instances of rental properties
 class Rental(models.Model):
+    """
+    Rental model for instances of rental properties
+    """
     address = models.CharField(max_length=30)
     postcode = models.CharField(max_length=8)
     city = models.CharField(max_length=15)
@@ -44,10 +45,10 @@ class Rental(models.Model):
                 temp.close()
                 super(Rental, self).save(*args, **kwargs)
 
-
-# maintenance request
 class MaintRequest(models.Model):
-
+    """
+    Maintenance request model
+    """
     STATUS_CHOICES = [('new', 'New'),
                       ('in-progress', 'In Progress'),
                       ('awaiting-payment', 'Awaiting Payment'),
