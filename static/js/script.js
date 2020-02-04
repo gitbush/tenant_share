@@ -4,16 +4,18 @@
 /**
  * Collapsable sidebar
  */
-
-const menuIcon = document.getElementById("menu-icon");
-const sidebar = document.getElementById("sidebar");
-const content = document.getElementById("content");
+console.log('ehjj')
+var menuIcon = document.getElementById("menu-icon");
+var sidebar = document.getElementById("sidebar");
+var content = document.getElementById("content");
 
 /**
  * show sidebar when screen is above 960px
  */
 if(window.innerWidth >= 960){
-    pushContentSidebar();   
+    if(sidebar){
+        pushContentSidebar();   
+    }
 }
 
 /**
@@ -25,10 +27,14 @@ window.addEventListener("resize", function(){
     }
 });
 
+/**
+ * show sidebar
+ */
 function pushContentSidebar(){
     sidebar.classList.add("show-sidebar");
     content.style.marginLeft = "60px";
 }
+
 
 /**
  * show/hide sidebar with hamburger menu
