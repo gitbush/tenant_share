@@ -8,9 +8,16 @@ After living in various share houses throughout my early twenties in London, it'
 
 ## Note to testers of this site
 
-Testing the functionality of this site can be a little complicated at first. For testing you need to put yourself in the shoes of both types of users to simulate the intended use case for both the Landlord and Tenant. 
+Testing the functionality of this site can be a little complicated at first. For testing you need to put yourself in the shoes of both types of users to simulate the intended use case for both the Landlord and Tenant. In the real world this would not be the case.
 
-You will need to create both a Landlord and a Tenant account. The best way to achieve this is to open a standard browser window for one type of user and an ingognito window for the other. The easiest approach is to first window add a 'Tenant' account in the first followed by a 'Landlord' account in the ingognito window and follow the prompts.
+You will need to create both a Landlord and a Tenant account. The best way to achieve this is to open a standard browser window for one type of user and an ingognito window for the other. Steps outlined below:
+
+- Register a 'Tenant' account in a browser window.
+- Register a 'Landlord' account in an ingognito window.
+- In the 'Landlord' window: 
+  - Add a property via the account page.
+  - On the home page, click 'Add Tenant' button and search for the previously created 'Tenant' to add them onto the property.
+  - Full functionality is now available across both account modes.
 
 
 [![Build Status](https://travis-ci.org/gitbush/tenant_share.svg?branch=master)](https://travis-ci.org/gitbush/tenant_share)
@@ -677,6 +684,7 @@ To deploy Tenant Share to heroku, take the following steps:
 
 - Youtube tutorials that helped throughout the project:
     - [Python Django Tutorial by Corey Schafer](https://www.youtube.com/watch?v=UmljXZIypDc&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p)
+    - [Django Testing Tutorial by The Dumbfounds](https://www.youtube.com/watch?v=qwypH3YvMKc&list=PLbpAWbHbi5rMF2j5n6imm0enrSD9eQUaM)
 
 
 ## Disclaimer
