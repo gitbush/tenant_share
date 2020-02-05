@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'storages',
     'errors',
-    'utils',
     'django_cleanup',
 ]
 

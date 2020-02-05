@@ -10,7 +10,7 @@ After living in various share houses throughout my early twenties in London, it'
 
 Testing the functionality of this site can be a little complicated at first. For testing you need to put yourself in the shoes of both types of users to simulate the intended use case for both the Landlord and Tenant. 
 
-You will need to create both a Landlord and a Tenant account. The best way to achieve this is to open a standard browser window for one type of user and an ingognito window for the other. The easiest approach is to first add a 'Tenant' account in the first followed by a 'Landlord' account in the ingognito window and follow the prompts.
+You will need to create both a Landlord and a Tenant account. The best way to achieve this is to open a standard browser window for one type of user and an ingognito window for the other. The easiest approach is to first window add a 'Tenant' account in the first followed by a 'Landlord' account in the ingognito window and follow the prompts.
 
 
 [![Build Status](https://travis-ci.org/gitbush/tenant_share.svg?branch=master)](https://travis-ci.org/gitbush/tenant_share)
